@@ -26,6 +26,28 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .section-header{display:flex;align-items:center;justify-content:center;gap:10px;padding:6px 0 2px}
 .section-header .diamond{color:#a855f7;font-size:12px;text-shadow:0 0 8px #a855f7}
 .section-title{font-size:16px;font-weight:900;color:#fff;letter-spacing:3px;text-transform:uppercase;text-shadow:0 0 12px rgba(168,85,247,.5)}
+/* ТАПАЛКА */
+.tapper-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:24px;padding:20px;text-align:center;border:2px solid #a855f7;box-shadow:0 0 24px rgba(168,85,247,.3)}
+.tapper-btn{width:180px;height:180px;margin:0 auto 16px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#a855f7,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:80px;cursor:pointer;box-shadow:0 0 40px rgba(168,85,247,.6),inset 0 -8px 20px rgba(0,0,0,.3);transition:transform .08s ease;user-select:none;border:4px solid #c084fc}
+.tapper-btn:active{transform:scale(.88);box-shadow:0 0 60px rgba(168,85,247,.9)}
+.tapper-btn.locked{background:radial-gradient(circle at 30% 30%,#4b5563,#374151);border-color:#6b7280;box-shadow:none;opacity:.6;cursor:not-allowed}
+.tapper-taps{font-size:32px;font-weight:900;color:#a855f7;text-shadow:0 0 16px rgba(168,85,247,.6);margin-bottom:2px}
+.tapper-taps-label{font-size:11px;color:#8b7ba8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:14px}
+.tapper-info{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+.tapper-stat{background:#0f0a1e;border-radius:12px;padding:8px 6px;border:1px solid #3a2a5a}
+.tapper-stat-val{font-size:15px;font-weight:900;color:#a855f7}
+.tapper-stat-val.gold{color:#fbbf24;text-shadow:0 0 10px rgba(251,191,36,.5)}
+.tapper-stat-val.green{color:#10b981;text-shadow:0 0 10px rgba(16,185,129,.5)}
+.tapper-stat-label{font-size:9px;color:#8b7ba8;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
+.tapper-progress{background:#0f0a1e;border-radius:14px;padding:4px;height:30px;position:relative;overflow:hidden;border:1px solid #3a2a5a;margin-bottom:8px}
+.tapper-progress-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#a855f7);border-radius:10px;transition:width .3s ease;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;min-width:60px}
+.tapper-next{font-size:11px;color:#8b7ba8;margin-bottom:12px}
+.tapper-next b{color:#fbbf24}
+.tapper-milestones{display:flex;justify-content:space-between;gap:6px;font-size:10px;color:#8b7ba8}
+.tapper-milestone{padding:6px 4px;border-radius:8px;background:#0f0a1e;border:1px solid #3a2a5a;flex:1;text-align:center;font-weight:700;transition:all .3s}
+.tapper-milestone.reached{background:#7c3aed;color:#fff;border-color:#a855f7;box-shadow:0 0 12px rgba(168,85,247,.6)}
+.tapper-milestone.top{background:linear-gradient(135deg,#f59e0b,#d97706);color:#1a0f2e;border-color:#fbbf24;box-shadow:0 0 12px rgba(245,158,11,.6)}
+.tapper-milestone.locked{opacity:.4}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .case-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:24px;padding:14px 10px;text-align:center;border:2px solid #3a2a5a;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;isolation:isolate;box-shadow:0 0 0 1px rgba(168,85,247,.08),0 4px 16px rgba(0,0,0,.5)}
 .case-card::before{content:"";position:absolute;inset:0;border-radius:22px;padding:2px;background:linear-gradient(180deg,rgba(168,85,247,.15),rgba(168,85,247,0));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:0}
@@ -53,6 +75,8 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .case-badge{position:absolute;top:10px;right:10px;font-size:9px;background:#7c3aed;color:#fff;padding:4px 9px;border-radius:10px;font-weight:800;letter-spacing:.5px;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15)}
 .case-badge.gold{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#1a0f2e}
 .case-badge.red{background:#dc2626}
+.case-badge.free{background:linear-gradient(135deg,#10b981,#059669);color:#fff;animation:badgePulse 1.5s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
 .inventory-section{display:none}
 .inventory-section.active{display:block}
 .inv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
@@ -170,7 +194,38 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="profile-id" id="profileId">ID: ---</div>
 </div>
 </div>
-<div class="inventory-section active" id="casesSection">
+<div class="inventory-section active" id="tapperSection">
+<div class="section-header"><span class="diamond">◆</span><span class="section-title">Тапалка</span><span class="diamond">◆</span></div>
+<div class="tapper-card">
+<div class="tapper-btn" id="tapperBtn">👆</div>
+<div class="tapper-taps" id="tapperTaps">0</div>
+<div class="tapper-taps-label">Всього кліків</div>
+<div class="tapper-info">
+<div class="tapper-stat">
+<div class="tapper-stat-val" id="tapperToday">0</div>
+<div class="tapper-stat-label">Сьогодні</div>
+</div>
+<div class="tapper-stat">
+<div class="tapper-stat-val gold" id="tapperLimit">25 000</div>
+<div class="tapper-stat-label">Ліміт</div>
+</div>
+<div class="tapper-stat">
+<div class="tapper-stat-val green" id="tapperStreak">1</div>
+<div class="tapper-stat-label">Серія</div>
+</div>
+</div>
+<div class="tapper-progress">
+<div class="tapper-progress-fill" id="tapperProgress" style="width:0%">0%</div>
+</div>
+<div class="tapper-next">Наступний кейс: <b id="tapperNext">5 000</b></div>
+<div class="tapper-milestones">
+<div class="tapper-milestone" id="ms1">🎁 5К</div>
+<div class="tapper-milestone" id="ms2">💎 25К</div>
+<div class="tapper-milestone" id="ms3">🔥 100К</div>
+</div>
+</div>
+</div>
+<div class="inventory-section" id="casesSection">
 <div class="section-header"><span class="diamond">◆</span><span class="section-title">Mystery Box</span><span class="diamond">◆</span></div>
 <div class="cases-grid" id="casesGrid"></div>
 </div>
@@ -188,7 +243,8 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 </div>
 </div>
 <div class="bottom-nav">
-<button class="nav-btn active" data-nav="cases"><span class="nav-icon">🎁</span>Кейси</button>
+<button class="nav-btn active" data-nav="tapper"><span class="nav-icon">👆</span>Тапалка</button>
+<button class="nav-btn" data-nav="cases"><span class="nav-icon">🎁</span>Кейси</button>
 <button class="nav-btn" data-nav="inventory"><span class="nav-icon">🎒</span>Скіни</button>
 <button class="nav-btn" data-nav="top"><span class="nav-icon">🏆</span>Топ</button>
 <button class="nav-btn" data-nav="profile"><span class="nav-icon">👤</span>Профіль</button>
@@ -270,7 +326,28 @@ userPhotoUrl = u.photo_url || "";
 }
 const fullName = (userName + (userLastName ? " " + userLastName : "")).trim();
 
-let state = { coins: 100, name: fullName, inventory: [], usedPromos: [], spent: 0, opened: 0 };
+// ============ СТАН ============
+let state = {
+coins: 100,
+name: fullName,
+inventory: [],
+usedPromos: [],
+spent: 0,
+opened: 0,
+// Тапалка
+taps: 0,             // всього кліків (не скидається)
+tapsToday: 0,        // кліків сьогодні
+	tapsDate: "",        // дата останнього тапу (YYYY-MM-DD)
+limit: 25000,        // поточний ліміт
+streak: 0,           // серія заходів
+lastStreakDate: "",  // дата останньої серії
+baseLimit: 25000,
+maxLimit: 50000,
+streakBonus: 2500,
+	// Видані кейси (щоб не видавати повторно)
+	givenCases: []       // масив порогів, за які вже видано кейс
+};
+
 let currentCase = null, isProcessing = false, userDocUnsub = null, sellTarget = null;
 
 const PROMOS = { "26fire": 30, "newyear2027": 55, "dhjdkgd": 0 };
@@ -279,16 +356,12 @@ try {
 const saved = localStorage.getItem("musor_state");
 if (saved) {
 const d = JSON.parse(saved);
-state.coins = d.coins != null ? d.coins : 100;
-state.inventory = d.inventory || [];
-state.usedPromos = d.usedPromos || [];
-state.spent = d.spent || 0;
-state.opened = d.opened || 0;
+Object.assign(state, d);
 }
 } catch(e){}
 
 function saveLocal() {
-try { localStorage.setItem("musor_state", JSON.stringify({ coins: state.coins, inventory: state.inventory, usedPromos: state.usedPromos, spent: state.spent, opened: state.opened })); } catch(e){}
+try { localStorage.setItem("musor_state", JSON.stringify(state)); } catch(e){}
 }
 
 const $ = (id) => document.getElementById(id);
@@ -301,10 +374,13 @@ const resultBlock = $("resultBlock"), btnOpen = $("btnOpen"), btnCloseModal = $(
 const loadingScreen = $("loadingScreen"), toastEl = $("toast");
 const sellModal = $("sellModal"), sellItemInfo = $("sellItemInfo"), sellPrice = $("sellPrice");
 const btnConfirmSell = $("btnConfirmSell"), btnCancelSell = $("btnCancelSell");
-const casesSection = $("casesSection"), inventorySection = $("inventorySection"), topSection = $("topSection"), profileSection = $("profileSection");
+const casesSection = $("casesSection"), inventorySection = $("inventorySection"), topSection = $("topSection"), profileSection = $("profileSection"), tapperSection = $("tapperSection");
 const promoModal = $("promoModal"), promoInput = $("promoInput"), btnActivatePromo = $("btnActivatePromo"), btnClosePromo = $("btnClosePromo");
 const topList = $("topList"), profilePage = $("profilePage");
 const adminModal = $("adminModal");
+const tapperBtn = $("tapperBtn"), tapperTaps = $("tapperTaps"), tapperToday = $("tapperToday");
+const tapperLimit = $("tapperLimit"), tapperStreak = $("tapperStreak"), tapperProgress = $("tapperProgress");
+const tapperNext = $("tapperNext"), ms1 = $("ms1"), ms2 = $("ms2"), ms3 = $("ms3");
 
 function showToast(msg, d) {
 d = d || 2400;
@@ -314,6 +390,161 @@ clearTimeout(toastEl._t);
 toastEl._t = setTimeout(function() { toastEl.classList.remove("show"); }, d);
 }
 
+// ============ ДАТА ============
+function todayStr() {
+const d = new Date();
+return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,'0') + "-" + String(d.getDate()).padStart(2,'0');
+}
+
+function daysBetween(a, b) {
+const da = new Date(a + "T00:00:00");
+const db = new Date(b + "T00:00:00");
+return Math.round((db - da) / (24 * 60 * 60 * 1000));
+}
+
+// ============ ТАПАЛКА ============
+function updateTapperStreak() {
+const today = todayStr();
+
+// Якщо дата не змінювалась — нічого
+if (state.lastStreakDate === today) return;
+
+// Якщо це перший запуск — ініціалізуємо
+if (!state.lastStreakDate) {
+state.lastStreakDate = today;
+state.streak = 1;
+state.tapsDate = today;
+state.tapsToday = 0;
+return;
+}
+
+const diff = daysBetween(state.lastStreakDate, today);
+
+// Якщо вчора протапали ліміт — продовжуємо серію
+if (diff === 1) {
+// Перевірка, чи був протапаний ліміт вчора
+if (state.tapsToday >= state.limit) {
+state.streak = Math.min(30, state.streak + 1);
+} else {
+// Не протапали — серія скидається
+state.streak = 1;
+}
+} else if (diff > 1) {
+// Пропустили день — серія скидається
+state.streak = 1;
+}
+
+// Оновлюємо ліміт
+state.limit = Math.min(state.maxLimit, state.baseLimit + (state.streak - 1) * state.streakBonus);
+state.tapsDate = today;
+state.tapsToday = 0;
+state.lastStreakDate = today;
+}
+
+function updateTapperUI() {
+tapperTaps.textContent = state.taps.toLocaleString();
+tapperToday.textContent = state.tapsToday.toLocaleString() + " / " + state.limit.toLocaleString();
+tapperLimit.textContent = state.limit.toLocaleString();
+tapperStreak.textContent = "🔥 " + state.streak;
+
+const pct = Math.min(100, (state.tapsToday / state.limit) * 100);
+tapperProgress.style.width = pct + "%";
+tapperProgress.textContent = Math.round(pct) + "%";
+
+// Наступний кейс
+const next = Math.ceil((state.tapsToday + 1) / 5000) * 5000;
+if (state.tapsToday < 5000) tapperNext.textContent = "5 000";
+else if (state.tapsToday < 25000) tapperNext.textContent = "25 000";
+else if (state.tapsToday < 100000) tapperNext.textContent = "100 000";
+else tapperNext.textContent = "—";
+
+// Milestones
+ms1.classList.toggle("reached", state.taps >= 5000);
+ms2.classList.toggle("reached", state.taps >= 25000);
+ms3.classList.toggle("top", state.taps >= 100000);
+
+// Locked якщо ліміт < порогу
+ms1.classList.toggle("locked", state.limit < 5000);
+ms2.classList.toggle("locked", state.limit < 25000);
+ms3.classList.toggle("locked", state.limit < 100000);
+
+// Блокуємо кнопку якщо ліміт вичерпано
+if (state.tapsToday >= state.limit) {
+tapperBtn.classList.add("locked");
+tapperBtn.textContent = "🔒";
+} else {
+tapperBtn.classList.remove("locked");
+tapperBtn.textContent = "👆";
+}
+}
+
+async function onTap() {
+if (state.tapsToday >= state.limit) return;
+
+state.taps++;
+state.tapsToday++;
+saveLocal();
+updateTapperUI();
+
+// Перевірка milestone
+const milestones = [
+{ threshold: 5000, type: "basic" },
+{ threshold: 25000, type: "pro" },
+{ threshold: 100000, type: "top" }
+];
+
+for (const m of milestones) {
+if (state.taps >= m.threshold && !state.givenCases.includes(m.threshold)) {
+state.givenCases.push(m.threshold);
+saveLocal();
+
+// Видаємо кейс
+if (m.type === "basic") {
+giveRandomCase("basic");
+} else if (m.type === "pro") {
+giveRandomCase("pro");
+} else if (m.type === "top") {
+giveRandomCase("top");
+}
+}
+
+// Оновлюємо Firestore (не кожен клік, а раз на 10)
+if (state.taps % 10 === 0) {
+saveState({
+taps: state.taps,
+tapsToday: state.tapsToday,
+limit: state.limit,
+streak: state.streak,
+lastStreakDate: state.lastStreakDate,
+tapsDate: state.tapsDate,
+givenCases: state.givenCases
+});
+}
+}
+
+function giveRandomCase(type) {
+let caseIndex;
+if (type === "basic") {
+caseIndex = Math.floor(Math.random() * 12); // 1-12 базові
+showToast("🎁 Випав базовий кейс!");
+} else if (type === "pro") {
+caseIndex = 12 + Math.floor(Math.random() * 8); // 13-20 PRO
+showToast("💎 Випав PRO кейс!");
+} else {
+caseIndex = 20 + Math.floor(Math.random() * 5); // 21-25 TOP
+showToast("🔥 Випав TOP кейс!");
+}
+
+const c = CASES[caseIndex];
+if (!c) return;
+
+// Відкриваємо кейс автоматично
+setTimeout(function() {
+openCaseModal(c.id, 0); // 0 = безкоштовно
+}, 300);
+}
+
+// ============ КЕЙСИ ============
 const RARITY = {
 common:    { name: "Звичайний",   color: "#9ca3af" },
 uncommon:  { name: "Незвичайний", color: "#3b82f6" },
@@ -325,18 +556,17 @@ ancient:   { name: "Древній",     color: "#ef4444" }
 
 const TYPE_EMOJI = { knife: "🗡️", gloves: "🧤", gun: "🔫", coffin: "⚰️" };
 
-// ⚰️ ГРОБОВЕЦЬ за 15000 — окуп 60%
 const COFFINS = [
-{ id: "coffin_rotten",  name: "🦴 Гнилий гріб",           emoji: "🦴", color: "#6b7280", price: 6000,   weight: 18, img: "textures/topp/coffin/coffin_rotten.png",  category: "common" },
-{ id: "coffin_wood",    name: "🪵 Дерев'яний гріб",       emoji: "🪵", color: "#92400e", price: 8000,   weight: 12, img: "textures/topp/coffin/coffin_wood.png",    category: "common" },
-{ id: "coffin_basic",   name: "⚰️ Звичайний гріб",        emoji: "⚰️", color: "#9ca3af", price: 15000,  weight: 10, img: "textures/topp/coffin/coffin_basic.png",   category: "common" },
-{ id: "coffin_big",     name: "⚰️ Великий гріб",          emoji: "⚰️", color: "#cbd5e1", price: 20000,  weight: 8,  img: "textures/topp/coffin/coffin_big.png",     category: "common" },
-{ id: "coffin_diamond", name: "💎 Алмазний гріб",         emoji: "💎", color: "#22d3ee", price: 30000,  weight: 8,  img: "textures/topp/coffin/coffin_diamond.png", category: "common" },
-{ id: "coffin_fire",    name: "🔥 Вогняний гріб",         emoji: "🔥", color: "#ef4444", price: 50000,  weight: 12, img: "textures/topp/coffin/coffin_fire.png",    category: "common" },
-{ id: "coffin_wide",    name: "🪦 Широкий гріб",          emoji: "🪦", color: "#3b82f6", price: 80000,  weight: 12, img: "textures/topp/coffin/coffin_wide.png",    category: "common" },
-{ id: "coffin_golden",  name: "✨ Золотий гріб",          emoji: "✨", color: "#f59e0b", price: 130000, weight: 10, img: "textures/topp/coffin/coffin_golden.png",  category: "common" },
-{ id: "coffin_mom",     name: "👑 Гріб для мам",          emoji: "👑", color: "#ec4899", price: 250000, weight: 7,  img: "textures/topp/coffin/coffin_mom.png",     category: "mom" },
-{ id: "coffin_me",      name: "🌟 Гріб для тебе і сім'ї", emoji: "🌟", color: "#fbbf24", price: 600000, weight: 3,  img: "textures/topp/coffin/coffin_me.png",      category: "family" }
+{ id: "coffin_rotten",  name: "🦴 Гнилий гріб",           emoji: "🦴", color: "#6b7280", price: 6000,   weight: 18, img: "textures/topp/coffin/coffin_rotten.png" },
+{ id: "coffin_wood",    name: "🪵 Дерев'яний гріб",       emoji: "🪵", color: "#92400e", price: 8000,   weight: 12, img: "textures/topp/coffin/coffin_wood.png" },
+{ id: "coffin_basic",   name: "⚰️ Звичайний гріб",        emoji: "⚰️", color: "#9ca3af", price: 15000,  weight: 10, img: "textures/topp/coffin/coffin_basic.png" },
+{ id: "coffin_big",     name: "⚰️ Великий гріб",          emoji: "⚰️", color: "#cbd5e1", price: 20000,  weight: 8,  img: "textures/topp/coffin/coffin_big.png" },
+{ id: "coffin_diamond", name: "💎 Алмазний гріб",         emoji: "💎", color: "#22d3ee", price: 30000,  weight: 8,  img: "textures/topp/coffin/coffin_diamond.png" },
+{ id: "coffin_fire",    name: "🔥 Вогняний гріб",         emoji: "🔥", color: "#ef4444", price: 50000,  weight: 12, img: "textures/topp/coffin/coffin_fire.png" },
+{ id: "coffin_wide",    name: "🪦 Широкий гріб",          emoji: "🪦", color: "#3b82f6", price: 80000,  weight: 12, img: "textures/topp/coffin/coffin_wide.png" },
+{ id: "coffin_golden",  name: "✨ Золотий гріб",          emoji: "✨", color: "#f59e0b", price: 130000, weight: 10, img: "textures/topp/coffin/coffin_golden.png" },
+{ id: "coffin_mom",     name: "👑 Гріб для мам",          emoji: "👑", color: "#ec4899", price: 250000, weight: 7,  img: "textures/topp/coffin/coffin_mom.png" },
+{ id: "coffin_me",      name: "🌟 Гріб для тебе і сім'ї", emoji: "🌟", color: "#fbbf24", price: 600000, weight: 3,  img: "textures/topp/coffin/coffin_me.png" }
 ];
 
 const SKINS = [];
@@ -356,19 +586,32 @@ const rar = i <= 25 ? "common" : i <= 38 ? "uncommon" : i <= 45 ? "rare" : i <= 
 SKINS.push({ id: "gun_"+i, name: GUN_NAMES[i-1], type: "gun", rarity: rar, img: "textures/skins/gun_"+String(i).padStart(2,'0')+".png" });
 }
 
+// УНІКАЛЬНІ ЦІНИ
 const BASE_PRICE = {
-common:    5,
-uncommon:  25,
-rare:      150,
-mythical:  600,
-legendary: 3000,
-ancient:   12000
+common:    { min: 3,    max: 20 },
+uncommon:  { min: 15,   max: 100 },
+rare:      { min: 80,   max: 800 },
+mythical:  { min: 600,  max: 6000 },
+legendary: { min: 4000, max: 40000 },
+ancient:   { min: 20000, max: 200000 }
 };
-const TYPE_PRICE_MULT = { gun: 1, gloves: 3, knife: 5 };
+const TYPE_MULT = { gun: 1, gloves: 3, knife: 5 };
+
 SKINS.forEach(function(s) {
-const base = BASE_PRICE[s.rarity] || 5;
-const typeMult = TYPE_PRICE_MULT[s.type] || 1;
-s.price = Math.round(base * typeMult);
+const range = BASE_PRICE[s.rarity] || { min: 3, max: 20 };
+const typeMult = TYPE_MULT[s.type] || 1;
+let hash = 0;
+for (let i = 0; i < s.id.length; i++) {
+hash = ((hash << 5) - hash) + s.id.charCodeAt(i);
+hash = hash & hash;
+}
+const rnd = Math.abs(hash % 1000) / 1000;
+let price = Math.round((range.min + (range.max - range.min) * rnd) * typeMult);
+price = Math.max(3, Math.min(200000, price));
+if (price > 10000) price = Math.round(price / 1000) * 1000;
+else if (price > 1000) price = Math.round(price / 100) * 100;
+else if (price > 100) price = Math.round(price / 10) * 10;
+s.price = price;
 });
 
 const CASE_NAMES = ["Дерев'яний","Залізний","Сталевий","Бронзовий","Срібний","Золотий","Платиновий","Алмазний","Кристальний","Льодовий","Вогняний","Грозовий","Тіньовий","Смарагдовий","Рубіновий","Сапфіровий","Аметистовий","Космічний","Вулканічний","Океанський","Лісовий","Пустельний","Арктичний","Королівський","Імператорський"];
@@ -443,7 +686,7 @@ for (const c of COFFINS) {
 if (r < c.weight) { chosen = c; break; }
 r -= c.weight;
 }
-return { skin: { id: chosen.id, name: chosen.name, type: "coffin", rarity: "ancient", img: chosen.img, emoji: chosen.emoji, color: chosen.color, rarityColor: chosen.color, category: chosen.category }, price: chosen.price };
+return { skin: { id: chosen.id, name: chosen.name, type: "coffin", rarity: "ancient", img: chosen.img, emoji: chosen.emoji, color: chosen.color, rarityColor: chosen.color }, price: chosen.price };
 }
 
 function pickRandomSkin() { return SKINS[Math.floor(Math.random() * SKINS.length)]; }
@@ -476,6 +719,7 @@ profileId.textContent = "ID: " + userId;
 coinsValue.textContent = state.coins;
 renderCases();
 renderInventory();
+updateTapperUI();
 }
 
 function renderCases() {
@@ -500,7 +744,6 @@ html += '<div class="' + cardClass + '" data-case="'+c.id+'" data-price="'+c.pri
 + '<div class="case-price">'+c.price+'</div>'
 + '</div>';
 }
-// ⚰️ Гробовець — 15000
 const coffinImg = imgOrEmoji("textures/topp/coffin/coffin.png", "⚰️", 90);
 html += '<div class="case-card wide coffin" data-case="coffin" data-price="15000">'
 + '<div class="case-img">'+coffinImg+'</div>'
@@ -549,8 +792,10 @@ openSellModal(el.dataset.uid);
 
 function openCaseModal(caseId, price) {
 if (!state.inventory) state.inventory = [];
-if (state.coins < price) { showToast("❌ Недостатньо монет! Потрібно " + price); return; }
-currentCase = { id: caseId, price: price };
+// Безкоштовний кейс (з тапалки)
+const isFree = price === 0;
+if (!isFree && state.coins < price) { showToast("❌ Недостатньо монет! Потрібно " + price); return; }
+currentCase = { id: caseId, price: price, free: isFree };
 modalTitle.textContent = caseId === "coffin" ? "⚰️ Гробовець" : "🎁 Відкриття";
 
 let html = "";
@@ -571,18 +816,20 @@ resultBlock.style.display = "none";
 btnOpen.style.display = "block";
 $("rouletteWrap").style.display = "block";
 btnOpen.disabled = false;
-btnOpen.textContent = "🔓 Відкрити за " + price;
+btnOpen.textContent = isFree ? "🔓 Відкрити БЕЗКОШТОВНО" : "🔓 Відкрити за " + price;
 modal.classList.add("show");
 }
 
 async function openCurrentCase() {
 if (isProcessing || !currentCase) return;
-if (state.coins < currentCase.price) { showToast("❌ Недостатньо монет!"); return; }
+if (!currentCase.free && state.coins < currentCase.price) { showToast("❌ Недостатньо монет!"); return; }
 isProcessing = true;
 btnOpen.disabled = true;
 btnOpen.textContent = "🎰 Крутиться...";
+if (!currentCase.free) {
 state.coins -= currentCase.price;
 state.spent = (state.spent || 0) + currentCase.price;
+}
 state.opened = (state.opened || 0) + 1;
 saveLocal();
 render();
@@ -635,9 +882,11 @@ resultBlock.innerHTML = '<div class="win-item" style="color:'+r.color+'">'
 $("rouletteWrap").style.display = "none";
 btnOpen.style.display = "none";
 
-const newItem = { id: winner.id, name: winner.name, type: winner.type, rarity: winner.rarity, rarityName: r.name, rarityColor: r.color, sellPrice: finalPrice, img: winner.img, emoji: winner.emoji || null, category: winner.category || null, uid: Date.now() + "_" + Math.random().toString(36).slice(2,6) };
+// ⚠️ ВИПРАВЛЕНО: предмет додається в інвентар ЛИШЕ при натисканні "Залишити"
+const newItem = { id: winner.id, name: winner.name, type: winner.type, rarity: winner.rarity, rarityName: r.name, rarityColor: r.color, sellPrice: finalPrice, img: winner.img, emoji: winner.emoji || null, uid: Date.now() + "_" + Math.random().toString(36).slice(2,6) };
 
 document.getElementById("btnSell").addEventListener("click", async function() {
+// Продати — додаємо монети, НЕ додаємо в інвентар
 state.coins += finalPrice;
 saveLocal();
 render();
@@ -648,6 +897,7 @@ isProcessing = false;
 });
 
 document.getElementById("btnAdd").addEventListener("click", async function() {
+// Залишити — тільки тоді додаємо в інвентар
 state.inventory.push(newItem);
 saveLocal();
 render();
@@ -659,6 +909,7 @@ isProcessing = false;
 
 setTimeout(async function() {
 if (modal.classList.contains("show") && document.getElementById("btnAdd")) {
+// Авто-залишити в інвентарі
 state.inventory.push(newItem);
 saveLocal();
 render();
@@ -752,9 +1003,9 @@ if (snap.empty) { topList.innerHTML = '<div class="inv-empty">Поки що не
 const players = [];
 snap.forEach(function(d) {
 const data = d.data();
-players.push({ id: d.id, name: data.name || "Гравець", spent: data.spent || 0, photoUrl: data.photoUrl || "" });
+players.push({ id: d.id, name: data.name || "Гравець", taps: data.taps || 0, photoUrl: data.photoUrl || "" });
 });
-players.sort(function(a, b) { return b.spent - a.spent; });
+players.sort(function(a, b) { return b.taps - a.taps; });
 const top10 = players.slice(0, 10);
 let html = "";
 top10.forEach(function(p, i) {
@@ -769,7 +1020,7 @@ html += '<div class="top-row'+(isMe?" me":"")+'">'
 + '<div class="top-rank '+rankClass+'">'+medal+'</div>'
 + '<div class="top-avatar">'+avatarInner+'</div>'
 + '<div class="top-name">'+escapeHtml(p.name)+(isMe?' <span style="color:#a855f7;font-size:10px">(ти)</span>':'')+'</div>'
-+ '<div class="top-coins">'+p.spent+'</div>'
++ '<div class="top-coins">'+p.taps+' 👆</div>'
 + '</div>';
 });
 topList.innerHTML = html;
@@ -795,8 +1046,8 @@ profilePage.innerHTML = '<div class="profile-card-big">'
 + '</div>'
 + '<div class="profile-stats">'
 + '<div class="profile-stat"><div class="profile-stat-icon">💰</div><div class="profile-stat-value gold">'+state.coins+'</div><div class="profile-stat-label">Баланс</div></div>'
-+ '<div class="profile-stat"><div class="profile-stat-icon">🎁</div><div class="profile-stat-value purple">'+opened+'</div><div class="profile-stat-label">Відкрито</div></div>'
-+ '<div class="profile-stat"><div class="profile-stat-icon">📉</div><div class="profile-stat-value pink">'+spent+'</div><div class="profile-stat-label">Витрачено</div></div>'
++ '<div class="profile-stat"><div class="profile-stat-icon">👆</div><div class="profile-stat-value purple">'+state.taps+'</div><div class="profile-stat-label">Кліків</div></div>'
++ '<div class="profile-stat"><div class="profile-stat-icon">🔥</div><div class="profile-stat-value pink">'+state.streak+'</div><div class="profile-stat-label">Серія днів</div></div>'
 + '<div class="profile-stat"><div class="profile-stat-icon">🎒</div><div class="profile-stat-value green">'+invLength+'</div><div class="profile-stat-label">Скінів</div></div>'
 + '<div class="profile-stat" style="grid-column:span 2"><div class="profile-stat-icon">💎</div><div class="profile-stat-value gold">'+totalValue+'</div><div class="profile-stat-label">Вартість інвентаря</div></div>'
 + '</div>';
@@ -835,11 +1086,13 @@ showToast("❌ Помилка видачі");
 $("btnAdminClose").addEventListener("click", function() { adminModal.classList.remove("show"); });
 
 function showSection(name) {
+tapperSection.classList.remove("active");
 casesSection.classList.remove("active");
 inventorySection.classList.remove("active");
 topSection.classList.remove("active");
 profileSection.classList.remove("active");
-if (name === "cases") casesSection.classList.add("active");
+if (name === "tapper") { tapperSection.classList.add("active"); updateTapperUI(); }
+else if (name === "cases") casesSection.classList.add("active");
 else if (name === "inventory") inventorySection.classList.add("active");
 else if (name === "top") { topSection.classList.add("active"); loadTop(); }
 else if (name === "profile") { profileSection.classList.add("active"); loadProfile(); }
@@ -853,6 +1106,13 @@ showSection(btn.dataset.nav);
 window.scrollTo({top:0,behavior:"smooth"});
 });
 });
+
+// Тапалка
+tapperBtn.addEventListener("click", onTap);
+tapperBtn.addEventListener("touchstart", function(e) {
+e.preventDefault();
+onTap();
+}, { passive: false });
 
 btnOpen.addEventListener("click", openCurrentCase);
 btnCloseModal.addEventListener("click", function() {
@@ -869,7 +1129,11 @@ try {
 const userRef = doc(db, "players", userId);
 const snap = await getDoc(userRef);
 if (!snap.exists()) {
-const np = { coins: 100, name: fullName, inventory: [], usedPromos: [], spent: 0, opened: 0, photoUrl: userPhotoUrl || "", createdAt: serverTimestamp() };
+const np = {
+coins: 100, name: fullName, inventory: [], usedPromos: [], spent: 0, opened: 0,
+taps: 0, tapsToday: 0, tapsDate: "", limit: 25000, streak: 0, lastStreakDate: "",
+givenCases: [], photoUrl: userPhotoUrl || "", createdAt: serverTimestamp()
+};
 await setDoc(userRef, np);
 state = Object.assign({}, state, np);
 } else {
@@ -880,6 +1144,13 @@ state.inventory = d.inventory || state.inventory;
 state.usedPromos = d.usedPromos || state.usedPromos || [];
 state.spent = d.spent != null ? d.spent : (state.spent || 0);
 state.opened = d.opened != null ? d.opened : (state.opened || 0);
+state.taps = d.taps != null ? d.taps : 0;
+state.tapsToday = d.tapsToday != null ? d.tapsToday : 0;
+state.tapsDate = d.tapsDate || "";
+state.limit = d.limit != null ? d.limit : 25000;
+state.streak = d.streak != null ? d.streak : 0;
+state.lastStreakDate = d.lastStreakDate || "";
+state.givenCases = d.givenCases || [];
 }
 if (userDocUnsub) userDocUnsub();
 userDocUnsub = onSnapshot(userRef, function(ds) {
@@ -888,9 +1159,10 @@ const d = ds.data();
 state.coins = d.coins != null ? d.coins : state.coins;
 state.inventory = d.inventory || state.inventory;
 state.name = d.name || state.name;
-state.usedPromos = d.usedPromos || state.usedPromos || [];
-state.spent = d.spent != null ? d.spent : state.spent;
-state.opened = d.opened != null ? d.opened : state.opened;
+state.taps = d.taps != null ? d.taps : state.taps;
+state.tapsToday = d.tapsToday != null ? d.tapsToday : state.tapsToday;
+state.limit = d.limit != null ? d.limit : state.limit;
+state.streak = d.streak != null ? d.streak : state.streak;
 saveLocal();
 render();
 });
@@ -900,7 +1172,21 @@ render();
 
 async function init() {
 const forceHide = setTimeout(function() { loadingScreen.classList.add("hidden"); }, 3000);
+
+// Оновлюємо серію при заході
+updateTapperStreak();
+
 try { await initUser(); } catch (e) { console.warn("init помилка:", e); }
+
+// Зберігаємо оновлений ліміт/серію
+await saveState({
+limit: state.limit,
+streak: state.streak,
+tapsDate: state.tapsDate,
+tapsToday: state.tapsToday,
+lastStreakDate: state.lastStreakDate
+});
+
 clearTimeout(forceHide);
 loadingScreen.classList.add("hidden");
 render();

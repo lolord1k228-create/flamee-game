@@ -27,20 +27,43 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .section-header .diamond{color:#a855f7;font-size:12px;text-shadow:0 0 8px #a855f7}
 .section-title{font-size:16px;font-weight:900;color:#fff;letter-spacing:3px;text-transform:uppercase;text-shadow:0 0 12px rgba(168,85,247,.5)}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.case-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:18px;padding:14px 10px;text-align:center;border:2px solid #3a2a5a;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;isolation:isolate;box-shadow:0 0 0 1px rgba(168,85,247,.08),0 4px 16px rgba(0,0,0,.5)}
-.case-card::before{content:"";position:absolute;inset:0;border-radius:16px;padding:2px;background:linear-gradient(180deg,rgba(168,85,247,.15),rgba(168,85,247,0));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:0}
+
+/* БАЗОВИЙ КЕЙС — квадрат 1:1 (1254×1254) */
+.case-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:24px;padding:14px 10px;text-align:center;border:2px solid #3a2a5a;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;isolation:isolate;box-shadow:0 0 0 1px rgba(168,85,247,.08),0 4px 16px rgba(0,0,0,.5)}
+.case-card::before{content:"";position:absolute;inset:0;border-radius:22px;padding:2px;background:linear-gradient(180deg,rgba(168,85,247,.15),rgba(168,85,247,0));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:0}
 .case-card:active{transform:scale(.97)}
 .case-card:hover{border-color:#a855f7;box-shadow:0 0 24px rgba(168,85,247,.5),0 0 0 1px #a855f7 inset}
 .case-card.wide{grid-column:span 2;padding:18px 12px}
 .case-card.coffin{border-color:#dc2626;background:linear-gradient(180deg,#2a0f0f,#150707);box-shadow:0 0 0 1px rgba(239,68,68,.15),0 4px 16px rgba(0,0,0,.5)}
 .case-card.coffin:hover{border-color:#ef4444;box-shadow:0 0 28px rgba(220,38,38,.6),0 0 0 1px #ef4444 inset}
-.case-img{width:100%;height:110px;display:flex;align-items:center;justify-content:center;font-size:60px;margin-bottom:8px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.6));position:relative;z-index:1}
-.case-card.wide .case-img{height:150px;font-size:90px}
-.case-img img{max-width:100%;max-height:100%;object-fit:contain;pointer-events:none;user-select:none;display:block}
+
+/* PRO кейси (13-20) — рамка фіолетова, співвідношення 1330×1182 */
+.case-card.pro{border-color:#a855f7;background:linear-gradient(180deg,#1f1435,#120a22);box-shadow:0 0 0 1px rgba(168,85,247,.2),0 0 20px rgba(168,85,247,.35),0 4px 16px rgba(0,0,0,.5)}
+.case-card.pro:hover{border-color:#c084fc;box-shadow:0 0 0 1px #c084fc inset,0 0 28px rgba(168,85,247,.6),0 4px 16px rgba(0,0,0,.5)}
+.case-card.pro::before{background:linear-gradient(180deg,rgba(168,85,247,.3),rgba(168,85,247,0))}
+
+/* TOP кейси (21-25) — рамка золота, співвідношення 1587×991 (16:10) */
+.case-card.top{border-color:#f59e0b;background:linear-gradient(180deg,#2a1f0f,#1a1207);box-shadow:0 0 0 1px rgba(245,158,11,.25),0 0 24px rgba(245,158,11,.4),0 4px 16px rgba(0,0,0,.5)}
+.case-card.top:hover{border-color:#fbbf24;box-shadow:0 0 0 1px #fbbf24 inset,0 0 32px rgba(245,158,11,.7),0 4px 16px rgba(0,0,0,.5)}
+.case-card.top::before{background:linear-gradient(180deg,rgba(245,158,11,.3),rgba(245,158,11,0))}
+.case-card.top .case-name{color:#fbbf24;text-shadow:0 0 8px rgba(245,158,11,.5)}
+.case-card.top .case-price{color:#fbbf24;border-color:rgba(245,158,11,.4)}
+
+/* БАЗОВЕ зображення — квадрат 1:1 (1254×1254) */
+.case-img{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:60px;margin-bottom:8px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.6));position:relative;z-index:1;overflow:hidden;border-radius:16px}
+.case-img img{width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;display:block}
+
+/* PRO — зображення 1330×1182 */
+.case-card.pro .case-img{aspect-ratio:1330/1182}
+
+/* TOP — зображення 1587×991 (16:10) */
+.case-card.top .case-img{aspect-ratio:1587/991}
+.case-card.wide .case-img{font-size:90px}
+
 .case-name{font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.2;position:relative;z-index:2}
 .case-card.wide .case-name{font-size:16px}
 .case-price{display:inline-flex;align-items:center;gap:4px;background:#0f0a1e;border:1px solid #3a2a5a;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;color:#c4b5fd;position:relative;z-index:2}
-.case-badge{position:absolute;top:8px;right:8px;font-size:9px;background:#7c3aed;color:#fff;padding:3px 7px;border-radius:6px;font-weight:800;letter-spacing:.5px;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15)}
+.case-badge{position:absolute;top:10px;right:10px;font-size:9px;background:#7c3aed;color:#fff;padding:4px 9px;border-radius:10px;font-weight:800;letter-spacing:.5px;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15)}
 .case-badge.gold{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#1a0f2e}
 .case-badge.red{background:#dc2626}
 .inventory-section{display:none}
@@ -339,7 +362,6 @@ const rar = i <= 25 ? "common" : i <= 38 ? "uncommon" : i <= 45 ? "rare" : i <= 
 SKINS.push({ id: "gun_"+i, name: GUN_NAMES[i-1], type: "gun", rarity: rar, img: "textures/skins/gun_"+String(i).padStart(2,'0')+".png" });
 }
 
-// РОЗУМНІ ЦІНИ
 const BASE_PRICE = {
 common:    5,
 uncommon:  25,
@@ -357,36 +379,34 @@ s.price = Math.round(base * typeMult);
 
 const CASE_NAMES = ["Дерев'яний","Залізний","Сталевий","Бронзовий","Срібний","Золотий","Платиновий","Алмазний","Кристальний","Льодовий","Вогняний","Грозовий","Тіньовий","Смарагдовий","Рубіновий","Сапфіровий","Аметистовий","Космічний","Вулканічний","Океанський","Лісовий","Пустельний","Арктичний","Королівський","Імператорський"];
 const CASE_PRICES = [5,12,25,50,90,150,240,380,580,850,1200,1700,2400,3300,4500,6000,8000,10500,13500,17000,21000,26000,32000,40000,50000];
-
 const CASE_ITEM_MULT = [1,1,1,1,1,1,1,1,1,1,1,1, 2,2,2,2,2,2,2, 4,4,4,4,4,4];
 
-// УНІКАЛЬНІ ВАГИ ДЛЯ КОЖНОГО КЕЙСУ
 const CASE_WEIGHTS = [
-[25, 15, 40, 15, 4,  1],   // 1  Дерев'яний
-[25, 15, 38, 17, 4,  1],   // 2  Залізний
-[25, 14, 36, 20, 4,  1],   // 3  Сталевий
-[24, 14, 35, 22, 4,  1],   // 4  Бронзовий
-[24, 13, 34, 24, 4,  1],   // 5  Срібний
-[22, 13, 32, 27, 5,  1],   // 6  Золотий
-[20, 12, 30, 30, 7,  1],   // 7  Платиновий
-[18, 12, 28, 33, 8,  1],   // 8  Алмазний
-[16, 11, 26, 36, 10, 1],   // 9  Кристальний
-[14, 10, 24, 38, 13, 1],   // 10 Льодовий
-[12, 9,  22, 40, 16, 1],   // 11 Вогняний
-[11, 8,  20, 41, 19, 1],   // 12 Грозовий
-[10, 7,  18, 42, 21, 2],   // 13 Тіньовий PRO
-[9,  6,  16, 43, 24, 2],   // 14 Смарагдовий PRO
-[8,  5,  15, 43, 26, 3],   // 15 Рубіновий PRO
-[7,  5,  13, 43, 28, 4],   // 16 Сапфіровий PRO
-[6,  4,  12, 43, 30, 5],   // 17 Аметистовий PRO
-[5,  4,  11, 42, 32, 6],   // 18 Космічний PRO
-[4,  3,  10, 42, 34, 7],   // 19 Вулканічний PRO
-[4,  3,  9,  41, 35, 8],   // 20 Океанський TOP
-[3,  3,  8,  41, 36, 9],   // 21 Лісовий TOP
-[3,  2,  8,  40, 37, 10],  // 22 Пустельний TOP
-[3,  2,  7,  39, 38, 11],  // 23 Арктичний TOP
-[2,  2,  7,  38, 39, 12],  // 24 Королівський TOP
-[2,  2,  6,  36, 40, 14]   // 25 Імператорський TOP
+[25, 15, 40, 15, 4,  1],
+[25, 15, 38, 17, 4,  1],
+[25, 14, 36, 20, 4,  1],
+[24, 14, 35, 22, 4,  1],
+[24, 13, 34, 24, 4,  1],
+[22, 13, 32, 27, 5,  1],
+[20, 12, 30, 30, 7,  1],
+[18, 12, 28, 33, 8,  1],
+[16, 11, 26, 36, 10, 1],
+[14, 10, 24, 38, 13, 1],
+[12, 9,  22, 40, 16, 1],
+[11, 8,  20, 41, 19, 1],
+[10, 7,  18, 42, 21, 2],
+[9,  6,  16, 43, 24, 2],
+[8,  5,  15, 43, 26, 3],
+[7,  5,  13, 43, 28, 4],
+[6,  4,  12, 43, 30, 5],
+[5,  4,  11, 42, 32, 6],
+[4,  3,  10, 42, 34, 7],
+[4,  3,  9,  41, 35, 8],
+[3,  3,  8,  41, 36, 9],
+[3,  2,  8,  40, 37, 10],
+[3,  2,  7,  39, 38, 11],
+[2,  2,  7,  38, 39, 12],
+[2,  2,  6,  36, 40, 14]
 ];
 
 const RARITY_KEYS = ["common","uncommon","rare","mythical","legendary","ancient"];
@@ -452,7 +472,7 @@ avatarLetter.style.display = "flex"; avatarLetter.textContent = letter;
 function imgOrEmoji(url, emoji, size) {
 size = size || 56;
 const uid = "x" + Math.random().toString(36).slice(2, 9);
-return '<img src="'+url+'" alt="" style="display:none;max-width:100%;max-height:100%;object-fit:contain;pointer-events:none;user-select:none" onload="this.style.display=\'block\';var e=document.getElementById(\''+uid+'\');if(e)e.style.display=\'none\';" onerror="this.remove();var e=document.getElementById(\''+uid+'\');if(e)e.style.display=\'block\';"><span id="'+uid+'" style="display:block;font-size:'+(size*0.9)+'px;line-height:1">'+emoji+'</span>';
+return '<img src="'+url+'" alt="" style="display:none;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none" onload="this.style.display=\'block\';var e=document.getElementById(\''+uid+'\');if(e)e.style.display=\'none\';" onerror="this.remove();var e=document.getElementById(\''+uid+'\');if(e)e.style.display=\'block\';"><span id="'+uid+'" style="display:block;font-size:'+(size*0.9)+'px;line-height:1">'+emoji+'</span>';
 }
 
 function render() {
@@ -469,10 +489,17 @@ let html = "";
 for (let i = 0; i < CASES.length; i++) {
 const c = CASES[i];
 let badge = '';
-if (i >= 20) badge = '<div class="case-badge">TOP</div>';
-else if (i >= 12) badge = '<div class="case-badge gold">PRO</div>';
+let cardClass = 'case-card';
+if (i >= 20) {
+badge = '<div class="case-badge">TOP</div>';
+cardClass += ' top';
+} else if (i >= 12) {
+badge = '<div class="case-badge gold">PRO</div>';
+cardClass += ' pro';
+}
+if (c.wide) cardClass += ' wide';
 const imgHtml = imgOrEmoji(c.img, "🎁", 60);
-html += '<div class="case-card' + (c.wide ? ' wide' : '') + '" data-case="'+c.id+'" data-price="'+c.price+'">'
+html += '<div class="' + cardClass + '" data-case="'+c.id+'" data-price="'+c.price+'">'
 + '<div class="case-img">'+imgHtml+'</div>'
 + badge
 + '<div class="case-name">'+c.name+'</div>'

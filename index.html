@@ -27,8 +27,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .section-header .diamond{color:#a855f7;font-size:12px;text-shadow:0 0 8px #a855f7}
 .section-title{font-size:16px;font-weight:900;color:#fff;letter-spacing:3px;text-transform:uppercase;text-shadow:0 0 12px rgba(168,85,247,.5)}
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-
-/* БАЗОВИЙ КЕЙС — квадрат 1:1 (1254×1254) */
 .case-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:24px;padding:14px 10px;text-align:center;border:2px solid #3a2a5a;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;isolation:isolate;box-shadow:0 0 0 1px rgba(168,85,247,.08),0 4px 16px rgba(0,0,0,.5)}
 .case-card::before{content:"";position:absolute;inset:0;border-radius:22px;padding:2px;background:linear-gradient(180deg,rgba(168,85,247,.15),rgba(168,85,247,0));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:0}
 .case-card:active{transform:scale(.97)}
@@ -36,30 +34,19 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .case-card.wide{grid-column:span 2;padding:18px 12px}
 .case-card.coffin{border-color:#dc2626;background:linear-gradient(180deg,#2a0f0f,#150707);box-shadow:0 0 0 1px rgba(239,68,68,.15),0 4px 16px rgba(0,0,0,.5)}
 .case-card.coffin:hover{border-color:#ef4444;box-shadow:0 0 28px rgba(220,38,38,.6),0 0 0 1px #ef4444 inset}
-
-/* PRO кейси (13-20) — рамка фіолетова, співвідношення 1330×1182 */
 .case-card.pro{border-color:#a855f7;background:linear-gradient(180deg,#1f1435,#120a22);box-shadow:0 0 0 1px rgba(168,85,247,.2),0 0 20px rgba(168,85,247,.35),0 4px 16px rgba(0,0,0,.5)}
 .case-card.pro:hover{border-color:#c084fc;box-shadow:0 0 0 1px #c084fc inset,0 0 28px rgba(168,85,247,.6),0 4px 16px rgba(0,0,0,.5)}
 .case-card.pro::before{background:linear-gradient(180deg,rgba(168,85,247,.3),rgba(168,85,247,0))}
-
-/* TOP кейси (21-25) — рамка золота, співвідношення 1587×991 (16:10) */
 .case-card.top{border-color:#f59e0b;background:linear-gradient(180deg,#2a1f0f,#1a1207);box-shadow:0 0 0 1px rgba(245,158,11,.25),0 0 24px rgba(245,158,11,.4),0 4px 16px rgba(0,0,0,.5)}
 .case-card.top:hover{border-color:#fbbf24;box-shadow:0 0 0 1px #fbbf24 inset,0 0 32px rgba(245,158,11,.7),0 4px 16px rgba(0,0,0,.5)}
 .case-card.top::before{background:linear-gradient(180deg,rgba(245,158,11,.3),rgba(245,158,11,0))}
 .case-card.top .case-name{color:#fbbf24;text-shadow:0 0 8px rgba(245,158,11,.5)}
 .case-card.top .case-price{color:#fbbf24;border-color:rgba(245,158,11,.4)}
-
-/* БАЗОВЕ зображення — квадрат 1:1 (1254×1254) */
 .case-img{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:60px;margin-bottom:8px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.6));position:relative;z-index:1;overflow:hidden;border-radius:16px}
 .case-img img{width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;display:block}
-
-/* PRO — зображення 1330×1182 */
 .case-card.pro .case-img{aspect-ratio:1330/1182}
-
-/* TOP — зображення 1587×991 (16:10) */
 .case-card.top .case-img{aspect-ratio:1587/991}
 .case-card.wide .case-img{font-size:90px}
-
 .case-name{font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.2;position:relative;z-index:2}
 .case-card.wide .case-name{font-size:16px}
 .case-price{display:inline-flex;align-items:center;gap:4px;background:#0f0a1e;border:1px solid #3a2a5a;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;color:#c4b5fd;position:relative;z-index:2}
@@ -338,11 +325,12 @@ ancient:   { name: "Древній",     color: "#ef4444" }
 
 const TYPE_EMOJI = { knife: "🗡️", gloves: "🧤", gun: "🔫", coffin: "⚰️" };
 
+// ⚰️ ГРОБОВЕЦЬ — textures/topp/coffin/
 const COFFINS = [
-{ id: "coffin_big",     name: "⚰️ Великий гріб",  emoji: "⚰️", color: "#9ca3af", price: 3000,   weight: 45, img: "textures/coffin/coffin_big.png" },
-{ id: "coffin_wide",    name: "🪦 Широкий гріб",   emoji: "🪦", color: "#3b82f6", price: 10000,  weight: 30, img: "textures/coffin/coffin_wide.png" },
-{ id: "coffin_golden",  name: "✨ Золотий гріб",   emoji: "✨", color: "#f59e0b", price: 35000,  weight: 18, img: "textures/coffin/coffin_golden.png" },
-{ id: "coffin_mom",     name: "👑 Гріб для мам",   emoji: "👑", color: "#ec4899", price: 120000, weight: 7,  img: "textures/coffin/coffin_mom.png" }
+{ id: "coffin_big",     name: "⚰️ Великий гріб",  emoji: "⚰️", color: "#9ca3af", price: 3000,   weight: 45, img: "textures/topp/coffin/coffin_big.png" },
+{ id: "coffin_wide",    name: "🪦 Широкий гріб",   emoji: "🪦", color: "#3b82f6", price: 10000,  weight: 30, img: "textures/topp/coffin/coffin_wide.png" },
+{ id: "coffin_golden",  name: "✨ Золотий гріб",   emoji: "✨", color: "#f59e0b", price: 35000,  weight: 18, img: "textures/topp/coffin/coffin_golden.png" },
+{ id: "coffin_mom",     name: "👑 Гріб для мам",   emoji: "👑", color: "#ec4899", price: 120000, weight: 7,  img: "textures/topp/coffin/coffin_mom.png" }
 ];
 
 const SKINS = [];
@@ -506,7 +494,8 @@ html += '<div class="' + cardClass + '" data-case="'+c.id+'" data-price="'+c.pri
 + '<div class="case-price">'+c.price+'</div>'
 + '</div>';
 }
-const coffinImg = imgOrEmoji("textures/coffin/coffin.png", "⚰️", 90);
+// ⚰️ Гробовець — textures/topp/coffin/
+const coffinImg = imgOrEmoji("textures/topp/coffin/coffin.png", "⚰️", 90);
 html += '<div class="case-card wide coffin" data-case="coffin" data-price="5000">'
 + '<div class="case-img">'+coffinImg+'</div>'
 + '<div class="case-badge red">🔥 ТОП+</div>'

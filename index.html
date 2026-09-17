@@ -7,188 +7,225 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
-body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:#e8edf5;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:10px;padding-bottom:90px;overflow-x:hidden}
-#app{max-width:520px;width:100%;display:flex;flex-direction:column;gap:12px}
-.top-bar{background:linear-gradient(90deg,#1a0f2e,#241642);border-radius:16px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(139,92,246,.15);border:1px solid #3a2a5a}
+body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:#e8edf5;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:8px;padding-bottom:80px;overflow-x:hidden}
+#app{max-width:480px;width:100%;display:flex;flex-direction:column;gap:10px}
+.top-bar{background:linear-gradient(90deg,#1a0f2e,#241642);border-radius:14px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(139,92,246,.15);border:1px solid #3a2a5a}
 .logo{display:flex;align-items:center;gap:8px}
-.logo-icon{font-size:24px;filter:drop-shadow(0 0 8px #f59e0b)}
-.balance-box{background:#0f0a1e;border-radius:12px;padding:6px 14px;display:flex;align-items:center;gap:8px;border:1px solid #3a2a5a}
-.balance-val{font-size:15px;font-weight:800;color:#fff}
-.btn-promo{background:linear-gradient(135deg,#f59e0b,#d97706);border:none;border-radius:10px;padding:8px 12px;color:#1a0f2e;font-size:12px;font-weight:800;cursor:pointer;letter-spacing:.3px;box-shadow:0 0 12px rgba(245,158,11,.4);font-family:inherit}
+.logo-icon{font-size:22px;filter:drop-shadow(0 0 8px #f59e0b)}
+.balance-box{background:#0f0a1e;border-radius:10px;padding:5px 12px;display:flex;align-items:center;gap:6px;border:1px solid #3a2a5a}
+.balance-val{font-size:14px;font-weight:800;color:#fff}
+.btn-promo{background:linear-gradient(135deg,#f59e0b,#d97706);border:none;border-radius:10px;padding:7px 11px;color:#1a0f2e;font-size:11px;font-weight:800;cursor:pointer;box-shadow:0 0 12px rgba(245,158,11,.4);font-family:inherit}
 .btn-promo:active{transform:scale(.95)}
-.profile-row{display:flex;align-items:center;gap:12px;padding:4px 4px}
-.avatar-wrap{position:relative;width:54px;height:54px;flex-shrink:0}
-.avatar{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;overflow:hidden;border:2px solid #a855f7;box-shadow:0 0 16px rgba(168,85,247,.6)}
+.btn-admin{background:linear-gradient(135deg,#dc2626,#ef4444);border:none;border-radius:10px;padding:7px 11px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 0 12px rgba(220,38,38,.5);font-family:inherit;margin-left:6px;display:none}
+.btn-admin.show{display:inline-block}
+.btn-admin:active{transform:scale(.95)}
+.profile-row{display:flex;align-items:center;gap:10px;padding:2px}
+.avatar-wrap{position:relative;width:46px;height:46px;flex-shrink:0}
+.avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;overflow:hidden;border:2px solid #a855f7;box-shadow:0 0 12px rgba(168,85,247,.6)}
 .avatar img{width:100%;height:100%;object-fit:cover}
 .profile-info{flex:1;min-width:0}
-.profile-name{font-size:17px;font-weight:800;color:#fff}
-.profile-id{font-size:11px;color:#8b7ba8;margin-top:2px}
-.section-header{display:flex;align-items:center;justify-content:center;gap:10px;padding:6px 0 2px}
-.section-header .diamond{color:#a855f7;font-size:12px;text-shadow:0 0 8px #a855f7}
-.section-title{font-size:16px;font-weight:900;color:#fff;letter-spacing:3px;text-transform:uppercase;text-shadow:0 0 12px rgba(168,85,247,.5)}
-
-/* ТАПАЛКА */
-.tapper-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:24px;padding:24px 20px;text-align:center;border:2px solid #a855f7;box-shadow:0 0 24px rgba(168,85,247,.3);position:relative;overflow:hidden}
-.tapper-btn-wrap{position:relative;width:220px;height:220px;margin:0 auto 20px}
-.tapper-btn{width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#a855f7,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:100px;cursor:pointer;box-shadow:0 0 50px rgba(168,85,247,.6),inset 0 -10px 25px rgba(0,0,0,.3);transition:transform .08s ease;user-select:none;border:5px solid #c084fc;position:relative}
-.tapper-btn:active{transform:scale(.9);box-shadow:0 0 70px rgba(168,85,247,.9)}
+.profile-name{font-size:15px;font-weight:800;color:#fff;display:flex;align-items:center;gap:6px}
+.vip-badge{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#1a0f2e;font-size:9px;font-weight:900;padding:2px 6px;border-radius:6px;letter-spacing:.5px}
+.profile-id{font-size:10px;color:#8b7ba8;margin-top:1px}
+.section-header{display:flex;align-items:center;justify-content:center;gap:8px;padding:2px 0}
+.section-header .diamond{color:#a855f7;font-size:11px}
+.section-title{font-size:14px;font-weight:900;color:#fff;letter-spacing:2px;text-transform:uppercase;text-shadow:0 0 12px rgba(168,85,247,.5)}
+.tapper-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:20px;padding:16px 14px;text-align:center;border:2px solid #a855f7;box-shadow:0 0 20px rgba(168,85,247,.25);position:relative;overflow:hidden}
+.tapper-btn-wrap{position:relative;width:180px;height:180px;margin:0 auto 14px}
+.tapper-btn{width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#a855f7,#7c3aed);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 0 45px rgba(168,85,247,.6),inset 0 -8px 20px rgba(0,0,0,.3);transition:transform .08s ease;user-select:none;border:4px solid #c084fc;font-size:85px;color:#fff}
+.tapper-btn:active{transform:scale(.9);box-shadow:0 0 60px rgba(168,85,247,.9)}
 .tapper-btn.locked{background:radial-gradient(circle at 30% 30%,#4b5563,#374151);border-color:#6b7280;box-shadow:none;opacity:.6;cursor:not-allowed}
 .tapper-btn.tapped{animation:tapPop .2s ease}
 @keyframes tapPop{0%{transform:scale(1)}40%{transform:scale(.85)}70%{transform:scale(1.05)}100%{transform:scale(1)}}
 .tap-float{position:absolute;font-size:24px;font-weight:900;color:#fbbf24;text-shadow:0 0 10px rgba(251,191,36,.8);pointer-events:none;animation:tapFloat 1s ease-out forwards;z-index:10}
 @keyframes tapFloat{0%{opacity:1;transform:translate(-50%,-50%) scale(.8)}100%{opacity:0;transform:translate(-50%,-150%) scale(1.4)}}
-.tapper-taps{font-size:36px;font-weight:900;color:#a855f7;text-shadow:0 0 20px rgba(168,85,247,.6);margin-bottom:2px;font-variant-numeric:tabular-nums}
-.tapper-taps-label{font-size:11px;color:#8b7ba8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px}
-.tapper-info{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px}
-.tapper-stat{background:#0f0a1e;border-radius:12px;padding:10px 6px;border:1px solid #3a2a5a}
-.tapper-stat-val{font-size:16px;font-weight:900;color:#a855f7;font-variant-numeric:tabular-nums}
-.tapper-stat-val.gold{color:#fbbf24;text-shadow:0 0 10px rgba(251,191,36,.5)}
-.tapper-stat-val.green{color:#10b981;text-shadow:0 0 10px rgba(16,185,129,.5)}
-.tapper-stat-label{font-size:9px;color:#8b7ba8;text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
-.tapper-progress{background:#0f0a1e;border-radius:14px;padding:4px;height:34px;position:relative;overflow:hidden;border:1px solid #3a2a5a;margin-bottom:10px}
-.tapper-progress-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#a855f7);border-radius:10px;transition:width .3s ease;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;min-width:80px}
-.tapper-next{font-size:12px;color:#8b7ba8;margin-bottom:14px}
-.tapper-next b{color:#fbbf24;font-size:14px}
-.tapper-milestones{display:flex;justify-content:space-between;gap:8px;font-size:11px}
-.tapper-milestone{padding:8px 4px;border-radius:10px;background:#0f0a1e;border:1px solid #3a2a5a;flex:1;text-align:center;font-weight:700;color:#8b7ba8;transition:all .3s;position:relative}
-.tapper-milestone.reached{background:#7c3aed;color:#fff;border-color:#a855f7;box-shadow:0 0 12px rgba(168,85,247,.6)}
-.tapper-milestone.top{background:linear-gradient(135deg,#f59e0b,#d97706);color:#1a0f2e;border-color:#fbbf24;box-shadow:0 0 12px rgba(245,158,11,.6)}
+.tapper-taps{font-size:28px;font-weight:900;color:#a855f7;text-shadow:0 0 16px rgba(168,85,247,.6);margin-bottom:2px;font-variant-numeric:tabular-nums}
+.tapper-taps-label{font-size:10px;color:#8b7ba8;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:12px}
+.tapper-info{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px}
+.tapper-stat{background:#0f0a1e;border-radius:10px;padding:7px 4px;border:1px solid #3a2a5a}
+.tapper-stat-val{font-size:13px;font-weight:900;color:#a855f7;font-variant-numeric:tabular-nums}
+.tapper-stat-val.gold{color:#fbbf24}
+.tapper-stat-val.green{color:#10b981}
+.tapper-stat-label{font-size:8px;color:#8b7ba8;text-transform:uppercase;letter-spacing:.4px;margin-top:1px}
+.tapper-progress{background:#0f0a1e;border-radius:12px;padding:3px;height:26px;position:relative;overflow:hidden;border:1px solid #3a2a5a;margin-bottom:8px}
+.tapper-progress-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#a855f7);border-radius:9px;transition:width .3s ease;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;min-width:60px}
+.tapper-next{font-size:11px;color:#8b7ba8;margin-bottom:10px}
+.tapper-next b{color:#fbbf24;font-size:13px}
+.tapper-milestones{display:flex;justify-content:space-between;gap:6px;font-size:10px}
+.tapper-milestone{padding:6px 3px;border-radius:8px;background:#0f0a1e;border:1px solid #3a2a5a;flex:1;text-align:center;font-weight:700;color:#8b7ba8;transition:all .3s}
+.tapper-milestone.reached{background:#7c3aed;color:#fff;border-color:#a855f7;box-shadow:0 0 10px rgba(168,85,247,.6)}
+.tapper-milestone.top{background:linear-gradient(135deg,#f59e0b,#d97706);color:#1a0f2e;border-color:#fbbf24}
 .tapper-milestone.locked{opacity:.4}
-
-/* КЕЙСИ */
-.cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.case-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:24px;padding:14px 10px;text-align:center;border:2px solid #3a2a5a;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;isolation:isolate;box-shadow:0 0 0 1px rgba(168,85,247,.08),0 4px 16px rgba(0,0,0,.5)}
-.case-card::before{content:"";position:absolute;inset:0;border-radius:22px;padding:2px;background:linear-gradient(180deg,rgba(168,85,247,.15),rgba(168,85,247,0));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:0}
+.cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.case-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:20px;padding:12px 8px;text-align:center;border:2px solid #3a2a5a;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.4)}
 .case-card:active{transform:scale(.97)}
-.case-card:hover{border-color:#a855f7;box-shadow:0 0 24px rgba(168,85,247,.5),0 0 0 1px #a855f7 inset}
-.case-card.wide{grid-column:span 2;padding:18px 12px}
-.case-card.coffin{border-color:#dc2626;background:linear-gradient(180deg,#2a0f0f,#150707);box-shadow:0 0 0 1px rgba(239,68,68,.15),0 4px 16px rgba(0,0,0,.5)}
-.case-card.coffin:hover{border-color:#ef4444;box-shadow:0 0 28px rgba(220,38,38,.6),0 0 0 1px #ef4444 inset}
-.case-card.pro{border-color:#a855f7;background:linear-gradient(180deg,#1f1435,#120a22);box-shadow:0 0 0 1px rgba(168,85,247,.2),0 0 20px rgba(168,85,247,.35),0 4px 16px rgba(0,0,0,.5)}
-.case-card.pro:hover{border-color:#c084fc;box-shadow:0 0 0 1px #c084fc inset,0 0 28px rgba(168,85,247,.6),0 4px 16px rgba(0,0,0,.5)}
-.case-card.pro::before{background:linear-gradient(180deg,rgba(168,85,247,.3),rgba(168,85,247,0))}
-.case-card.top{border-color:#f59e0b;background:linear-gradient(180deg,#2a1f0f,#1a1207);box-shadow:0 0 0 1px rgba(245,158,11,.25),0 0 24px rgba(245,158,11,.4),0 4px 16px rgba(0,0,0,.5)}
-.case-card.top:hover{border-color:#fbbf24;box-shadow:0 0 0 1px #fbbf24 inset,0 0 32px rgba(245,158,11,.7),0 4px 16px rgba(0,0,0,.5)}
-.case-card.top::before{background:linear-gradient(180deg,rgba(245,158,11,.3),rgba(245,158,11,0))}
-.case-card.top .case-name{color:#fbbf24;text-shadow:0 0 8px rgba(245,158,11,.5)}
+.case-card:hover{border-color:#a855f7;box-shadow:0 0 20px rgba(168,85,247,.4)}
+.case-card.wide{grid-column:span 2;padding:14px 10px}
+.case-card.coffin{border-color:#dc2626;background:linear-gradient(180deg,#2a0f0f,#150707)}
+.case-card.coffin:hover{border-color:#ef4444;box-shadow:0 0 24px rgba(220,38,38,.5)}
+.case-card.pro{border-color:#a855f7;background:linear-gradient(180deg,#1f1435,#120a22);box-shadow:0 0 18px rgba(168,85,247,.3)}
+.case-card.top{border-color:#f59e0b;background:linear-gradient(180deg,#2a1f0f,#1a1207);box-shadow:0 0 18px rgba(245,158,11,.35)}
+.case-card.top .case-name{color:#fbbf24}
 .case-card.top .case-price{color:#fbbf24;border-color:rgba(245,158,11,.4)}
-.case-img{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:60px;margin-bottom:8px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.6));position:relative;z-index:1;overflow:hidden;border-radius:16px}
+.case-card.mutation{border-color:#ec4899;background:linear-gradient(180deg,#2a0f1f,#150712);box-shadow:0 0 24px rgba(236,72,153,.5)}
+.case-card.mutation .case-name{color:#f472b6}
+.case-card.mutation .case-price{color:#f472b6;border-color:rgba(236,72,153,.5)}
+.case-img{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:50px;margin-bottom:6px;position:relative;z-index:1;overflow:hidden;border-radius:12px}
 .case-img img{width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none;display:block}
 .case-card.pro .case-img{aspect-ratio:1330/1182}
 .case-card.top .case-img{aspect-ratio:1587/991}
-.case-card.wide .case-img{font-size:90px}
-.case-name{font-size:13px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.2;position:relative;z-index:2}
-.case-card.wide .case-name{font-size:16px}
-.case-price{display:inline-flex;align-items:center;gap:4px;background:#0f0a1e;border:1px solid #3a2a5a;border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800;color:#c4b5fd;position:relative;z-index:2}
-.case-badge{position:absolute;top:10px;right:10px;font-size:9px;background:#7c3aed;color:#fff;padding:4px 9px;border-radius:10px;font-weight:800;letter-spacing:.5px;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.15)}
+.case-card.wide .case-img{font-size:80px}
+.case-name{font-size:11px;font-weight:800;color:#fff;margin-bottom:4px;line-height:1.2;position:relative;z-index:2}
+.case-card.wide .case-name{font-size:14px}
+.case-price{display:inline-flex;align-items:center;gap:3px;background:#0f0a1e;border:1px solid #3a2a5a;border-radius:16px;padding:4px 10px;font-size:11px;font-weight:800;color:#c4b5fd;position:relative;z-index:2}
+.case-badge{position:absolute;top:8px;right:8px;font-size:8px;background:#7c3aed;color:#fff;padding:3px 7px;border-radius:8px;font-weight:800;letter-spacing:.4px;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.7)}
 .case-badge.gold{background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#1a0f2e}
 .case-badge.red{background:#dc2626}
-
+.case-badge.pink{background:linear-gradient(135deg,#ec4899,#f472b6);color:#fff;animation:badgePulse 1.5s ease-in-out infinite}
+@keyframes badgePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
 .inventory-section{display:none}
 .inventory-section.active{display:block}
-.inv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.inv-item{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:12px;padding:10px 6px;text-align:center;border:2px solid #2a1f45;position:relative;cursor:pointer;transition:all .2s;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.4)}
-.inv-item:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(168,85,247,.3)}
+.inv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.inv-item{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:10px;padding:8px 4px;text-align:center;border:2px solid #2a1f45;position:relative;cursor:pointer;transition:all .2s;overflow:hidden}
 .inv-item:active{transform:scale(.96)}
-.inv-icon{width:100%;height:70px;display:flex;align-items:center;justify-content:center;font-size:44px;margin-bottom:4px;position:relative;z-index:1}
+.inv-icon{width:100%;height:60px;display:flex;align-items:center;justify-content:center;font-size:38px;margin-bottom:3px;position:relative;z-index:1}
 .inv-icon img{max-width:100%;max-height:100%;object-fit:contain;pointer-events:none}
-.inv-name{font-size:9px;font-weight:700;line-height:1.2;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:22px;position:relative;z-index:2}
-.inv-price{margin-top:4px;font-size:10px;font-weight:800;color:#fbbf24;display:flex;align-items:center;justify-content:center;gap:3px;position:relative;z-index:2}
-.inv-rarity-bar{position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 12px 12px;z-index:3}
-.inv-empty{grid-column:1/-1;text-align:center;color:#8b7ba8;font-size:13px;padding:30px 0}
-
-.top-list{display:flex;flex-direction:column;gap:8px}
-.top-row{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:14px;padding:12px;display:flex;align-items:center;gap:12px;border:2px solid #2a1f45;transition:all .2s}
-.top-row.me{border-color:#a855f7;box-shadow:0 0 20px rgba(168,85,247,.4)}
-.top-rank{font-size:16px;font-weight:900;width:36px;text-align:center;flex-shrink:0}
-.top-rank.r1{color:#fbbf24;text-shadow:0 0 12px rgba(251,191,36,.6)}
-.top-rank.r2{color:#cbd5e1;text-shadow:0 0 12px rgba(203,213,225,.5)}
-.top-rank.r3{color:#d97706;text-shadow:0 0 12px rgba(217,119,6,.5)}
-.top-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;color:#fff;overflow:hidden;border:2px solid #a855f7;flex-shrink:0}
+.inv-name{font-size:8px;font-weight:700;line-height:1.2;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:20px;position:relative;z-index:2}
+.inv-price{margin-top:3px;font-size:9px;font-weight:800;color:#fbbf24;display:flex;align-items:center;justify-content:center;gap:2px;position:relative;z-index:2}
+.inv-rarity-bar{position:absolute;bottom:0;left:0;right:0;height:3px;z-index:3}
+.inv-empty{grid-column:1/-1;text-align:center;color:#8b7ba8;font-size:12px;padding:24px 0}
+.top-list{display:flex;flex-direction:column;gap:6px}
+.top-row{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:12px;padding:10px;display:flex;align-items:center;gap:10px;border:2px solid #2a1f45}
+.top-row.me{border-color:#a855f7;box-shadow:0 0 16px rgba(168,85,247,.4)}
+.top-rank{font-size:14px;font-weight:900;width:32px;text-align:center;flex-shrink:0}
+.top-rank.r1{color:#fbbf24}
+.top-rank.r2{color:#cbd5e1}
+.top-rank.r3{color:#d97706}
+.top-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;overflow:hidden;border:2px solid #a855f7;flex-shrink:0}
 .top-avatar img{width:100%;height:100%;object-fit:cover}
-.top-name{flex:1;font-size:14px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.top-coins{font-size:14px;font-weight:900;color:#fbbf24;flex-shrink:0;text-shadow:0 0 10px rgba(251,191,36,.4)}
-
-.profile-page{display:flex;flex-direction:column;gap:12px}
-.profile-card-big{background:linear-gradient(135deg,#1a0f2e,#241642);border-radius:20px;padding:24px;text-align:center;border:2px solid #3a2a5a;box-shadow:0 8px 32px rgba(139,92,246,.25);position:relative;overflow:hidden}
-.profile-avatar-big{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:800;color:#fff;overflow:hidden;border:4px solid #a855f7;box-shadow:0 0 30px rgba(168,85,247,.7);margin:0 auto 14px;position:relative;z-index:1}
+.top-name{flex:1;font-size:12px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-coins{font-size:12px;font-weight:900;color:#fbbf24;flex-shrink:0}
+.profile-page{display:flex;flex-direction:column;gap:10px}
+.profile-card-big{background:linear-gradient(135deg,#1a0f2e,#241642);border-radius:18px;padding:18px;text-align:center;border:2px solid #3a2a5a}
+.profile-avatar-big{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;color:#fff;overflow:hidden;border:3px solid #a855f7;box-shadow:0 0 24px rgba(168,85,247,.7);margin:0 auto 10px}
 .profile-avatar-big img{width:100%;height:100%;object-fit:cover}
-.profile-name-big{font-size:22px;font-weight:900;color:#fff;margin-bottom:4px;position:relative;z-index:1}
-.profile-id-big{font-size:12px;color:#8b7ba8;position:relative;z-index:1}
-.profile-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.profile-stat{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:16px;padding:16px 12px;text-align:center;border:2px solid #2a1f45;box-shadow:0 4px 14px rgba(0,0,0,.4)}
-.profile-stat-icon{font-size:26px;margin-bottom:6px}
-.profile-stat-value{font-size:20px;font-weight:900;color:#fff;margin-bottom:2px}
-.profile-stat-value.gold{color:#fbbf24;text-shadow:0 0 12px rgba(251,191,36,.5)}
-.profile-stat-value.purple{color:#a855f7;text-shadow:0 0 12px rgba(168,85,247,.5)}
-.profile-stat-value.green{color:#10b981;text-shadow:0 0 12px rgba(16,185,129,.5)}
-.profile-stat-value.pink{color:#ec4899;text-shadow:0 0 12px rgba(236,72,153,.5)}
-.profile-stat-label{font-size:10px;color:#8b7ba8;text-transform:uppercase;letter-spacing:1px;font-weight:700}
-
+.profile-name-big{font-size:19px;font-weight:900;color:#fff;margin-bottom:3px}
+.profile-id-big{font-size:11px;color:#8b7ba8}
+.profile-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.profile-stat{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:14px;padding:12px 8px;text-align:center;border:2px solid #2a1f45}
+.profile-stat-icon{font-size:22px;margin-bottom:4px}
+.profile-stat-value{font-size:17px;font-weight:900;color:#fff;margin-bottom:2px}
+.profile-stat-value.gold{color:#fbbf24}
+.profile-stat-value.purple{color:#a855f7}
+.profile-stat-value.green{color:#10b981}
+.profile-stat-value.pink{color:#ec4899}
+.profile-stat-label{font-size:9px;color:#8b7ba8;text-transform:uppercase;letter-spacing:.8px;font-weight:700}
+.profile-x-block{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:16px;padding:14px;border:2px solid #ec4899;box-shadow:0 0 20px rgba(236,72,153,.25);margin-top:8px}
+.profile-x-title{font-size:14px;font-weight:800;color:#f472b6;text-align:center;margin-bottom:6px}
+.profile-x-desc{font-size:10px;color:#8b7ba8;text-align:center;margin-bottom:10px;line-height:1.4}
+.profile-x-row{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:8px}
+.profile-x-quick{padding:8px 4px;background:#0f0a1e;border:1px solid #ec4899;border-radius:8px;color:#f472b6;font-size:11px;font-weight:800;cursor:pointer;font-family:inherit}
+.profile-x-quick:active{background:#ec4899;color:#fff}
+.profile-x-input{width:100%;padding:10px 12px;background:#0a0616;border:2px solid #3a2a5a;border-radius:10px;color:#fff;font-size:14px;font-weight:700;text-align:center;font-family:inherit;outline:none;margin-bottom:8px}
+.profile-x-input:focus{border-color:#ec4899}
+.profile-x-btn{width:100%;padding:12px;border:none;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;box-shadow:0 4px 16px rgba(236,72,153,.4)}
+.profile-x-btn.active{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 16px rgba(16,185,129,.4)}
+.profile-x-btn:active{transform:scale(.97)}
+.profile-x-status{font-size:11px;text-align:center;margin-top:8px;padding:6px;background:#0f0a1e;border-radius:8px;border:1px solid #3a2a5a}
+.donate-balance{background:linear-gradient(135deg,#10b981,#059669);border-radius:16px;padding:16px;text-align:center;margin-bottom:12px;box-shadow:0 4px 16px rgba(16,185,129,.4)}
+.donate-balance-label{font-size:11px;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.donate-balance-value{font-size:26px;font-weight:900;color:#fff;text-shadow:0 0 12px rgba(255,255,255,.4)}
+.shop-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:14px;background:#12161f;margin-bottom:8px;border:1px solid #2a1f45}
+.shop-icon{font-size:28px;width:40px;text-align:center;flex-shrink:0}
+.shop-info{flex:1;min-width:0}
+.shop-name{font-size:13px;font-weight:700;color:#fff}
+.shop-desc{font-size:10px;color:#8b7ba8;margin-top:2px}
+.shop-buy{background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:800;cursor:pointer;flex-shrink:0;font-family:inherit}
+.shop-buy:active{transform:scale(.95)}
+.shop-buy:disabled{opacity:.4;cursor:not-allowed}
+.donate-hint{text-align:center;font-size:10px;color:#6b5a8a;margin-top:12px;font-style:italic}
+.custom-buy-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:16px;padding:14px;border:2px solid #10b981;margin-bottom:10px;box-shadow:0 0 16px rgba(16,185,129,.2)}
+.custom-buy-title{font-size:14px;font-weight:800;color:#10b981;margin-bottom:4px;text-align:center}
+.custom-buy-desc{font-size:10px;color:#8b7ba8;text-align:center;margin-bottom:10px}
+.custom-buy-row{display:flex;gap:6px;margin-bottom:8px}
+.custom-buy-input{flex:1;padding:12px;background:#0a0616;border:2px solid #3a2a5a;border-radius:12px;color:#fff;font-size:16px;font-weight:800;text-align:center;font-family:inherit;outline:none;min-width:0}
+.custom-buy-input:focus{border-color:#10b981}
+.custom-buy-btn{background:linear-gradient(135deg,#10b981,#059669);color:#fff;border:none;border-radius:12px;padding:12px 18px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;flex-shrink:0}
+.custom-buy-btn:active{transform:scale(.95)}
+.custom-buy-btn:disabled{opacity:.4;cursor:not-allowed}
+.custom-buy-preview{font-size:12px;font-weight:700;color:#fbbf24;text-align:center;padding:8px;background:#0f0a1e;border-radius:10px;border:1px solid #3a2a5a;margin-bottom:8px}
+.custom-buy-quick{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.quick-price-btn{padding:8px 4px;background:#0f0a1e;border:1px solid #3a2a5a;border-radius:8px;color:#c4b5fd;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit}
+.quick-price-btn:active{background:#10b981;color:#fff;border-color:#10b981}
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:1000;padding:16px}
 .modal.show{display:flex}
-.modal-content{background:linear-gradient(180deg,#1a1230,#0f0a1e);border-radius:24px;padding:20px;max-width:440px;width:100%;border:2px solid #3a2a5a;box-shadow:0 20px 60px rgba(139,92,246,.4);text-align:center;animation:popIn .3s ease}
+.modal-content{background:linear-gradient(180deg,#1a1230,#0f0a1e);border-radius:22px;padding:16px;max-width:400px;width:100%;border:2px solid #3a2a5a;text-align:center;animation:popIn .3s ease}
 @keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
-.modal-title{font-size:16px;font-weight:900;margin-bottom:14px;color:#fff;letter-spacing:2px;text-transform:uppercase;text-shadow:0 0 12px rgba(168,85,247,.5)}
-.roulette-wrap{position:relative;height:130px;margin-bottom:16px;border-radius:16px;overflow:hidden;background:#0a0616;border:2px solid #3a2a5a}
-.roulette-track{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;gap:6px;padding:0 20px}
-.roulette-item{flex-shrink:0;width:96px;height:96px;background:#1a1230;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4px;border:2px solid #2a1f45;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.5)}
-.roulette-item .r-icon{height:56px;display:flex;align-items:center;justify-content:center;font-size:42px;width:100%}
+.modal-title{font-size:14px;font-weight:900;margin-bottom:12px;color:#fff;letter-spacing:1.5px;text-transform:uppercase}
+.roulette-wrap{position:relative;height:110px;margin-bottom:12px;border-radius:14px;overflow:hidden;background:#0a0616;border:2px solid #3a2a5a}
+.roulette-track{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;gap:5px;padding:0 16px}
+.roulette-item{flex-shrink:0;width:82px;height:82px;background:#1a1230;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3px;border:2px solid #2a1f45;overflow:hidden}
+.roulette-item .r-icon{height:48px;display:flex;align-items:center;justify-content:center;font-size:36px;width:100%}
 .roulette-item .r-icon img{max-width:100%;max-height:100%;object-fit:contain;pointer-events:none}
-.roulette-item .r-name{font-size:8px;font-weight:700;text-align:center;line-height:1.1;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
-.roulette-pointer{position:absolute;top:0;left:50%;transform:translateX(-50%);width:3px;height:100%;background:linear-gradient(180deg,#a855f7,#7c3aed);box-shadow:0 0 24px #a855f7;z-index:10}
-.roulette-pointer::before{content:"▼";position:absolute;top:-10px;left:50%;transform:translateX(-50%);color:#a855f7;font-size:18px;filter:drop-shadow(0 0 8px #a855f7)}
-.win-item{display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:16px}
-.win-icon{height:140px;display:flex;align-items:center;justify-content:center;font-size:100px;filter:drop-shadow(0 0 30px currentColor);overflow:hidden;max-width:100%}
-.win-icon img{max-width:140px;max-height:140px;object-fit:contain;pointer-events:none}
-.win-name{font-size:17px;font-weight:900;letter-spacing:.5px;text-align:center}
-.win-rarity{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:2px;padding:4px 14px;border-radius:20px;background:rgba(255,255,255,.08)}
-.btn{width:100%;padding:14px;border:none;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.5px}
+.roulette-item .r-name{font-size:7px;font-weight:700;text-align:center;line-height:1.1;max-width:76px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:2px}
+.roulette-pointer{position:absolute;top:0;left:50%;transform:translateX(-50%);width:3px;height:100%;background:linear-gradient(180deg,#a855f7,#7c3aed);box-shadow:0 0 20px #a855f7;z-index:10}
+.roulette-pointer::before{content:"▼";position:absolute;top:-8px;left:50%;transform:translateX(-50%);color:#a855f7;font-size:15px}
+.win-item{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:12px}
+.win-icon{height:110px;display:flex;align-items:center;justify-content:center;font-size:80px;overflow:hidden;max-width:100%}
+.win-icon img{max-width:110px;max-height:110px;object-fit:contain}
+.win-name{font-size:15px;font-weight:900;text-align:center}
+.win-rarity{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:3px 12px;border-radius:16px;background:rgba(255,255,255,.08)}
+.btn{width:100%;padding:12px;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;font-family:inherit}
 .btn:active:not(:disabled){transform:scale(.97)}
 .btn:disabled{opacity:.4;cursor:not-allowed}
-.btn-open{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 6px 24px rgba(168,85,247,.5)}
-.btn-close{background:#2a1f45;color:#c4b5fd;margin-top:8px}
-.btn-sell{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 6px 20px rgba(16,185,129,.4)}
-.btn-add{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 6px 20px rgba(168,85,247,.4);margin-top:8px}
-
-.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(180deg,#15102a,#0f0a1e);border-top:1px solid #2a1f45;display:flex;justify-content:space-around;padding:8px 0 calc(8px + env(safe-area-inset-bottom));z-index:100;max-width:520px;margin:0 auto}
-.nav-btn{background:none;border:none;color:#6b5a8a;font-size:10px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 8px;font-family:inherit;transition:all .2s;letter-spacing:.3px}
-.nav-btn .nav-icon{font-size:22px;line-height:1;filter:grayscale(1) opacity(.6);transition:all .2s}
+.btn-open{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 6px 20px rgba(168,85,247,.5)}
+.btn-close{background:#2a1f45;color:#c4b5fd;margin-top:6px}
+.btn-sell{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 6px 16px rgba(16,185,129,.4)}
+.btn-add{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 6px 16px rgba(168,85,247,.4);margin-top:6px}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(180deg,#15102a,#0f0a1e);border-top:1px solid #2a1f45;display:flex;justify-content:space-around;padding:6px 0 calc(6px + env(safe-area-inset-bottom));z-index:100;max-width:480px;margin:0 auto}
+.nav-btn{background:none;border:none;color:#6b5a8a;font-size:9px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;padding:3px 6px;font-family:inherit;transition:all .2s}
+.nav-btn .nav-icon{font-size:19px;line-height:1;filter:grayscale(1) opacity(.6);transition:all .2s}
 .nav-btn.active{color:#a855f7}
-.nav-btn.active .nav-icon{filter:none;text-shadow:0 0 10px #a855f7}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(100px);background:#1a1230;border:1px solid #a855f7;border-radius:14px;padding:12px 20px;font-size:13px;font-weight:600;color:#fff;box-shadow:0 8px 30px rgba(168,85,247,.4);z-index:2000;transition:all .35s;opacity:0;max-width:90%;text-align:center}
+.nav-btn.active .nav-icon{filter:none;text-shadow:0 0 8px #a855f7}
+.toast{position:fixed;bottom:70px;left:50%;transform:translateX(-50%) translateY(100px);background:#1a1230;border:1px solid #a855f7;border-radius:12px;padding:10px 16px;font-size:12px;font-weight:600;color:#fff;box-shadow:0 8px 30px rgba(168,85,247,.4);z-index:2000;transition:all .35s;opacity:0;max-width:90%;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-.loading{position:fixed;inset:0;background:#0a0a12;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:3000;transition:opacity .5s}
+.loading{position:fixed;inset:0;background:#0a0a12;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:3000;transition:opacity .5s}
 .loading.hidden{opacity:0;pointer-events:none}
-.spinner{width:48px;height:48px;border:4px solid #2a1f45;border-top-color:#a855f7;border-radius:50%;animation:spin .8s linear infinite}
+.spinner{width:42px;height:42px;border:4px solid #2a1f45;border-top-color:#a855f7;border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.loading-text{font-size:13px;color:#8b7ba8}
+.loading-text{font-size:12px;color:#8b7ba8}
 .sell-modal{position:fixed;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:1100;padding:16px}
 .sell-modal.show{display:flex}
-.sell-content{background:linear-gradient(180deg,#1a1230,#0f0a1e);border-radius:24px;padding:24px;max-width:400px;width:100%;border:2px solid #3a2a5a;text-align:center;animation:popIn .3s ease}
-.sell-title{font-size:15px;font-weight:900;margin-bottom:16px;color:#fff;letter-spacing:2px;text-transform:uppercase}
-.sell-price{font-size:22px;font-weight:900;color:#fbbf24;margin-bottom:20px;text-shadow:0 0 14px rgba(251,191,36,.5)}
+.sell-content{background:linear-gradient(180deg,#1a1230,#0f0a1e);border-radius:22px;padding:20px;max-width:360px;width:100%;border:2px solid #3a2a5a;text-align:center;animation:popIn .3s ease}
+.sell-title{font-size:14px;font-weight:900;margin-bottom:12px;color:#fff;text-transform:uppercase}
+.sell-price{font-size:20px;font-weight:900;color:#fbbf24;margin-bottom:16px}
 .promo-modal{position:fixed;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:1200;padding:16px}
 .promo-modal.show{display:flex}
-.promo-content{background:linear-gradient(180deg,#1a1230,#0f0a1e);border-radius:24px;padding:24px;max-width:400px;width:100%;border:2px solid #3a2a5a;text-align:center;animation:popIn .3s ease}
-.promo-title{font-size:16px;font-weight:900;margin-bottom:6px;color:#fbbf24;letter-spacing:2px;text-transform:uppercase;text-shadow:0 0 14px rgba(251,191,36,.5)}
-.promo-sub{font-size:12px;color:#8b7ba8;margin-bottom:18px}
-.promo-input{width:100%;padding:14px 16px;background:#0a0616;border:2px solid #3a2a5a;border-radius:14px;color:#fff;font-size:15px;font-weight:700;text-align:center;letter-spacing:2px;font-family:inherit;outline:none;transition:all .2s;text-transform:lowercase}
-.promo-input:focus{border-color:#a855f7;box-shadow:0 0 20px rgba(168,85,247,.3)}
-.promo-btn{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;width:100%;padding:14px;border:none;border-radius:14px;font-size:15px;font-weight:800;cursor:pointer;margin-top:12px;font-family:inherit;letter-spacing:.5px;box-shadow:0 6px 20px rgba(168,85,247,.4)}
-.promo-btn:active{transform:scale(.97)}
-.admin-modal{position:fixed;inset:0;background:rgba(0,0,0,.95);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:1500;padding:16px}
+.promo-content{background:linear-gradient(180deg,#1a1230,#0f0a1e);border-radius:22px;padding:20px;max-width:360px;width:100%;border:2px solid #3a2a5a;text-align:center;animation:popIn .3s ease}
+.promo-title{font-size:15px;font-weight:900;margin-bottom:4px;color:#fbbf24;letter-spacing:1.5px;text-transform:uppercase}
+.promo-sub{font-size:11px;color:#8b7ba8;margin-bottom:14px}
+.promo-input{width:100%;padding:12px;background:#0a0616;border:2px solid #3a2a5a;border-radius:12px;color:#fff;font-size:14px;font-weight:700;text-align:center;letter-spacing:1.5px;font-family:inherit;outline:none;text-transform:lowercase}
+.promo-input:focus{border-color:#a855f7}
+.promo-btn{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;width:100%;padding:12px;border:none;border-radius:12px;font-size:14px;font-weight:800;cursor:pointer;margin-top:10px;font-family:inherit}
+.admin-modal{position:fixed;inset:0;background:rgba(0,0,0,.95);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;z-index:1500;padding:12px}
 .admin-modal.show{display:flex}
-.admin-content{background:linear-gradient(180deg,#2a0f2a,#0f0a1e);border-radius:24px;padding:24px;max-width:440px;width:100%;border:2px solid #dc2626;box-shadow:0 20px 60px rgba(220,38,38,.4);text-align:center;animation:popIn .3s ease}
-.admin-title{font-size:18px;font-weight:900;margin-bottom:6px;color:#ef4444;letter-spacing:3px;text-transform:uppercase;text-shadow:0 0 16px rgba(239,68,68,.6)}
-.admin-sub{font-size:11px;color:#8b7ba8;margin-bottom:18px;letter-spacing:1px}
-.admin-label{font-size:11px;font-weight:700;color:#a855f7;text-align:left;margin-bottom:6px;letter-spacing:1px;text-transform:uppercase}
-.admin-input{width:100%;padding:12px 14px;background:#0a0616;border:2px solid #3a2a5a;border-radius:12px;color:#fff;font-size:14px;font-weight:700;font-family:inherit;outline:none;transition:all .2s;margin-bottom:12px}
-.admin-input:focus{border-color:#a855f7;box-shadow:0 0 20px rgba(168,85,247,.3)}
-.admin-btn{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;width:100%;padding:14px;border:none;border-radius:14px;font-size:14px;font-weight:800;cursor:pointer;margin-bottom:10px;font-family:inherit;letter-spacing:1px;box-shadow:0 6px 20px rgba(220,38,38,.4)}
-.admin-btn:active{transform:scale(.97)}
-.admin-btn.self{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 6px 20px rgba(16,185,129,.4)}
-.admin-close{background:#2a1f45;color:#c4b5fd;width:100%;padding:12px;border:none;border-radius:14px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;letter-spacing:.5px;margin-top:6px}
+.admin-content{background:linear-gradient(180deg,#2a0f2a,#0f0a1e);border-radius:20px;padding:16px;max-width:420px;width:100%;border:2px solid #dc2626;animation:popIn .3s ease;max-height:92vh;overflow-y:auto}
+.admin-title{font-size:15px;font-weight:900;margin-bottom:10px;color:#ef4444;letter-spacing:2px;text-transform:uppercase;text-align:center}
+.admin-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:12px}
+.admin-tab{padding:8px 4px;background:#0f0a1e;border:1px solid #3a2a5a;border-radius:10px;font-size:10px;font-weight:700;color:#8b7ba8;cursor:pointer;text-align:center;font-family:inherit;transition:all .2s}
+.admin-tab.active{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;border-color:#ef4444}
+.admin-section{display:none}
+.admin-section.active{display:block}
+.admin-label{font-size:10px;font-weight:700;color:#a855f7;margin-bottom:4px;text-transform:uppercase;margin-top:8px}
+.admin-input{width:100%;padding:10px 12px;background:#0a0616;border:2px solid #3a2a5a;border-radius:10px;color:#fff;font-size:13px;font-weight:700;font-family:inherit;outline:none;margin-bottom:6px}
+.admin-input:focus{border-color:#a855f7}
+.admin-btn{background:linear-gradient(135deg,#dc2626,#ef4444);color:#fff;width:100%;padding:11px;border:none;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;margin-bottom:6px;font-family:inherit}
+.admin-btn.self{background:linear-gradient(135deg,#10b981,#059669)}
+.admin-btn.dollars{background:linear-gradient(135deg,#f59e0b,#d97706);color:#1a0f2e}
+.admin-close{background:#2a1f45;color:#c4b5fd;width:100%;padding:10px;border:none;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;margin-top:6px}
+.admin-quick-amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:6px}
+.admin-quick-btn{padding:6px 4px;background:#1a1230;border:1px solid #3a2a5a;border-radius:8px;font-size:10px;font-weight:700;color:#c4b5fd;cursor:pointer;font-family:inherit}
+.admin-quick-btn:active{background:#7c3aed;color:#fff}
 </style>
 </head>
 <body>
@@ -196,21 +233,22 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="top-bar">
 <div class="logo"><span class="logo-icon">🔥</span></div>
 <div class="balance-box"><span class="balance-val" id="coinsValue">0</span></div>
-<button class="btn-promo" id="btnPromo">🎁 Промо</button>
+<div style="display:flex;gap:0;">
+<button class="btn-promo" id="btnPromo">🎁</button>
+<button class="btn-admin" id="btnAdminQuick">⚡</button>
+</div>
 </div>
 <div class="profile-row">
 <div class="avatar-wrap"><div class="avatar" id="avatarBox"><span id="avatarLetter">?</span></div></div>
 <div class="profile-info">
-<div class="profile-name" id="profileName">Гравець</div>
+<div class="profile-name"><span id="profileName">Гравець</span><span class="vip-badge" id="vipBadge" style="display:none">VIP</span></div>
 <div class="profile-id" id="profileId">ID: ---</div>
 </div>
 </div>
-<!-- КЕЙСИ — стартова вкладка -->
 <div class="inventory-section active" id="casesSection">
 <div class="section-header"><span class="diamond">◆</span><span class="section-title">Mystery Box</span><span class="diamond">◆</span></div>
 <div class="cases-grid" id="casesGrid"></div>
 </div>
-<!-- ТАПАЛКА -->
 <div class="inventory-section" id="tapperSection">
 <div class="section-header"><span class="diamond">◆</span><span class="section-title">Тапалка</span><span class="diamond">◆</span></div>
 <div class="tapper-card">
@@ -221,15 +259,15 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="tapper-taps-label">Всього кліків</div>
 <div class="tapper-info">
 <div class="tapper-stat"><div class="tapper-stat-val" id="tapperToday">0</div><div class="tapper-stat-label">Сьогодні</div></div>
-<div class="tapper-stat"><div class="tapper-stat-val gold" id="tapperLimit">25 000</div><div class="tapper-stat-label">Ліміт</div></div>
+<div class="tapper-stat"><div class="tapper-stat-val gold" id="tapperLimit">5 000</div><div class="tapper-stat-label">Ліміт</div></div>
 <div class="tapper-stat"><div class="tapper-stat-val green" id="tapperStreak">0</div><div class="tapper-stat-label">Серія</div></div>
 </div>
 <div class="tapper-progress"><div class="tapper-progress-fill" id="tapperProgress" style="width:0%">0%</div></div>
-<div class="tapper-next">До наступного кейсу: <b id="tapperNext">5 000</b> кліків</div>
+<div class="tapper-next">До наступного кейсу: <b id="tapperNext">1 000</b></div>
 <div class="tapper-milestones">
-<div class="tapper-milestone" id="ms1">🎁 5К</div>
-<div class="tapper-milestone" id="ms2">💎 25К</div>
-<div class="tapper-milestone" id="ms3">🔥 100К</div>
+<div class="tapper-milestone" id="ms1">🎁 1К</div>
+<div class="tapper-milestone" id="ms2">💎 5К</div>
+<div class="tapper-milestone" id="ms3">🔥 20К</div>
 </div>
 </div>
 </div>
@@ -241,6 +279,41 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="section-header"><span class="diamond">◆</span><span class="section-title">Топ гравців</span><span class="diamond">◆</span></div>
 <div class="top-list" id="topList"><div class="inv-empty">Завантаження...</div></div>
 </div>
+<div class="inventory-section" id="donateSection">
+<div class="section-header"><span class="diamond">◆</span><span class="section-title">Донат</span><span class="diamond">◆</span></div>
+<div class="donate-balance">
+<div class="donate-balance-label">Ваш баланс</div>
+<div class="donate-balance-value" id="dollarsValue">$ 0.00</div>
+</div>
+
+<div class="shop-item">
+<div class="shop-icon">👑</div>
+<div class="shop-info">
+<div class="shop-name">VIP статус</div>
+<div class="shop-desc">VIP-значок та бонуси</div>
+</div>
+<button class="shop-buy" id="btnBuyVip">$0.50</button>
+</div>
+
+<div class="custom-buy-card">
+<div class="custom-buy-title">🪙 Купити монети</div>
+<div class="custom-buy-desc">Курс: 1$ = 25 000 монет</div>
+<div class="custom-buy-row">
+<input type="number" class="custom-buy-input" id="customDollarsInput" placeholder="Сума $" value="1" min="0.01" step="0.01">
+<button class="custom-buy-btn" id="btnCustomBuyCoins">Купити</button>
+</div>
+<div class="custom-buy-preview" id="customBuyPreview">Отримаєте: 25 000 монет</div>
+<div class="custom-buy-quick">
+<button class="quick-price-btn" data-price="1">$1</button>
+<button class="quick-price-btn" data-price="5">$5</button>
+<button class="quick-price-btn" data-price="10">$10</button>
+<button class="quick-price-btn" data-price="20">$20</button>
+<button class="quick-price-btn" data-price="50">$50</button>
+</div>
+</div>
+
+<div class="donate-hint">💵 Поповнити $ може тільки адміністратор</div>
+</div>
 <div class="inventory-section" id="profileSection">
 <div class="section-header"><span class="diamond">◆</span><span class="section-title">Профіль</span><span class="diamond">◆</span></div>
 <div class="profile-page" id="profilePage"></div>
@@ -251,6 +324,7 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <button class="nav-btn" data-nav="tapper"><span class="nav-icon">👆</span>Тапалка</button>
 <button class="nav-btn" data-nav="inventory"><span class="nav-icon">🎒</span>Скіни</button>
 <button class="nav-btn" data-nav="top"><span class="nav-icon">🏆</span>Топ</button>
+<button class="nav-btn" data-nav="donate"><span class="nav-icon">💵</span>Донат</button>
 <button class="nav-btn" data-nav="profile"><span class="nav-icon">👤</span>Профіль</button>
 </div>
 <div class="modal" id="modal">
@@ -283,14 +357,62 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="admin-modal" id="adminModal">
 <div class="admin-content">
 <div class="admin-title">⚡ ADMIN PANEL</div>
-<div class="admin-sub">Видача монет</div>
-<div class="admin-label">👤 Свій ID</div>
-<input type="text" class="admin-input" id="adminSelfAmount" placeholder="Кількість монет" value="1000">
-<button class="admin-btn self" id="btnAdminSelf">💰 Видати собі</button>
-<div class="admin-label">📤 Іншому гравцю</div>
-<input type="text" class="admin-input" id="adminTargetId" placeholder="Telegram ID гравця">
-<input type="text" class="admin-input" id="adminTargetAmount" placeholder="Кількість монет" value="1000">
-<button class="admin-btn" id="btnAdminGive">🎁 Видати гравцю</button>
+<div class="admin-tabs">
+<button class="admin-tab active" data-tab="self">👤 Собі</button>
+<button class="admin-tab" data-tab="give">🎁 Іншим</button>
+<button class="admin-tab" data-tab="dollars">💵 $</button>
+</div>
+
+<div class="admin-section active" id="tab-self">
+<div class="admin-label">💰 Монети собі</div>
+<div class="admin-quick-amounts">
+<button class="admin-quick-btn" data-self="1000">1К</button>
+<button class="admin-quick-btn" data-self="10000">10К</button>
+<button class="admin-quick-btn" data-self="100000">100К</button>
+<button class="admin-quick-btn" data-self="1000000">1М</button>
+</div>
+<input type="text" class="admin-input" id="adminSelfAmount" placeholder="Кількість монет" value="10000">
+<button class="admin-btn self" id="btnAdminSelf">💰 Видати собі монети</button>
+<div class="admin-label">💵 Долари собі</div>
+<div class="admin-quick-amounts">
+<button class="admin-quick-btn" data-self-dollar="1">$1</button>
+<button class="admin-quick-btn" data-self-dollar="5">$5</button>
+<button class="admin-quick-btn" data-self-dollar="10">$10</button>
+<button class="admin-quick-btn" data-self-dollar="50">$50</button>
+</div>
+<input type="text" class="admin-input" id="adminSelfDollars" placeholder="Сума $" value="5">
+<button class="admin-btn dollars" id="btnAdminSelfDollars">💵 Видати собі $</button>
+</div>
+
+<div class="admin-section" id="tab-give">
+<div class="admin-label">👤 Telegram ID гравця</div>
+<input type="text" class="admin-input" id="adminTargetId" placeholder="Напр. 123456789">
+<div class="admin-label">💰 Монети</div>
+<div class="admin-quick-amounts">
+<button class="admin-quick-btn" data-give="1000">1К</button>
+<button class="admin-quick-btn" data-give="10000">10К</button>
+<button class="admin-quick-btn" data-give="100000">100К</button>
+<button class="admin-quick-btn" data-give="1000000">1М</button>
+</div>
+<input type="text" class="admin-input" id="adminTargetAmount" placeholder="Кількість монет" value="10000">
+<button class="admin-btn" id="btnAdminGive">🎁 Видати монети</button>
+</div>
+
+<div class="admin-section" id="tab-dollars">
+<div class="admin-label">👤 Telegram ID гравця</div>
+<input type="text" class="admin-input" id="adminDollarsId" placeholder="Напр. 123456789">
+<div class="admin-label">💵 Сума $</div>
+<div class="admin-quick-amounts">
+<button class="admin-quick-btn" data-give-dollar="1">$1</button>
+<button class="admin-quick-btn" data-give-dollar="5">$5</button>
+<button class="admin-quick-btn" data-give-dollar="10">$10</button>
+<button class="admin-quick-btn" data-give-dollar="50">$50</button>
+</div>
+<input type="text" class="admin-input" id="adminDollarsAmount" placeholder="Сума $" value="5">
+<button class="admin-btn dollars" id="btnAdminDollars">💵 Видати $</button>
+<div style="font-size:10px;color:#8b7ba8;text-align:center;margin-top:6px">1$ = 25 000 монет</div>
+</div>
+
 <button class="admin-close" id="btnAdminClose">Закрити</button>
 </div>
 </div>
@@ -330,16 +452,29 @@ userPhotoUrl = u.photo_url || "";
 }
 const fullName = (userName + (userLastName ? " " + userLastName : "")).trim();
 
+// НОВІ ЛІМІТИ
+const BASE_LIMIT = 5000;
+const MAX_LIMIT = 10000;
+const STREAK_BONUS = 500;
+
+const MILESTONES = [
+{ threshold: 1000, type: "basic" },
+{ threshold: 5000, type: "pro" },
+{ threshold: 20000, type: "top" }
+];
+
+const ADMIN_CODE = "dhjdkgd";
+
 let state = {
 coins: 100, name: fullName, inventory: [], usedPromos: [], spent: 0, opened: 0,
-taps: 0, tapsToday: 0, tapsDate: "", limit: 25000, streak: 0, lastStreakDate: "",
-givenCases: []
+taps: 0, tapsToday: 0, tapsDate: "", limit: BASE_LIMIT, streak: 0, lastStreakDate: "",
+givenCases: [], dollars: 0, isVip: false, isAdmin: false, globalMutation: 0
 };
 
 let currentCase = null, isProcessing = false, userDocUnsub = null, sellTarget = null;
-let pendingItem = null; // ← предмет чекає рішення
+let pendingItem = null;
 
-const PROMOS = { "26fire": 30, "newyear2027": 55, "dhjdkgd": 0 };
+const PROMOS = { "26fire": 30, "newyear2027": 55 };
 
 try {
 const saved = localStorage.getItem("musor_state");
@@ -357,19 +492,22 @@ const $ = (id) => document.getElementById(id);
 const avatarBox = $("avatarBox"), avatarLetter = $("avatarLetter");
 const profileName = $("profileName"), profileId = $("profileId");
 const coinsValue = $("coinsValue");
+const vipBadge = $("vipBadge");
+const btnAdminQuick = $("btnAdminQuick");
 const casesGrid = $("casesGrid"), invGrid = $("invGrid");
 const modal = $("modal"), modalTitle = $("modalTitle"), rouletteTrack = $("rouletteTrack");
 const resultBlock = $("resultBlock"), btnOpen = $("btnOpen"), btnCloseModal = $("btnCloseModal");
 const loadingScreen = $("loadingScreen"), toastEl = $("toast");
 const sellModal = $("sellModal"), sellItemInfo = $("sellItemInfo"), sellPrice = $("sellPrice");
 const btnConfirmSell = $("btnConfirmSell"), btnCancelSell = $("btnCancelSell");
-const casesSection = $("casesSection"), inventorySection = $("inventorySection"), topSection = $("topSection"), profileSection = $("profileSection"), tapperSection = $("tapperSection");
+const casesSection = $("casesSection"), inventorySection = $("inventorySection"), topSection = $("topSection"), profileSection = $("profileSection"), tapperSection = $("tapperSection"), donateSection = $("donateSection");
 const promoModal = $("promoModal"), promoInput = $("promoInput"), btnActivatePromo = $("btnActivatePromo"), btnClosePromo = $("btnClosePromo");
 const topList = $("topList"), profilePage = $("profilePage");
 const adminModal = $("adminModal");
 const tapperBtn = $("tapperBtn"), tapperTaps = $("tapperTaps"), tapperToday = $("tapperToday");
 const tapperLimit = $("tapperLimit"), tapperStreak = $("tapperStreak"), tapperProgress = $("tapperProgress");
 const tapperNext = $("tapperNext"), ms1 = $("ms1"), ms2 = $("ms2"), ms3 = $("ms3");
+const dollarsValue = $("dollarsValue");
 
 function showToast(msg, d) {
 d = d || 2400;
@@ -389,6 +527,11 @@ const db = new Date(b + "T00:00:00");
 return Math.round((db - da) / (24 * 60 * 60 * 1000));
 }
 
+function recalcLimit() {
+const expected = Math.min(MAX_LIMIT, BASE_LIMIT + (Math.max(1, state.streak) - 1) * STREAK_BONUS);
+state.limit = expected;
+}
+
 function updateTapperStreak() {
 const today = todayStr();
 if (!state.lastStreakDate) {
@@ -396,10 +539,13 @@ state.lastStreakDate = today;
 state.streak = 1;
 state.tapsDate = today;
 state.tapsToday = 0;
-state.limit = 25000;
+recalcLimit();
 return;
 }
-if (state.lastStreakDate === today) return;
+if (state.lastStreakDate === today) {
+recalcLimit();
+return;
+}
 const diff = daysBetween(state.lastStreakDate, today);
 if (diff === 1) {
 if (state.tapsToday >= state.limit) {
@@ -410,21 +556,22 @@ state.streak = 1;
 } else if (diff > 1) {
 state.streak = 1;
 }
-state.limit = Math.min(50000, 25000 + (state.streak - 1) * 2500);
 state.tapsDate = today;
 state.tapsToday = 0;
 state.lastStreakDate = today;
+recalcLimit();
 }
 
 function getNextMilestone() {
-if (state.taps < 5000) return 5000;
-if (state.taps < 25000) return 25000;
-if (state.taps < 100000) return 100000;
+for (const m of MILESTONES) {
+if (state.taps < m.threshold) return m.threshold;
+}
 return null;
 }
 
 function updateTapperUI() {
 if (!tapperTaps) return;
+recalcLimit();
 tapperTaps.textContent = state.taps.toLocaleString();
 tapperToday.textContent = state.tapsToday.toLocaleString() + " / " + state.limit.toLocaleString();
 tapperLimit.textContent = state.limit.toLocaleString();
@@ -432,8 +579,6 @@ tapperStreak.textContent = "🔥 " + state.streak;
 const pct = Math.min(100, (state.tapsToday / state.limit) * 100);
 tapperProgress.style.width = pct + "%";
 tapperProgress.textContent = Math.round(pct) + "%";
-
-// Лічильник до НАСТУПНОГО ящика (по загальним клікам)
 const next = getNextMilestone();
 if (next === null) {
 tapperNext.textContent = "Всі кейси отримано";
@@ -443,16 +588,57 @@ tapperNext.textContent = remaining.toLocaleString();
 }
 if (state.tapsToday >= state.limit) {
 tapperBtn.classList.add("locked");
-tapperBtn.textContent = "🔒";
 } else {
 tapperBtn.classList.remove("locked");
-tapperBtn.textContent = "👆";
+}
+ms1.classList.toggle("reached", state.taps >= 1000);
+ms2.classList.toggle("reached", state.taps >= 5000);
+ms3.classList.toggle("top", state.taps >= 20000);
 }
 
-// Milestones
-ms1.classList.toggle("reached", state.taps >= 5000);
-ms2.classList.toggle("reached", state.taps >= 25000);
-ms3.classList.toggle("top", state.taps >= 100000);
+function updateDonateUI() {
+if (dollarsValue) dollarsValue.textContent = "$ " + (state.dollars || 0).toFixed(2);
+const vipBtn = $("btnBuyVip");
+if (vipBtn) {
+if (state.isVip) {
+vipBtn.textContent = "✓ Куплено";
+vipBtn.disabled = true;
+vipBtn.style.background = "#4b5563";
+} else {
+vipBtn.textContent = "$0.50";
+vipBtn.disabled = (state.dollars || 0) < 0.50;
+vipBtn.style.background = "";
+}
+}
+updateCustomBuyPreview();
+}
+
+function updateCustomBuyPreview() {
+const input = $("customDollarsInput");
+const preview = $("customBuyPreview");
+if (!input || !preview) return;
+const dollars = parseFloat(input.value) || 0;
+if (dollars <= 0) {
+preview.textContent = "Введіть суму";
+preview.style.color = "#8b7ba8";
+return;
+}
+const coins = Math.floor(dollars * 25000);
+preview.textContent = "Отримаєте: " + coins.toLocaleString() + " монет";
+preview.style.color = "#fbbf24";
+const btn = $("btnCustomBuyCoins");
+if (btn) btn.disabled = (state.dollars || 0) < dollars;
+}
+
+function updateAdminUI() {
+if (state.isAdmin) {
+btnAdminQuick.classList.add("show");
+} else {
+btnAdminQuick.classList.remove("show");
+}
+if (vipBadge) {
+vipBadge.style.display = state.isVip ? "inline-block" : "none";
+}
 }
 
 function showTapFloat(x, y) {
@@ -467,37 +653,23 @@ setTimeout(function() { el.remove(); }, 1000);
 
 async function onTap(e) {
 if (state.tapsToday >= state.limit) return;
-
 state.taps++;
 state.tapsToday++;
 saveLocal();
 updateTapperUI();
-
-// Анімація
 tapperBtn.classList.add("tapped");
 setTimeout(function() { tapperBtn.classList.remove("tapped"); }, 200);
-
-// Летючий +1
 let x, y;
 if (e && e.touches && e.touches[0]) {
-x = e.touches[0].clientX;
-y = e.touches[0].clientY;
+x = e.touches[0].clientX; y = e.touches[0].clientY;
 } else if (e && e.clientX) {
-x = e.clientX;
-y = e.clientY;
+x = e.clientX; y = e.clientY;
 } else {
 const rect = tapperBtn.getBoundingClientRect();
-x = rect.left + rect.width / 2;
-y = rect.top + rect.height / 2;
+x = rect.left + rect.width / 2; y = rect.top + rect.height / 2;
 }
 showTapFloat(x, y);
-
-const milestones = [
-{ threshold: 5000, type: "basic" },
-{ threshold: 25000, type: "pro" },
-{ threshold: 100000, type: "top" }
-];
-for (const m of milestones) {
+for (const m of MILESTONES) {
 if (state.taps >= m.threshold && !state.givenCases.includes(m.threshold)) {
 state.givenCases.push(m.threshold);
 saveLocal();
@@ -528,6 +700,35 @@ showToast("🔥 Випав TOP кейс!");
 const c = CASES[caseIndex];
 if (!c) return;
 setTimeout(function() { openCaseModal(c.id, 0); }, 300);
+}
+
+async function buyVip() {
+if (state.isVip) { showToast("⚠️ VIP вже куплено"); return; }
+if ((state.dollars || 0) < 0.50) { showToast("❌ Недостатньо $"); return; }
+state.dollars -= 0.50;
+state.isVip = true;
+saveLocal();
+render();
+updateDonateUI();
+await saveState({ dollars: state.dollars, isVip: true });
+showToast("👑 VIP активовано!");
+}
+
+async function customBuyCoins() {
+const input = $("customDollarsInput");
+if (!input) return;
+const dollars = parseFloat(input.value);
+if (!dollars || dollars <= 0) { showToast("❌ Введіть суму"); return; }
+if (dollars > 100000) { showToast("❌ Максимум $100 000"); return; }
+if ((state.dollars || 0) < dollars) { showToast("❌ Недостатньо $"); return; }
+const coins = Math.floor(dollars * 25000);
+state.dollars -= dollars;
+state.coins += coins;
+saveLocal();
+render();
+updateDonateUI();
+await saveState({ dollars: state.dollars, coins: state.coins });
+showToast("🪙 +" + coins.toLocaleString() + " монет за $" + dollars.toFixed(2));
 }
 
 const RARITY = {
@@ -603,30 +804,12 @@ const CASE_PRICES = [5,12,25,50,90,150,240,380,580,850,1200,1700,2400,3300,4500,
 const CASE_ITEM_MULT = [1,1,1,1,1,1,1,1,1,1,1,1, 2,2,2,2,2,2,2, 4,4,4,4,4,4];
 
 const CASE_WEIGHTS = [
-[25, 15, 40, 15, 4,  1],
-[25, 15, 38, 17, 4,  1],
-[25, 14, 36, 20, 4,  1],
-[24, 14, 35, 22, 4,  1],
-[24, 13, 34, 24, 4,  1],
-[22, 13, 32, 27, 5,  1],
-[20, 12, 30, 30, 7,  1],
-[18, 12, 28, 33, 8,  1],
-[16, 11, 26, 36, 10, 1],
-[14, 10, 24, 38, 13, 1],
-[12, 9,  22, 40, 16, 1],
-[11, 8,  20, 41, 19, 1],
-[10, 7,  18, 42, 21, 2],
-[9,  6,  16, 43, 24, 2],
-[8,  5,  15, 43, 26, 3],
-[7,  5,  13, 43, 28, 4],
-[6,  4,  12, 43, 30, 5],
-[5,  4,  11, 42, 32, 6],
-[4,  3,  10, 42, 34, 7],
-[4,  3,  9,  41, 35, 8],
-[3,  3,  8,  41, 36, 9],
-[3,  2,  8,  40, 37, 10],
-[3,  2,  7,  39, 38, 11],
-[2,  2,  7,  38, 39, 12],
+[25, 15, 40, 15, 4,  1],[25, 15, 38, 17, 4,  1],[25, 14, 36, 20, 4,  1],[24, 14, 35, 22, 4,  1],
+[24, 13, 34, 24, 4,  1],[22, 13, 32, 27, 5,  1],[20, 12, 30, 30, 7,  1],[18, 12, 28, 33, 8,  1],
+[16, 11, 26, 36, 10, 1],[14, 10, 24, 38, 13, 1],[12, 9,  22, 40, 16, 1],[11, 8,  20, 41, 19, 1],
+[10, 7,  18, 42, 21, 2],[9,  6,  16, 43, 24, 2],[8,  5,  15, 43, 26, 3],[7,  5,  13, 43, 28, 4],
+[6,  4,  12, 43, 30, 5],[5,  4,  11, 42, 32, 6],[4,  3,  10, 42, 34, 7],[4,  3,  9,  41, 35, 8],
+[3,  3,  8,  41, 36, 9],[3,  2,  8,  40, 37, 10],[3,  2,  7,  39, 38, 11],[2,  2,  7,  38, 39, 12],
 [2,  2,  6,  36, 40, 14]
 ];
 
@@ -662,6 +845,19 @@ skin.sellPrice = Math.round((skin.price || 0) * itemMult);
 return { skin: skin, price: skin.sellPrice };
 }
 
+function applyGlobalMutation(winner, basePrice) {
+if (!state.globalMutation || state.globalMutation <= 1) return { skin: winner, price: basePrice };
+const x = state.globalMutation;
+const w = Object.assign({}, winner);
+w.name = "X" + x + " " + w.name;
+w.mutation = "X" + x;
+w.rarityColor = "#ec4899";
+const newPrice = Math.round(basePrice * x);
+w.sellPrice = newPrice;
+w.price = newPrice;
+return { skin: w, price: newPrice };
+}
+
 function pickCoffin() {
 const total = COFFINS.reduce(function(s, c) { return s + c.weight; }, 0);
 let r = Math.random() * total;
@@ -691,7 +887,7 @@ avatarLetter.style.display = "flex"; avatarLetter.textContent = letter;
 }
 
 function imgOrEmoji(url, emoji, size) {
-size = size || 56;
+size = size || 50;
 const uid = "x" + Math.random().toString(36).slice(2, 9);
 return '<img src="'+url+'" alt="" style="display:none;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none" onload="this.style.display=\'block\';var e=document.getElementById(\''+uid+'\');if(e)e.style.display=\'none\';" onerror="this.remove();var e=document.getElementById(\''+uid+'\');if(e)e.style.display=\'block\';"><span id="'+uid+'" style="display:block;font-size:'+(size*0.9)+'px;line-height:1">'+emoji+'</span>';
 }
@@ -700,14 +896,17 @@ function render() {
 setAvatar();
 profileName.textContent = state.name || "Гравець";
 profileId.textContent = "ID: " + userId;
-coinsValue.textContent = state.coins;
+coinsValue.textContent = state.coins.toLocaleString();
 renderCases();
 renderInventory();
 updateTapperUI();
+updateDonateUI();
+updateAdminUI();
 }
 
 function renderCases() {
 let html = "";
+const xMult = state.globalMutation || 0;
 for (let i = 0; i < CASES.length; i++) {
 const c = CASES[i];
 let badge = '';
@@ -715,20 +914,28 @@ let cardClass = 'case-card';
 if (i >= 20) { badge = '<div class="case-badge">TOP</div>'; cardClass += ' top'; }
 else if (i >= 12) { badge = '<div class="case-badge gold">PRO</div>'; cardClass += ' pro'; }
 if (c.wide) cardClass += ' wide';
-const imgHtml = imgOrEmoji(c.img, "🎁", 60);
-html += '<div class="' + cardClass + '" data-case="'+c.id+'" data-price="'+c.price+'">'
+const displayPrice = xMult > 1 ? Math.round(c.price * xMult) : c.price;
+const xBadge = xMult > 1 ? '<div class="case-badge pink">X' + xMult + '</div>' : badge;
+const namePrefix = xMult > 1 ? 'X' + xMult + ' ' : '';
+if (xMult > 1) cardClass += ' mutation';
+const imgHtml = imgOrEmoji(c.img, "🎁", 50);
+html += '<div class="' + cardClass + '" data-case="'+c.id+'" data-price="'+displayPrice+'">'
 + '<div class="case-img">'+imgHtml+'</div>'
-+ badge
-+ '<div class="case-name">'+c.name+'</div>'
-+ '<div class="case-price">'+c.price+'</div>'
++ xBadge
++ '<div class="case-name">'+namePrefix+c.name+'</div>'
++ '<div class="case-price">'+displayPrice.toLocaleString()+'</div>'
 + '</div>';
 }
-const coffinImg = imgOrEmoji("textures/topp/coffin/coffin.png", "⚰️", 90);
-html += '<div class="case-card wide coffin" data-case="coffin" data-price="15000">'
+const coffinBase = 15000;
+const coffinPrice = xMult > 1 ? Math.round(coffinBase * xMult) : coffinBase;
+const coffinName = xMult > 1 ? 'X' + xMult + ' ⚰️ Гробовець' : '⚰️ Гробовець';
+const coffinBadge = xMult > 1 ? '<div class="case-badge pink">X' + xMult + '</div>' : '<div class="case-badge red">🔥 ТОП+</div>';
+const coffinImg = imgOrEmoji("textures/topp/coffin/coffin.png", "⚰️", 80);
+html += '<div class="case-card wide coffin' + (xMult > 1 ? ' mutation' : '') + '" data-case="coffin" data-price="'+coffinPrice+'">'
 + '<div class="case-img">'+coffinImg+'</div>'
-+ '<div class="case-badge red">🔥 ТОП+</div>'
-+ '<div class="case-name">⚰️ Гробовець</div>'
-+ '<div class="case-price">15000</div>'
++ coffinBadge
++ '<div class="case-name">'+coffinName+'</div>'
++ '<div class="case-price">'+coffinPrice.toLocaleString()+'</div>'
 + '</div>';
 casesGrid.innerHTML = html;
 
@@ -743,7 +950,7 @@ openCaseModal(el.dataset.case, parseInt(el.dataset.price, 10));
 function renderInventory() {
 const inv = state.inventory || [];
 if (!inv.length) {
-invGrid.innerHTML = '<div class="inv-empty">Порожньо<br><span style="font-size:11px;color:#6b5a8a">Відкрийте кейс, щоб отримати скіни</span></div>';
+invGrid.innerHTML = '<div class="inv-empty">Порожньо</div>';
 return;
 }
 let html = "";
@@ -751,11 +958,11 @@ for (let i = inv.length - 1; i >= 0; i--) {
 const it = inv[i];
 const emoji = it.emoji || TYPE_EMOJI[it.type] || "📦";
 const color = it.rarityColor || (RARITY[it.rarity] ? RARITY[it.rarity].color : "#e8edf5");
-const icon = imgOrEmoji(it.img, emoji, 44);
-html += '<div class="inv-item" data-uid="'+it.uid+'" style="border-color:'+color+';box-shadow:0 0 12px '+color+'40, inset 0 0 0 1px '+color+'20">'
+const icon = imgOrEmoji(it.img, emoji, 38);
+html += '<div class="inv-item" data-uid="'+it.uid+'" style="border-color:'+color+'">'
 + '<div class="inv-icon">'+icon+'</div>'
 + '<div class="inv-name" style="color:'+color+'">'+it.name+'</div>'
-+ '<div class="inv-price">💰 '+(it.sellPrice || 0)+'</div>'
++ '<div class="inv-price">💰 '+(it.sellPrice || 0).toLocaleString()+'</div>'
 + '<div class="inv-rarity-bar" style="background:'+color+'"></div>'
 + '</div>';
 }
@@ -772,7 +979,7 @@ openSellModal(el.dataset.uid);
 function openCaseModal(caseId, price) {
 if (!state.inventory) state.inventory = [];
 const isFree = price === 0;
-if (!isFree && state.coins < price) { showToast("❌ Недостатньо монет! Потрібно " + price); return; }
+if (!isFree && state.coins < price) { showToast("❌ Недостатньо монет! Потрібно " + price.toLocaleString()); return; }
 currentCase = { id: caseId, price: price, free: isFree };
 modalTitle.textContent = caseId === "coffin" ? "⚰️ Гробовець" : "🎁 Відкриття";
 
@@ -781,8 +988,8 @@ for (let i = 0; i < 30; i++) {
 const s = pickRandomSkin();
 const emoji = TYPE_EMOJI[s.type] || "📦";
 const color = RARITY[s.rarity].color;
-const icon = imgOrEmoji(s.img, emoji, 44);
-html += '<div class="roulette-item" style="border-color:'+color+';box-shadow:0 0 10px '+color+'30, inset 0 0 0 1px '+color+'15">'
+const icon = imgOrEmoji(s.img, emoji, 36);
+html += '<div class="roulette-item" style="border-color:'+color+'">'
 + '<div class="r-icon">'+icon+'</div>'
 + '<div class="r-name" style="color:'+color+'">'+s.name+'</div>'
 + '</div>';
@@ -794,7 +1001,7 @@ resultBlock.style.display = "none";
 btnOpen.style.display = "block";
 $("rouletteWrap").style.display = "block";
 btnOpen.disabled = false;
-btnOpen.textContent = isFree ? "🔓 Відкрити БЕЗКОШТОВНО" : "🔓 Відкрити за " + price;
+btnOpen.textContent = isFree ? "🔓 Відкрити БЕЗКОШТОВНО" : "🔓 Відкрити за " + price.toLocaleString();
 modal.classList.add("show");
 }
 
@@ -820,16 +1027,17 @@ const caseIndex = CASES.findIndex(function(c){return c.id === currentCase.id;});
 const found = CASES[caseIndex];
 result = pickSkinFromWeights(found.weights, found.itemMult, caseIndex);
 }
-const winner = result.skin;
-const finalPrice = result.price;
+const mutated = applyGlobalMutation(result.skin, result.price);
+const winner = mutated.skin;
+const finalPrice = mutated.price;
 
 let html = "";
 for (let i = 0; i < 30; i++) {
 const s = i === 25 ? winner : pickRandomSkin();
 const emoji = s.emoji || TYPE_EMOJI[s.type] || "📦";
 const color = s.color || (RARITY[s.rarity] ? RARITY[s.rarity].color : "#e8edf5");
-const icon = imgOrEmoji(s.img, emoji, 44);
-html += '<div class="roulette-item" style="border-color:'+color+';box-shadow:0 0 10px '+color+'30, inset 0 0 0 1px '+color+'15">'
+const icon = imgOrEmoji(s.img, emoji, 36);
+html += '<div class="roulette-item" style="border-color:'+color+'">'
 + '<div class="r-icon">'+icon+'</div>'
 + '<div class="r-name" style="color:'+color+'">'+s.name+'</div>'
 + '</div>';
@@ -838,7 +1046,7 @@ rouletteTrack.innerHTML = html;
 rouletteTrack.style.transition = "none";
 rouletteTrack.style.transform = "translateX(0)";
 void rouletteTrack.offsetWidth;
-const itemW = 102;
+const itemW = 87;
 const containerW = $("rouletteWrap").clientWidth;
 const targetX = -(25 * itemW) + (containerW / 2) - (itemW / 2);
 rouletteTrack.style.transition = "transform 4s cubic-bezier(.15,.85,.3,1)";
@@ -846,38 +1054,38 @@ rouletteTrack.style.transform = "translateX(" + targetX + "px)";
 
 setTimeout(async function() {
 const isCoffin = winner.type === "coffin";
-const r = isCoffin ? { name: winner.name.replace(/[^\wа-яіїєґ\s]/gi, '').trim(), color: winner.color } : RARITY[winner.rarity];
+const isMutation = winner.mutation;
+let r;
+if (isCoffin) r = { name: winner.name.replace(/[^\wа-яіїєґ\s]/gi, '').trim(), color: winner.color };
+else if (isMutation) r = { name: winner.mutation + " МУТАЦІЯ", color: "#ec4899" };
+else r = RARITY[winner.rarity];
 const emoji = winner.emoji || TYPE_EMOJI[winner.type] || "📦";
-const winIcon = imgOrEmoji(winner.img, emoji, 100);
+const winIcon = imgOrEmoji(winner.img, emoji, 90);
 resultBlock.style.display = "block";
 resultBlock.innerHTML = '<div class="win-item" style="color:'+r.color+'">'
 + '<div class="win-icon" style="color:'+r.color+'">'+winIcon+'</div>'
 + '<div class="win-name" style="color:'+r.color+'">'+winner.name+'</div>'
-+ '<div class="win-rarity" style="color:'+r.color+';border:1px solid '+r.color+'60">'+r.name+' · '+finalPrice+'</div>'
++ '<div class="win-rarity" style="color:'+r.color+'">'+r.name+' · '+finalPrice.toLocaleString()+'</div>'
 + '</div>'
-+ '<button class="btn btn-sell" id="btnSell">💰 Продати за '+finalPrice+'</button>'
++ '<button class="btn btn-sell" id="btnSell">💰 Продати за '+finalPrice.toLocaleString()+'</button>'
 + '<button class="btn btn-add" id="btnAdd">🎒 Залишити в інвентар</button>';
 $("rouletteWrap").style.display = "none";
 btnOpen.style.display = "none";
 
-// ⚠️ ВАЖЛИВО: предмет НЕ додається в інвентар автоматично.
-// Він чекає на вибір гравця: "Продати" або "Залишити"
-pendingItem = { id: winner.id, name: winner.name, type: winner.type, rarity: winner.rarity, rarityName: r.name, rarityColor: r.color, sellPrice: finalPrice, img: winner.img, emoji: winner.emoji || null, uid: Date.now() + "_" + Math.random().toString(36).slice(2,6) };
+pendingItem = { id: winner.id, name: winner.name, type: winner.type, rarity: winner.rarity, rarityName: r.name, rarityColor: r.color, sellPrice: finalPrice, img: winner.img, emoji: winner.emoji || null, mutation: winner.mutation || null, uid: Date.now() + "_" + Math.random().toString(36).slice(2,6) };
 
 document.getElementById("btnSell").addEventListener("click", async function() {
-// Продати — тільки монети, БЕЗ додавання в інвентар
 state.coins += finalPrice;
 pendingItem = null;
 saveLocal();
 render();
 await saveState({ coins: state.coins });
-showToast("💰 Продано за " + finalPrice);
+showToast("💰 Продано за " + finalPrice.toLocaleString());
 modal.classList.remove("show");
 isProcessing = false;
 });
 
 document.getElementById("btnAdd").addEventListener("click", async function() {
-// Залишити — додаємо в інвентар
 if (pendingItem) {
 state.inventory.push(pendingItem);
 pendingItem = null;
@@ -900,13 +1108,13 @@ sellTarget = idx;
 const it = state.inventory[idx];
 const emoji = it.emoji || TYPE_EMOJI[it.type] || "📦";
 const color = it.rarityColor || (RARITY[it.rarity] ? RARITY[it.rarity].color : "#e8edf5");
-const icon = imgOrEmoji(it.img, emoji, 100);
+const icon = imgOrEmoji(it.img, emoji, 80);
 sellItemInfo.innerHTML = '<div class="win-item" style="color:'+color+'">'
 + '<div class="win-icon" style="color:'+color+'">'+icon+'</div>'
 + '<div class="win-name" style="color:'+color+'">'+it.name+'</div>'
-+ '<div class="win-rarity" style="color:'+color+';border:1px solid '+color+'60">'+(it.rarityName || it.rarity)+'</div>'
++ '<div class="win-rarity" style="color:'+color+'">'+(it.rarityName || it.rarity)+'</div>'
 + '</div>';
-sellPrice.textContent = (it.sellPrice || 0);
+sellPrice.textContent = (it.sellPrice || 0).toLocaleString();
 sellModal.classList.add("show");
 }
 
@@ -920,7 +1128,7 @@ state.inventory.splice(sellTarget, 1);
 saveLocal();
 render();
 await saveState({ coins: state.coins, inventory: state.inventory });
-showToast("💰 Продано за " + price);
+showToast("💰 Продано за " + price.toLocaleString());
 sellModal.classList.remove("show");
 sellTarget = null;
 });
@@ -941,10 +1149,19 @@ btnClosePromo.addEventListener("click", function() { promoModal.classList.remove
 btnActivatePromo.addEventListener("click", async function() {
 const code = promoInput.value.trim().toLowerCase();
 if (!code) { showToast("❌ Введіть код!"); return; }
-if (code === "dhjdkgd") {
+if (code === ADMIN_CODE) {
+if (state.isAdmin) {
+showToast("⚠️ Ви вже адмін");
+promoModal.classList.remove("show");
+return;
+}
+state.isAdmin = true;
+saveLocal();
+updateAdminUI();
+await saveState({ isAdmin: true });
+showToast("⚡ Ви стали адміном!");
 promoModal.classList.remove("show");
 promoInput.value = "";
-adminModal.classList.add("show");
 return;
 }
 if (!PROMOS[code]) { showToast("❌ Невірний промокод!"); return; }
@@ -965,6 +1182,10 @@ promoModal.classList.remove("show");
 
 promoInput.addEventListener("keydown", function(e) { if (e.key === "Enter") btnActivatePromo.click(); });
 
+btnAdminQuick.addEventListener("click", function() {
+adminModal.classList.add("show");
+});
+
 async function loadTop() {
 try {
 topList.innerHTML = '<div class="inv-empty">Завантаження...</div>';
@@ -973,7 +1194,7 @@ if (snap.empty) { topList.innerHTML = '<div class="inv-empty">Поки що не
 const players = [];
 snap.forEach(function(d) {
 const data = d.data();
-players.push({ id: d.id, name: data.name || "Гравець", taps: data.taps || 0, photoUrl: data.photoUrl || "" });
+players.push({ id: d.id, name: data.name || "Гравець", taps: data.taps || 0, photoUrl: data.photoUrl || "", isVip: data.isVip || false });
 });
 players.sort(function(a, b) { return b.taps - a.taps; });
 const top10 = players.slice(0, 10);
@@ -989,14 +1210,14 @@ const avatarInner = p.photoUrl
 html += '<div class="top-row'+(isMe?" me":"")+'">'
 + '<div class="top-rank '+rankClass+'">'+medal+'</div>'
 + '<div class="top-avatar">'+avatarInner+'</div>'
-+ '<div class="top-name">'+escapeHtml(p.name)+(isMe?' <span style="color:#a855f7;font-size:10px">(ти)</span>':'')+'</div>'
++ '<div class="top-name">'+escapeHtml(p.name)+(p.isVip?' <span class="vip-badge">VIP</span>':'')+(isMe?' <span style="color:#a855f7;font-size:9px">(ти)</span>':'')+'</div>'
 + '<div class="top-coins">'+p.taps+' 👆</div>'
 + '</div>';
 });
 topList.innerHTML = html;
 } catch (e) {
 console.warn("Топ помилка:", e);
-topList.innerHTML = '<div class="inv-empty">Не вдалося завантажити топ</div>';
+topList.innerHTML = '<div class="inv-empty">Не вдалося</div>';
 }
 }
 
@@ -1007,51 +1228,164 @@ const avatarInner = userPhotoUrl
 : letter;
 const invLength = (state.inventory || []).length;
 const totalValue = (state.inventory || []).reduce(function(s, it) { return s + (it.sellPrice || 0); }, 0);
+const xActive = state.globalMutation > 1;
+const xText = xActive ? 'X' + state.globalMutation : 'X-режим';
+const xBtnClass = xActive ? 'profile-x-btn active' : 'profile-x-btn';
 profilePage.innerHTML = '<div class="profile-card-big">'
 + '<div class="profile-avatar-big">'+avatarInner+'</div>'
-+ '<div class="profile-name-big">'+escapeHtml(state.name || "Гравець")+'</div>'
++ '<div class="profile-name-big">'+escapeHtml(state.name || "Гравець")+(state.isVip?' <span class="vip-badge">VIP</span>':'')+'</div>'
 + '<div class="profile-id-big">ID: '+userId+'</div>'
 + '</div>'
 + '<div class="profile-stats">'
-+ '<div class="profile-stat"><div class="profile-stat-icon">💰</div><div class="profile-stat-value gold">'+state.coins+'</div><div class="profile-stat-label">Баланс</div></div>'
++ '<div class="profile-stat"><div class="profile-stat-icon">💰</div><div class="profile-stat-value gold">'+state.coins.toLocaleString()+'</div><div class="profile-stat-label">Баланс</div></div>'
++ '<div class="profile-stat"><div class="profile-stat-icon">💵</div><div class="profile-stat-value green">$'+(state.dollars || 0).toFixed(2)+'</div><div class="profile-stat-label">Донат</div></div>'
 + '<div class="profile-stat"><div class="profile-stat-icon">👆</div><div class="profile-stat-value purple">'+state.taps+'</div><div class="profile-stat-label">Кліків</div></div>'
-+ '<div class="profile-stat"><div class="profile-stat-icon">🔥</div><div class="profile-stat-value pink">'+state.streak+'</div><div class="profile-stat-label">Серія днів</div></div>'
++ '<div class="profile-stat"><div class="profile-stat-icon">🔥</div><div class="profile-stat-value pink">'+state.streak+'</div><div class="profile-stat-label">Серія</div></div>'
 + '<div class="profile-stat"><div class="profile-stat-icon">🎒</div><div class="profile-stat-value green">'+invLength+'</div><div class="profile-stat-label">Скінів</div></div>'
-+ '<div class="profile-stat" style="grid-column:span 2"><div class="profile-stat-icon">💎</div><div class="profile-stat-value gold">'+totalValue+'</div><div class="profile-stat-label">Вартість інвентаря</div></div>'
++ '<div class="profile-stat" style="grid-column:span 2"><div class="profile-stat-icon">💎</div><div class="profile-stat-value gold">'+totalValue.toLocaleString()+'</div><div class="profile-stat-label">Вартість інвентаря</div></div>'
++ '</div>'
++ '<div class="profile-x-block">'
++ '<div class="profile-x-title">🎰 X-режим</div>'
++ '<div class="profile-x-desc">Увімкни X-режим щоб усі кейси стали дорожчими в N разів, а лут отримав мутацію. Діє тільки для тебе.</div>'
++ '<div class="profile-x-row">'
++ '<button class="profile-x-quick" data-x="2">X2</button>'
++ '<button class="profile-x-quick" data-x="5">X5</button>'
++ '<button class="profile-x-quick" data-x="10">X10</button>'
++ '<button class="profile-x-quick" data-x="100">X100</button>'
++ '</div>'
++ '<input type="number" class="profile-x-input" id="profileXInput" placeholder="Свій множник" value="'+(xActive ? state.globalMutation : '')+'" min="2" max="1000">'
++ '<button class="'+xBtnClass+'" id="profileXToggle">'+(xActive ? '✅ ' + xText + ' активний — вимкнути' : '🎰 Увімкнути X-режим')+'</button>'
++ '<div class="profile-x-status" id="profileXStatus">'+(xActive ? '✅ X' + state.globalMutation + ' активний' : '❌ X-режим вимкнено')+'</div>'
 + '</div>';
+
+const xInput = $("profileXInput");
+document.querySelectorAll(".profile-x-quick").forEach(function(btn) {
+btn.addEventListener("click", function() {
+if (xInput) xInput.value = btn.dataset.x;
+});
+});
+const xToggleBtn = $("profileXToggle");
+if (xToggleBtn) {
+xToggleBtn.addEventListener("click", async function() {
+if (state.globalMutation > 1) {
+state.globalMutation = 0;
+saveLocal();
+render();
+await saveState({ globalMutation: 0 });
+showToast("❌ X-режим вимкнено");
+loadProfile();
+} else {
+const x = parseInt(xInput.value, 10);
+if (!x || x < 2 || x > 1000) { showToast("❌ X від 2 до 1000"); return; }
+state.globalMutation = x;
+saveLocal();
+render();
+await saveState({ globalMutation: x });
+showToast("🎰 X" + x + " активовано!");
+loadProfile();
+}
+});
+}
 }
 
 function escapeHtml(str) { const d = document.createElement("div"); d.textContent = str; return d.innerHTML; }
 
+document.querySelectorAll(".admin-tab").forEach(function(tab) {
+tab.addEventListener("click", function() {
+document.querySelectorAll(".admin-tab").forEach(function(t) { t.classList.remove("active"); });
+tab.classList.add("active");
+document.querySelectorAll(".admin-section").forEach(function(s) { s.classList.remove("active"); });
+document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
+});
+});
+
+document.querySelectorAll("[data-self]").forEach(function(btn) {
+btn.addEventListener("click", function() { $("adminSelfAmount").value = btn.dataset.self; });
+});
+document.querySelectorAll("[data-self-dollar]").forEach(function(btn) {
+btn.addEventListener("click", function() { $("adminSelfDollars").value = btn.dataset.selfDollar; });
+});
+document.querySelectorAll("[data-give]").forEach(function(btn) {
+btn.addEventListener("click", function() { $("adminTargetAmount").value = btn.dataset.give; });
+});
+document.querySelectorAll("[data-give-dollar]").forEach(function(btn) {
+btn.addEventListener("click", function() { $("adminDollarsAmount").value = btn.dataset.giveDollar; });
+});
+
 $("btnAdminSelf").addEventListener("click", async function() {
 const amount = parseInt($("adminSelfAmount").value, 10);
-if (!amount || amount <= 0 || amount > 1000000) { showToast("❌ Невірна сума (1-1000000)"); return; }
+if (!amount || amount <= 0 || amount > 100000000) { showToast("❌ Невірна сума"); return; }
 state.coins += amount;
 saveLocal();
 render();
 await saveState({ coins: state.coins });
-showToast("👑 Собі +" + amount);
+showToast("👑 Собі +" + amount.toLocaleString());
+});
+
+$("btnAdminSelfDollars").addEventListener("click", async function() {
+const amount = parseFloat($("adminSelfDollars").value);
+if (!amount || amount <= 0 || amount > 100000) { showToast("❌ Невірна сума"); return; }
+state.dollars = (state.dollars || 0) + amount;
+saveLocal();
+render();
+await saveState({ dollars: state.dollars });
+showToast("💵 Собі +$" + amount.toFixed(2));
 });
 
 $("btnAdminGive").addEventListener("click", async function() {
 const targetId = $("adminTargetId").value.trim();
 const amount = parseInt($("adminTargetAmount").value, 10);
-if (!targetId) { showToast("❌ Введіть ID гравця"); return; }
-if (!amount || amount <= 0 || amount > 1000000) { showToast("❌ Невірна сума (1-1000000)"); return; }
+if (!targetId) { showToast("❌ Введіть ID"); return; }
+if (!amount || amount <= 0 || amount > 100000000) { showToast("❌ Невірна сума"); return; }
 try {
 const targetRef = doc(db, "players", targetId);
 const targetSnap = await getDoc(targetRef);
-if (!targetSnap.exists()) { showToast("❌ Гравець не знайдений"); return; }
+if (!targetSnap.exists()) { showToast("❌ Не знайдено"); return; }
 const current = targetSnap.data().coins || 0;
 await updateDoc(targetRef, { coins: current + amount });
-showToast("🎁 Видано " + amount + " гравцю " + targetId);
+showToast("🎁 Видано " + amount.toLocaleString());
 } catch (e) {
 console.warn(e);
-showToast("❌ Помилка видачі");
+showToast("❌ Помилка");
+}
+});
+
+$("btnAdminDollars").addEventListener("click", async function() {
+const targetId = $("adminDollarsId").value.trim();
+const amount = parseFloat($("adminDollarsAmount").value);
+if (!targetId) { showToast("❌ Введіть ID"); return; }
+if (!amount || amount <= 0 || amount > 100000) { showToast("❌ Невірна сума"); return; }
+try {
+const targetRef = doc(db, "players", targetId);
+const targetSnap = await getDoc(targetRef);
+if (!targetSnap.exists()) { showToast("❌ Не знайдено"); return; }
+const current = targetSnap.data().dollars || 0;
+await updateDoc(targetRef, { dollars: current + amount });
+showToast("💵 Видано $" + amount.toFixed(2));
+} catch (e) {
+console.warn(e);
+showToast("❌ Помилка");
 }
 });
 
 $("btnAdminClose").addEventListener("click", function() { adminModal.classList.remove("show"); });
+
+$("btnBuyVip").addEventListener("click", buyVip);
+
+if ($("customDollarsInput")) {
+$("customDollarsInput").addEventListener("input", updateCustomBuyPreview);
+$("customDollarsInput").addEventListener("change", updateCustomBuyPreview);
+$("btnCustomBuyCoins").addEventListener("click", customBuyCoins);
+}
+document.querySelectorAll(".quick-price-btn").forEach(function(btn) {
+btn.addEventListener("click", function() {
+const input = $("customDollarsInput");
+if (input) {
+input.value = btn.dataset.price;
+updateCustomBuyPreview();
+}
+});
+});
 
 function showSection(name) {
 tapperSection.classList.remove("active");
@@ -1059,10 +1393,12 @@ casesSection.classList.remove("active");
 inventorySection.classList.remove("active");
 topSection.classList.remove("active");
 profileSection.classList.remove("active");
+donateSection.classList.remove("active");
 if (name === "cases") casesSection.classList.add("active");
 else if (name === "tapper") { tapperSection.classList.add("active"); updateTapperUI(); }
 else if (name === "inventory") inventorySection.classList.add("active");
 else if (name === "top") { topSection.classList.add("active"); loadTop(); }
+else if (name === "donate") { donateSection.classList.add("active"); updateDonateUI(); }
 else if (name === "profile") { profileSection.classList.add("active"); loadProfile(); }
 }
 
@@ -1098,8 +1434,9 @@ const snap = await getDoc(userRef);
 if (!snap.exists()) {
 const np = {
 coins: 100, name: fullName, inventory: [], usedPromos: [], spent: 0, opened: 0,
-taps: 0, tapsToday: 0, tapsDate: "", limit: 25000, streak: 0, lastStreakDate: "",
-givenCases: [], photoUrl: userPhotoUrl || "", createdAt: serverTimestamp()
+taps: 0, tapsToday: 0, tapsDate: "", limit: BASE_LIMIT, streak: 0, lastStreakDate: "",
+givenCases: [], dollars: 0, isVip: false, isAdmin: false, globalMutation: 0,
+photoUrl: userPhotoUrl || "", createdAt: serverTimestamp()
 };
 await setDoc(userRef, np);
 state = Object.assign({}, state, np);
@@ -1114,10 +1451,18 @@ state.opened = d.opened != null ? d.opened : (state.opened || 0);
 state.taps = d.taps != null ? d.taps : 0;
 state.tapsToday = d.tapsToday != null ? d.tapsToday : 0;
 state.tapsDate = d.tapsDate || "";
-state.limit = d.limit != null ? d.limit : 25000;
 state.streak = d.streak != null ? d.streak : 0;
 state.lastStreakDate = d.lastStreakDate || "";
 state.givenCases = d.givenCases || [];
+state.dollars = d.dollars != null ? d.dollars : 0;
+state.isVip = d.isVip || false;
+state.isAdmin = d.isAdmin || false;
+state.globalMutation = d.globalMutation || 0;
+recalcLimit();
+}
+if (state.limit !== (Math.min(MAX_LIMIT, BASE_LIMIT + (Math.max(1, state.streak) - 1) * STREAK_BONUS))) {
+recalcLimit();
+await saveState({ limit: state.limit });
 }
 if (userDocUnsub) userDocUnsub();
 userDocUnsub = onSnapshot(userRef, function(ds) {
@@ -1128,8 +1473,12 @@ state.inventory = d.inventory || state.inventory;
 state.name = d.name || state.name;
 state.taps = d.taps != null ? d.taps : state.taps;
 state.tapsToday = d.tapsToday != null ? d.tapsToday : state.tapsToday;
-state.limit = d.limit != null ? d.limit : state.limit;
 state.streak = d.streak != null ? d.streak : state.streak;
+state.dollars = d.dollars != null ? d.dollars : state.dollars;
+state.isVip = d.isVip != null ? d.isVip : state.isVip;
+state.isAdmin = d.isAdmin != null ? d.isAdmin : state.isAdmin;
+state.globalMutation = d.globalMutation != null ? d.globalMutation : state.globalMutation;
+recalcLimit();
 saveLocal();
 render();
 });
@@ -1141,6 +1490,7 @@ async function init() {
 const forceHide = setTimeout(function() { loadingScreen.classList.add("hidden"); }, 3000);
 updateTapperStreak();
 try { await initUser(); } catch (e) { console.warn("init помилка:", e); }
+recalcLimit();
 await saveState({
 limit: state.limit, streak: state.streak,
 tapsDate: state.tapsDate, tapsToday: state.tapsToday,
@@ -1156,4 +1506,4 @@ init();
 window.addEventListener("beforeunload", function() { if (userDocUnsub) userDocUnsub(); });
 </script>
 </body>
-</html>
+  </html>

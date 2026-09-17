@@ -325,12 +325,18 @@ ancient:   { name: "Древній",     color: "#ef4444" }
 
 const TYPE_EMOJI = { knife: "🗡️", gloves: "🧤", gun: "🔫", coffin: "⚰️" };
 
-// ⚰️ ГРОБОВЕЦЬ — textures/topp/coffin/
+// ⚰️ ГРОБОВЕЦЬ за 15000 — окуп 60%
 const COFFINS = [
-{ id: "coffin_big",     name: "⚰️ Великий гріб",  emoji: "⚰️", color: "#9ca3af", price: 3000,   weight: 45, img: "textures/topp/coffin/coffin_big.png" },
-{ id: "coffin_wide",    name: "🪦 Широкий гріб",   emoji: "🪦", color: "#3b82f6", price: 10000,  weight: 30, img: "textures/topp/coffin/coffin_wide.png" },
-{ id: "coffin_golden",  name: "✨ Золотий гріб",   emoji: "✨", color: "#f59e0b", price: 35000,  weight: 18, img: "textures/topp/coffin/coffin_golden.png" },
-{ id: "coffin_mom",     name: "👑 Гріб для мам",   emoji: "👑", color: "#ec4899", price: 120000, weight: 7,  img: "textures/topp/coffin/coffin_mom.png" }
+{ id: "coffin_rotten",  name: "🦴 Гнилий гріб",           emoji: "🦴", color: "#6b7280", price: 6000,   weight: 18, img: "textures/topp/coffin/coffin_rotten.png",  category: "common" },
+{ id: "coffin_wood",    name: "🪵 Дерев'яний гріб",       emoji: "🪵", color: "#92400e", price: 8000,   weight: 12, img: "textures/topp/coffin/coffin_wood.png",    category: "common" },
+{ id: "coffin_basic",   name: "⚰️ Звичайний гріб",        emoji: "⚰️", color: "#9ca3af", price: 15000,  weight: 10, img: "textures/topp/coffin/coffin_basic.png",   category: "common" },
+{ id: "coffin_big",     name: "⚰️ Великий гріб",          emoji: "⚰️", color: "#cbd5e1", price: 20000,  weight: 8,  img: "textures/topp/coffin/coffin_big.png",     category: "common" },
+{ id: "coffin_diamond", name: "💎 Алмазний гріб",         emoji: "💎", color: "#22d3ee", price: 30000,  weight: 8,  img: "textures/topp/coffin/coffin_diamond.png", category: "common" },
+{ id: "coffin_fire",    name: "🔥 Вогняний гріб",         emoji: "🔥", color: "#ef4444", price: 50000,  weight: 12, img: "textures/topp/coffin/coffin_fire.png",    category: "common" },
+{ id: "coffin_wide",    name: "🪦 Широкий гріб",          emoji: "🪦", color: "#3b82f6", price: 80000,  weight: 12, img: "textures/topp/coffin/coffin_wide.png",    category: "common" },
+{ id: "coffin_golden",  name: "✨ Золотий гріб",          emoji: "✨", color: "#f59e0b", price: 130000, weight: 10, img: "textures/topp/coffin/coffin_golden.png",  category: "common" },
+{ id: "coffin_mom",     name: "👑 Гріб для мам",          emoji: "👑", color: "#ec4899", price: 250000, weight: 7,  img: "textures/topp/coffin/coffin_mom.png",     category: "mom" },
+{ id: "coffin_me",      name: "🌟 Гріб для тебе і сім'ї", emoji: "🌟", color: "#fbbf24", price: 600000, weight: 3,  img: "textures/topp/coffin/coffin_me.png",      category: "family" }
 ];
 
 const SKINS = [];
@@ -437,7 +443,7 @@ for (const c of COFFINS) {
 if (r < c.weight) { chosen = c; break; }
 r -= c.weight;
 }
-return { skin: { id: chosen.id, name: chosen.name, type: "coffin", rarity: "ancient", img: chosen.img, emoji: chosen.emoji, color: chosen.color, rarityColor: chosen.color }, price: chosen.price };
+return { skin: { id: chosen.id, name: chosen.name, type: "coffin", rarity: "ancient", img: chosen.img, emoji: chosen.emoji, color: chosen.color, rarityColor: chosen.color, category: chosen.category }, price: chosen.price };
 }
 
 function pickRandomSkin() { return SKINS[Math.floor(Math.random() * SKINS.length)]; }
@@ -494,13 +500,13 @@ html += '<div class="' + cardClass + '" data-case="'+c.id+'" data-price="'+c.pri
 + '<div class="case-price">'+c.price+'</div>'
 + '</div>';
 }
-// ⚰️ Гробовець — textures/topp/coffin/
+// ⚰️ Гробовець — 15000
 const coffinImg = imgOrEmoji("textures/topp/coffin/coffin.png", "⚰️", 90);
-html += '<div class="case-card wide coffin" data-case="coffin" data-price="5000">'
+html += '<div class="case-card wide coffin" data-case="coffin" data-price="15000">'
 + '<div class="case-img">'+coffinImg+'</div>'
 + '<div class="case-badge red">🔥 ТОП+</div>'
 + '<div class="case-name">⚰️ Гробовець</div>'
-+ '<div class="case-price">5000</div>'
++ '<div class="case-price">15000</div>'
 + '</div>';
 casesGrid.innerHTML = html;
 
@@ -629,7 +635,7 @@ resultBlock.innerHTML = '<div class="win-item" style="color:'+r.color+'">'
 $("rouletteWrap").style.display = "none";
 btnOpen.style.display = "none";
 
-const newItem = { id: winner.id, name: winner.name, type: winner.type, rarity: winner.rarity, rarityName: r.name, rarityColor: r.color, sellPrice: finalPrice, img: winner.img, emoji: winner.emoji || null, uid: Date.now() + "_" + Math.random().toString(36).slice(2,6) };
+const newItem = { id: winner.id, name: winner.name, type: winner.type, rarity: winner.rarity, rarityName: r.name, rarityColor: r.color, sellPrice: finalPrice, img: winner.img, emoji: winner.emoji || null, category: winner.category || null, uid: Date.now() + "_" + Math.random().toString(36).slice(2,6) };
 
 document.getElementById("btnSell").addEventListener("click", async function() {
 state.coins += finalPrice;

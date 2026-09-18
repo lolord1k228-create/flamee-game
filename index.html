@@ -9,16 +9,19 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
 body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;color:#e8edf5;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:8px;padding-bottom:80px;overflow-x:hidden}
 #app{max-width:480px;width:100%;display:flex;flex-direction:column;gap:10px}
-.top-bar{background:linear-gradient(90deg,#1a0f2e,#241642);border-radius:14px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(139,92,246,.15);border:1px solid #3a2a5a}
-.logo{display:flex;align-items:center;gap:8px}
-.logo-icon{font-size:22px;filter:drop-shadow(0 0 8px #f59e0b)}
-.balance-box{background:#0f0a1e;border-radius:10px;padding:5px 12px;display:flex;align-items:center;gap:6px;border:1px solid #3a2a5a}
-.balance-val{font-size:14px;font-weight:800;color:#fff}
-.btn-promo{background:linear-gradient(135deg,#f59e0b,#d97706);border:none;border-radius:10px;padding:7px 11px;color:#1a0f2e;font-size:11px;font-weight:800;cursor:pointer;box-shadow:0 0 12px rgba(245,158,11,.4);font-family:inherit}
+.top-bar{background:linear-gradient(90deg,#1a0f2e,#241642);border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(139,92,246,.15);border:1px solid #3a2a5a;gap:6px}
+.logo{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.logo-icon{font-size:20px;filter:drop-shadow(0 0 8px #f59e0b)}
+.balance-box{background:#0f0a1e;border-radius:10px;padding:5px 10px;display:flex;align-items:center;gap:6px;border:1px solid #3a2a5a;flex-shrink:0}
+.balance-val{font-size:13px;font-weight:800;color:#fff}
+.btn-promo{background:linear-gradient(135deg,#f59e0b,#d97706);border:none;border-radius:10px;padding:7px 10px;color:#1a0f2e;font-size:11px;font-weight:800;cursor:pointer;box-shadow:0 0 12px rgba(245,158,11,.4);font-family:inherit}
 .btn-promo:active{transform:scale(.95)}
-.btn-admin{background:linear-gradient(135deg,#dc2626,#ef4444);border:none;border-radius:10px;padding:7px 11px;color:#fff;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 0 12px rgba(220,38,38,.5);font-family:inherit;margin-left:6px;display:none}
+.btn-donate{background:linear-gradient(135deg,#10b981,#059669);border:none;border-radius:10px;padding:7px 10px;color:#fff;font-size:11px;font-weight:800;cursor:pointer;box-shadow:0 0 12px rgba(16,185,129,.4);font-family:inherit}
+.btn-donate:active{transform:scale(.95)}
+.btn-admin{background:linear-gradient(135deg,#dc2626,#ef4444);border:none;border-radius:10px;padding:7px 10px;color:#fff;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 0 12px rgba(220,38,38,.5);font-family:inherit;display:none}
 .btn-admin.show{display:inline-block}
 .btn-admin:active{transform:scale(.95)}
+.top-actions{display:flex;gap:6px;align-items:center}
 .profile-row{display:flex;align-items:center;gap:10px;padding:2px}
 .avatar-wrap{position:relative;width:46px;height:46px;flex-shrink:0}
 .avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#a855f7);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:#fff;overflow:hidden;border:2px solid #a855f7;box-shadow:0 0 12px rgba(168,85,247,.6)}
@@ -49,8 +52,14 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .tapper-stat-label{font-size:8px;color:#8b7ba8;text-transform:uppercase;letter-spacing:.4px;margin-top:1px}
 .tapper-progress{background:#0f0a1e;border-radius:12px;padding:3px;height:26px;position:relative;overflow:hidden;border:1px solid #3a2a5a;margin-bottom:8px}
 .tapper-progress-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#a855f7);border-radius:9px;transition:width .3s ease;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;min-width:60px}
-.tapper-next{font-size:11px;color:#8b7ba8;margin-bottom:10px}
+.tapper-next{font-size:11px;color:#8b7ba8;margin-bottom:8px}
 .tapper-next b{color:#fbbf24;font-size:13px}
+
+/* Таймер до ресету */
+.reset-timer{background:#0f0a1e;border-radius:10px;padding:8px;border:1px solid #3a2a5a;margin-bottom:10px;text-align:center}
+.reset-timer-label{font-size:9px;color:#8b7ba8;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.reset-timer-value{font-size:14px;font-weight:900;color:#10b981;font-variant-numeric:tabular-nums;text-shadow:0 0 10px rgba(16,185,129,.5)}
+
 .tapper-milestones{display:flex;justify-content:space-between;gap:6px;font-size:10px}
 .tapper-milestone{padding:6px 3px;border-radius:8px;background:#0f0a1e;border:1px solid #3a2a5a;flex:1;text-align:center;font-weight:700;color:#8b7ba8;transition:all .3s;font-size:9px}
 .tapper-milestone.reached{background:#7c3aed;color:#fff;border-color:#a855f7;box-shadow:0 0 10px rgba(168,85,247,.6)}
@@ -135,21 +144,14 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .profile-stat-value.green{color:#10b981}
 .profile-stat-value.pink{color:#ec4899}
 .profile-stat-label{font-size:9px;color:#8b7ba8;text-transform:uppercase;letter-spacing:.8px;font-weight:700}
-.profile-x-block{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:16px;padding:14px;border:2px solid #ec4899;box-shadow:0 0 20px rgba(236,72,153,.25);margin-top:8px}
-.profile-x-title{font-size:14px;font-weight:800;color:#f472b6;text-align:center;margin-bottom:6px}
-.profile-x-desc{font-size:10px;color:#8b7ba8;text-align:center;margin-bottom:10px;line-height:1.4}
-.profile-x-row{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:8px}
-.profile-x-quick{padding:8px 4px;background:#0f0a1e;border:1px solid #ec4899;border-radius:8px;color:#f472b6;font-size:11px;font-weight:800;cursor:pointer;font-family:inherit}
-.profile-x-quick:active{background:#ec4899;color:#fff}
-.profile-x-input{width:100%;padding:10px 12px;background:#0a0616;border:2px solid #3a2a5a;border-radius:10px;color:#fff;font-size:14px;font-weight:700;text-align:center;font-family:inherit;outline:none;margin-bottom:8px}
-.profile-x-input:focus{border-color:#ec4899}
-.profile-x-btn{width:100%;padding:12px;border:none;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;box-shadow:0 4px 16px rgba(236,72,153,.4)}
-.profile-x-btn.active{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 16px rgba(16,185,129,.4)}
-.profile-x-btn:active{transform:scale(.97)}
-.profile-x-status{font-size:11px;text-align:center;margin-top:8px;padding:6px;background:#0f0a1e;border-radius:8px;border:1px solid #3a2a5a}
-.profile-x-locked{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:16px;padding:20px;border:2px dashed #4b5563;text-align:center;margin-top:8px}
-.profile-x-locked-title{font-size:14px;font-weight:800;color:#6b7280;margin-bottom:6px}
-.profile-x-locked-desc{font-size:11px;color:#8b7ba8;line-height:1.4}
+
+/* Кнопка Топ в профілі */
+.profile-nav-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.profile-nav-btn{background:linear-gradient(135deg,#7c3aed,#a855f7);border:none;border-radius:14px;padding:14px 8px;color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;text-align:center;box-shadow:0 4px 16px rgba(168,85,247,.4);display:flex;flex-direction:column;align-items:center;gap:4px}
+.profile-nav-btn:active{transform:scale(.97)}
+.profile-nav-btn .nav-icon{font-size:22px;line-height:1}
+.profile-nav-btn.green{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 16px rgba(16,185,129,.4)}
+
 .donate-balance{background:linear-gradient(135deg,#10b981,#059669);border-radius:16px;padding:16px;text-align:center;margin-bottom:12px;box-shadow:0 4px 16px rgba(16,185,129,.4)}
 .donate-balance-label{font-size:11px;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .donate-balance-value{font-size:26px;font-weight:900;color:#fff;text-shadow:0 0 12px rgba(255,255,255,.4)}
@@ -175,6 +177,24 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .custom-buy-quick{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
 .quick-price-btn{padding:8px 4px;background:#0f0a1e;border:1px solid #3a2a5a;border-radius:8px;color:#c4b5fd;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit}
 .quick-price-btn:active{background:#10b981;color:#fff;border-color:#10b981}
+
+/* X-режим у Донаті */
+.donate-x-block{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:16px;padding:14px;border:2px solid #ec4899;box-shadow:0 0 20px rgba(236,72,153,.25);margin-bottom:12px}
+.donate-x-title{font-size:14px;font-weight:800;color:#f472b6;text-align:center;margin-bottom:6px}
+.donate-x-desc{font-size:10px;color:#8b7ba8;text-align:center;margin-bottom:10px;line-height:1.4}
+.donate-x-row{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:8px}
+.donate-x-quick{padding:8px 4px;background:#0f0a1e;border:1px solid #ec4899;border-radius:8px;color:#f472b6;font-size:10px;font-weight:800;cursor:pointer;font-family:inherit}
+.donate-x-quick:active{background:#ec4899;color:#fff}
+.donate-x-input{width:100%;padding:10px 12px;background:#0a0616;border:2px solid #3a2a5a;border-radius:10px;color:#fff;font-size:14px;font-weight:700;text-align:center;font-family:inherit;outline:none;margin-bottom:8px}
+.donate-x-input:focus{border-color:#ec4899}
+.donate-x-btn{width:100%;padding:12px;border:none;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#ec4899,#db2777);color:#fff;box-shadow:0 4px 16px rgba(236,72,153,.4)}
+.donate-x-btn.active{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 16px rgba(16,185,129,.4)}
+.donate-x-btn:active{transform:scale(.97)}
+.donate-x-status{font-size:11px;text-align:center;margin-top:8px;padding:6px;background:#0f0a1e;border-radius:8px;border:1px solid #3a2a5a}
+.donate-x-locked{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:16px;padding:20px;border:2px dashed #4b5563;text-align:center;margin-bottom:12px}
+.donate-x-locked-title{font-size:14px;font-weight:800;color:#6b7280;margin-bottom:6px}
+.donate-x-locked-desc{font-size:11px;color:#8b7ba8;line-height:1.4}
+
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:1000;padding:16px}
 .modal.show{display:flex}
 .modal-content{background:linear-gradient(180deg,#1a1230,#0f0a1e);border-radius:22px;padding:16px;max-width:400px;width:100%;border:2px solid #3a2a5a;text-align:center;animation:popIn .3s ease}
@@ -255,8 +275,9 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="top-bar">
 <div class="logo"><span class="logo-icon">🔥</span></div>
 <div class="balance-box"><span class="balance-val" id="coinsValue">0</span></div>
-<div style="display:flex;gap:0;">
+<div class="top-actions">
 <button class="btn-promo" id="btnPromo">🎁</button>
+<button class="btn-donate" id="btnDonateQuick">💵</button>
 <button class="btn-admin" id="btnAdminQuick">⚡</button>
 </div>
 </div>
@@ -283,6 +304,10 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="tapper-stat"><div class="tapper-stat-val" id="tapperToday">0</div><div class="tapper-stat-label">Сьогодні</div></div>
 <div class="tapper-stat"><div class="tapper-stat-val gold" id="tapperLimit">5 000</div><div class="tapper-stat-label">Ліміт</div></div>
 <div class="tapper-stat"><div class="tapper-stat-val green" id="tapperStreak">0</div><div class="tapper-stat-label">Серія</div></div>
+</div>
+<div class="reset-timer">
+<div class="reset-timer-label">До нового ліміту</div>
+<div class="reset-timer-value" id="resetTimer">--:--:--</div>
 </div>
 <div class="tapper-progress"><div class="tapper-progress-fill" id="tapperProgress" style="width:0%">0%</div></div>
 <div class="tapper-next">До наступного кейсу: <b id="tapperNext">1 000</b></div>
@@ -330,6 +355,8 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <button class="shop-buy" id="btnBuyVip">$0.50</button>
 </div>
 
+<div id="donateXBlock"></div>
+
 <div class="custom-buy-card">
 <div class="custom-buy-title">🪙 Купити монети</div>
 <div class="custom-buy-desc">Курс: 1$ = 25 000 монет</div>
@@ -358,7 +385,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <button class="nav-btn active" data-nav="cases"><span class="nav-icon">🎁</span>Кейси</button>
 <button class="nav-btn" data-nav="tapper"><span class="nav-icon">👆</span>Тапалка</button>
 <button class="nav-btn" data-nav="inventory"><span class="nav-icon">🎒</span>Скіни</button>
-<button class="nav-btn" data-nav="top"><span class="nav-icon">🏆</span>Топ</button>
 <button class="nav-btn" data-nav="donate"><span class="nav-icon">💵</span>Донат</button>
 <button class="nav-btn" data-nav="profile"><span class="nav-icon">👤</span>Профіль</button>
 </div>
@@ -494,7 +520,6 @@ const STREAK_BONUS = 500;
 const SKIP_DAY_COST = 5;
 const X_BASE_COST = 0.2;
 
-// Кожні N кліків — видається кейс
 const TAP_STEP = 1000;
 const CASE_TYPE_BY_STEP = [
 { step: 1000, type: "basic" },
@@ -513,6 +538,7 @@ inventorySort: "new"
 
 let currentCase = null, isProcessing = false, userDocUnsub = null, sellTarget = null;
 let pendingItem = null;
+let resetTimerInterval = null;
 
 const PROMOS = { "26fire": 30, "newyear2027": 55 };
 
@@ -550,6 +576,8 @@ const tapperNext = $("tapperNext"), ms1 = $("ms1"), ms2 = $("ms2"), ms3 = $("ms3
 const dollarsValue = $("dollarsValue");
 const xCostBlock = $("xCostBlock");
 const btnSkipDay = $("btnSkipDay"), skipDayLocked = $("skipDayLocked");
+const resetTimer = $("resetTimer");
+const donateXBlock = $("donateXBlock");
 
 function showToast(msg, d) {
 d = d || 2400;
@@ -597,9 +625,25 @@ state.lastStreakDate = today;
 recalcLimit();
 }
 
-// Наступний крок 1000
 function getNextMilestone() {
 return (Math.floor(state.taps / TAP_STEP) + 1) * TAP_STEP;
+}
+
+// Таймер до опівночі
+function updateResetTimer() {
+if (!resetTimer) return;
+const now = new Date();
+const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
+const diff = tomorrow - now;
+if (diff <= 0) {
+resetTimer.textContent = "00:00:00";
+return;
+}
+const totalSec = Math.floor(diff / 1000);
+const h = Math.floor(totalSec / 3600);
+const m = Math.floor((totalSec % 3600) / 60);
+const s = totalSec % 60;
+resetTimer.textContent = String(h).padStart(2, "0") + ":" + String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
 }
 
 function updateTapperUI() {
@@ -625,6 +669,7 @@ ms2.classList.toggle("reached", state.taps >= 5000);
 ms3.classList.toggle("top", state.taps >= 25000);
 
 updateSkipDayUI();
+updateResetTimer();
 }
 
 function updateSkipDayUI() {
@@ -678,7 +723,65 @@ vipBtn.disabled = (state.dollars || 0) < 0.50;
 vipBtn.style.background = "";
 }
 }
+renderDonateXBlock();
 updateCustomBuyPreview();
+}
+
+// X-блок у донаті
+function renderDonateXBlock() {
+if (!donateXBlock) return;
+const xActive = state.globalMutation > 1;
+const xText = xActive ? 'X' + state.globalMutation : 'X-режим';
+const xBtnClass = xActive ? 'donate-x-btn active' : 'donate-x-btn';
+
+if (state.isVip) {
+const xCost = xActive ? getXCost(state.globalMutation) : 0;
+donateXBlock.innerHTML = '<div class="donate-x-block">'
++ '<div class="donate-x-title">🎰 X-режим (VIP)</div>'
++ '<div class="donate-x-desc">Всі кейси стануть дорожчими в X разів, лут отримає мутацію.<br><b style="color:#fbbf24">Доплата: (X-1) × $0.20</b></div>'
++ '<div class="donate-x-row">'
++ '<button class="donate-x-quick" data-x="2">X2<br>$0.20</button>'
++ '<button class="donate-x-quick" data-x="5">X5<br>$0.80</button>'
++ '<button class="donate-x-quick" data-x="10">X10<br>$1.80</button>'
++ '<button class="donate-x-quick" data-x="100">X100<br>$19.80</button>'
++ '</div>'
++ '<input type="number" class="donate-x-input" id="donateXInput" placeholder="Свій множник" value="'+(xActive ? state.globalMutation : '')+'" min="2" max="1000">'
++ '<button class="'+xBtnClass+'" id="donateXToggle">'+(xActive ? '✅ ' + xText + ' активний — вимкнути' : '🎰 Увімкнути X-режим')+'</button>'
++ '<div class="donate-x-status">'+(xActive ? '✅ X' + state.globalMutation + ' активний' : '❌ X-режим вимкнено')+'</div>'
++ '</div>';
+
+const xInput = $("donateXInput");
+document.querySelectorAll(".donate-x-quick").forEach(function(btn) {
+btn.addEventListener("click", function() {
+if (xInput) xInput.value = btn.dataset.x;
+});
+});
+const xToggleBtn = $("donateXToggle");
+if (xToggleBtn) {
+xToggleBtn.addEventListener("click", async function() {
+if (state.globalMutation > 1) {
+state.globalMutation = 0;
+saveLocal();
+render();
+await saveState({ globalMutation: 0 });
+showToast("❌ X-режим вимкнено");
+} else {
+const x = parseInt(xInput.value, 10);
+if (!x || x < 2 || x > 1000) { showToast("❌ X від 2 до 1000"); return; }
+state.globalMutation = x;
+saveLocal();
+render();
+await saveState({ globalMutation: x });
+showToast("🎰 X" + x + " активовано!");
+}
+});
+}
+} else {
+donateXBlock.innerHTML = '<div class="donate-x-locked">'
++ '<div class="donate-x-locked-title">🔒 X-режим</div>'
++ '<div class="donate-x-locked-desc">Купи VIP статус за $0.50 щоб отримати доступ до X-режиму</div>'
++ '</div>';
+}
 }
 
 function updateCustomBuyPreview() {
@@ -719,7 +822,6 @@ document.body.appendChild(el);
 setTimeout(function() { el.remove(); }, 1000);
 }
 
-// Перевіряє пороги і видає кейси за кожен перетнутий крок
 function checkTapMilestones(prevTaps, newTaps) {
 for (const ms of CASE_TYPE_BY_STEP) {
 const prevSteps = Math.floor(prevTaps / ms.step);
@@ -953,6 +1055,21 @@ return { skin: { id: chosen.id, name: chosen.name, type: "coffin", rarity: "anci
 
 function pickRandomSkin() { return SKINS[Math.floor(Math.random() * SKINS.length)]; }
 
+// Випадковий предмет для анімації відповідно до кейсу
+function pickRandomForCase(caseId) {
+if (caseId === "coffin") {
+const c = COFFINS[Math.floor(Math.random() * COFFINS.length)];
+return {
+skin: { id: c.id, name: c.name, type: "coffin", rarity: "ancient",
+img: c.img, emoji: c.emoji, color: c.color, rarityColor: c.color },
+price: c.price
+};
+} else {
+const s = pickRandomSkin();
+return { skin: s, price: s.price };
+}
+}
+
 function setAvatar() {
 const letter = (state.name || "?").charAt(0).toUpperCase();
 const existingImg = avatarBox.querySelector("img");
@@ -1099,9 +1216,10 @@ xCostBlock.style.display = "none";
 
 let html = "";
 for (let i = 0; i < 30; i++) {
-const s = pickRandomSkin();
-const emoji = TYPE_EMOJI[s.type] || "📦";
-const color = RARITY[s.rarity].color;
+const item = pickRandomForCase(caseId);
+const s = item.skin;
+const emoji = s.emoji || TYPE_EMOJI[s.type] || "📦";
+const color = s.color || (RARITY[s.rarity] ? RARITY[s.rarity].color : "#e8edf5");
 const icon = imgOrEmoji(s.img, emoji, 36);
 html += '<div class="roulette-item" style="border-color:'+color+'">'
 + '<div class="r-icon">'+icon+'</div>'
@@ -1167,7 +1285,8 @@ const finalPrice = mutated.price;
 
 let html = "";
 for (let i = 0; i < 30; i++) {
-const s = i === 25 ? winner : pickRandomSkin();
+const item = i === 25 ? { skin: winner, price: finalPrice } : pickRandomForCase(currentCase.id);
+const s = item.skin;
 const emoji = s.emoji || TYPE_EMOJI[s.type] || "📦";
 const color = s.color || (RARITY[s.rarity] ? RARITY[s.rarity].color : "#e8edf5");
 const icon = imgOrEmoji(s.img, emoji, 36);
@@ -1317,6 +1436,12 @@ promoModal.classList.remove("show");
 
 promoInput.addEventListener("keydown", function(e) { if (e.key === "Enter") btnActivatePromo.click(); });
 
+$("btnDonateQuick").addEventListener("click", function() {
+showSection("donate");
+document.querySelectorAll(".nav-btn").forEach(function(b) { b.classList.remove("active"); });
+document.querySelector('.nav-btn[data-nav="donate"]').classList.add("active");
+});
+
 btnAdminQuick.addEventListener("click", function() {
 adminModal.classList.add("show");
 });
@@ -1363,34 +1488,6 @@ const avatarInner = userPhotoUrl
 : letter;
 const invLength = (state.inventory || []).length;
 const totalValue = (state.inventory || []).reduce(function(s, it) { return s + (it.sellPrice || 0); }, 0);
-const xActive = state.globalMutation > 1;
-const xText = xActive ? 'X' + state.globalMutation : 'X-режим';
-const xBtnClass = xActive ? 'profile-x-btn active' : 'profile-x-btn';
-
-let xBlockHTML = "";
-if (state.isVip) {
-const xCost = xActive ? getXCost(state.globalMutation) : 0;
-xBlockHTML = '<div class="profile-x-block">'
-+ '<div class="profile-x-title">🎰 X-режим (VIP)</div>'
-+ '<div class="profile-x-desc">Всі кейси стануть дорожчими в X разів, лут отримає мутацію.<br><b style="color:#fbbf24">Доплата за прокрутку: (X-1) × $0.20</b></div>'
-+ '<div class="profile-x-row">'
-+ '<button class="profile-x-quick" data-x="2">X2<br><span style="font-size:9px;opacity:.7">$0.20</span></button>'
-+ '<button class="profile-x-quick" data-x="5">X5<br><span style="font-size:9px;opacity:.7">$0.80</span></button>'
-+ '<button class="profile-x-quick" data-x="10">X10<br><span style="font-size:9px;opacity:.7">$1.80</span></button>'
-+ '<button class="profile-x-quick" data-x="100">X100<br><span style="font-size:9px;opacity:.7">$19.80</span></button>'
-+ '</div>'
-+ '<input type="number" class="profile-x-input" id="profileXInput" placeholder="Свій множник" value="'+(xActive ? state.globalMutation : '')+'" min="2" max="1000">'
-+ '<div class="profile-x-status" style="margin-bottom:8px">'+(xActive ? '💰 Доплата: $' + xCost.toFixed(2) + ' за прокрутку' : '💵 Введи X щоб побачити ціну')+'</div>'
-+ '<button class="'+xBtnClass+'" id="profileXToggle">'+(xActive ? '✅ ' + xText + ' активний — вимкнути' : '🎰 Увімкнути X-режим')+'</button>'
-+ '<div class="profile-x-status" id="profileXStatus">'+(xActive ? '✅ X' + state.globalMutation + ' активний' : '❌ X-режим вимкнено')+'</div>'
-+ '</div>';
-} else {
-xBlockHTML = '<div class="profile-x-locked">'
-+ '<div class="profile-x-locked-title">🔒 X-режим</div>'
-+ '<div class="profile-x-locked-desc">Купи VIP статус за $0.50 щоб отримати доступ до X-режиму</div>'
-+ '</div>';
-}
-
 profilePage.innerHTML = '<div class="profile-card-big">'
 + '<div class="profile-avatar-big">'+avatarInner+'</div>'
 + '<div class="profile-name-big">'+escapeHtml(state.name || "Гравець")+(state.isVip?' <span class="vip-badge">VIP</span>':'')+'</div>'
@@ -1402,42 +1499,26 @@ profilePage.innerHTML = '<div class="profile-card-big">'
 + '<div class="profile-stat"><div class="profile-stat-icon">👆</div><div class="profile-stat-value purple">'+state.taps+'</div><div class="profile-stat-label">Кліків</div></div>'
 + '<div class="profile-stat"><div class="profile-stat-icon">🔥</div><div class="profile-stat-value pink">'+state.streak+'</div><div class="profile-stat-label">Серія</div></div>'
 + '<div class="profile-stat"><div class="profile-stat-icon">🎒</div><div class="profile-stat-value green">'+invLength+'</div><div class="profile-stat-label">Скінів</div></div>'
-+ '<div class="profile-stat" style="grid-column:span 2"><div class="profile-stat-icon">💎</div><div class="profile-stat-value gold">'+totalValue.toLocaleString()+'</div><div class="profile-stat-label">Вартість інвентаря</div></div>'
++ '<div class="profile-stat"><div class="profile-stat-icon">💎</div><div class="profile-stat-value gold">'+totalValue.toLocaleString()+'</div><div class="profile-stat-label">Вартість</div></div>'
 + '</div>'
-+ xBlockHTML;
++ '<div class="profile-nav-row">'
++ '<button class="profile-nav-btn" id="btnProfileTop"><span class="nav-icon">🏆</span>Топ гравців</button>'
++ '<button class="profile-nav-btn green" id="btnProfileDonate"><span class="nav-icon">💵</span>Промо та донат</button>'
++ '</div>';
 
-const xInput = $("profileXInput");
-document.querySelectorAll(".profile-x-quick").forEach(function(btn) {
-btn.addEventListener("click", function() {
-if (xInput) xInput.value = btn.dataset.x;
-const cost = getXCost(parseInt(btn.dataset.x, 10));
-const statusEl = $("profileXStatus");
-if (statusEl && !state.globalMutation) {
-statusEl.textContent = "💰 Доплата: $" + cost.toFixed(2) + " за прокрутку";
-}
+const topBtn = $("btnProfileTop");
+if (topBtn) {
+topBtn.addEventListener("click", function() {
+showSection("top");
+document.querySelectorAll(".nav-btn").forEach(function(b) { b.classList.remove("active"); });
 });
-});
-const xToggleBtn = $("profileXToggle");
-if (xToggleBtn) {
-xToggleBtn.addEventListener("click", async function() {
-if (state.globalMutation > 1) {
-state.globalMutation = 0;
-saveLocal();
-render();
-await saveState({ globalMutation: 0 });
-showToast("❌ X-режим вимкнено");
-loadProfile();
-} else {
-const x = parseInt(xInput.value, 10);
-if (!x || x < 2 || x > 1000) { showToast("❌ X від 2 до 1000"); return; }
-state.globalMutation = x;
-saveLocal();
-render();
-await saveState({ globalMutation: x });
-const cost = getXCost(x);
-showToast("🎰 X" + x + " активовано! Доплата $" + cost.toFixed(2));
-loadProfile();
 }
+const donateBtn = $("btnProfileDonate");
+if (donateBtn) {
+donateBtn.addEventListener("click", function() {
+showSection("donate");
+document.querySelectorAll(".nav-btn").forEach(function(b) { b.classList.remove("active"); });
+document.querySelector('.nav-btn[data-nav="donate"]').classList.add("active");
 });
 }
 }
@@ -1670,6 +1751,14 @@ limit: state.limit, streak: state.streak,
 tapsDate: state.tapsDate, tapsToday: state.tapsToday,
 lastStreakDate: state.lastStreakDate
 });
+
+// Запускаємо таймер до ресету
+if (resetTimerInterval) clearInterval(resetTimerInterval);
+resetTimerInterval = setInterval(function() {
+updateResetTimer();
+}, 1000);
+updateResetTimer();
+
 clearTimeout(forceHide);
 loadingScreen.classList.add("hidden");
 render();
@@ -1677,7 +1766,10 @@ render();
 
 init();
 
-window.addEventListener("beforeunload", function() { if (userDocUnsub) userDocUnsub(); });
+window.addEventListener("beforeunload", function() {
+if (userDocUnsub) userDocUnsub();
+if (resetTimerInterval) clearInterval(resetTimerInterval);
+});
 </script>
 </body>
 </html>

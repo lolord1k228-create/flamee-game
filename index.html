@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Musor Drop</title>
+<title>FireGame</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
@@ -12,6 +12,7 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .top-bar{background:linear-gradient(90deg,#1a0f2e,#241642);border-radius:14px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(139,92,246,.15);border:1px solid #3a2a5a;gap:6px}
 .logo{display:flex;align-items:center;gap:6px;flex-shrink:0}
 .logo-icon{font-size:20px;filter:drop-shadow(0 0 8px #f59e0b)}
+.logo-text{font-size:15px;font-weight:900;color:#fff;letter-spacing:1px;background:linear-gradient(135deg,#f59e0b,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .balance-box{background:#0f0a1e;border-radius:10px;padding:5px 10px;display:flex;align-items:center;gap:6px;border:1px solid #3a2a5a;flex-shrink:0}
 .balance-val{font-size:13px;font-weight:800;color:#fff}
 .btn-promo{background:linear-gradient(135deg,#f59e0b,#d97706);border:none;border-radius:10px;padding:7px 10px;color:#1a0f2e;font-size:11px;font-weight:800;cursor:pointer;box-shadow:0 0 12px rgba(245,158,11,.4);font-family:inherit}
@@ -55,7 +56,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .tapper-next{font-size:11px;color:#8b7ba8;margin-bottom:8px}
 .tapper-next b{color:#fbbf24;font-size:13px}
 
-/* Таймер до ресету */
 .reset-timer{background:#0f0a1e;border-radius:10px;padding:8px;border:1px solid #3a2a5a;margin-bottom:10px;text-align:center}
 .reset-timer-label{font-size:9px;color:#8b7ba8;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
 .reset-timer-value{font-size:14px;font-weight:900;color:#10b981;font-variant-numeric:tabular-nums;text-shadow:0 0 10px rgba(16,185,129,.5)}
@@ -145,7 +145,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .profile-stat-value.pink{color:#ec4899}
 .profile-stat-label{font-size:9px;color:#8b7ba8;text-transform:uppercase;letter-spacing:.8px;font-weight:700}
 
-/* Кнопка Топ в профілі */
 .profile-nav-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
 .profile-nav-btn{background:linear-gradient(135deg,#7c3aed,#a855f7);border:none;border-radius:14px;padding:14px 8px;color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;text-align:center;box-shadow:0 4px 16px rgba(168,85,247,.4);display:flex;flex-direction:column;align-items:center;gap:4px}
 .profile-nav-btn:active{transform:scale(.97)}
@@ -178,7 +177,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .quick-price-btn{padding:8px 4px;background:#0f0a1e;border:1px solid #3a2a5a;border-radius:8px;color:#c4b5fd;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit}
 .quick-price-btn:active{background:#10b981;color:#fff;border-color:#10b981}
 
-/* X-режим у Донаті */
 .donate-x-block{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:16px;padding:14px;border:2px solid #ec4899;box-shadow:0 0 20px rgba(236,72,153,.25);margin-bottom:12px}
 .donate-x-title{font-size:14px;font-weight:800;color:#f472b6;text-align:center;margin-bottom:6px}
 .donate-x-desc{font-size:10px;color:#8b7ba8;text-align:center;margin-bottom:10px;line-height:1.4}
@@ -222,7 +220,7 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .btn:disabled{opacity:.4;cursor:not-allowed}
 .btn-open{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 6px 20px rgba(168,85,247,.5)}
 .btn-close{background:#2a1f45;color:#c4b5fd;margin-top:6px}
-.btn-sell{background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 6px 16px rgba(16,185,129,.4)}
+.btn-sell{background:linear-gradient(135deg,#10b981,#059669);color:#fff}
 .btn-add{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;box-shadow:0 6px 16px rgba(168,85,247,.4);margin-top:6px}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(180deg,#15102a,#0f0a1e);border-top:1px solid #2a1f45;display:flex;justify-content:space-around;padding:6px 0 calc(6px + env(safe-area-inset-bottom));z-index:100;max-width:480px;margin:0 auto}
 .nav-btn{background:none;border:none;color:#6b5a8a;font-size:9px;font-weight:700;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;padding:3px 6px;font-family:inherit;transition:all .2s}
@@ -273,7 +271,7 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <body>
 <div id="app">
 <div class="top-bar">
-<div class="logo"><span class="logo-icon">🔥</span></div>
+<div class="logo"><span class="logo-icon">🔥</span><span class="logo-text">FireGame</span></div>
 <div class="balance-box"><span class="balance-val" id="coinsValue">0</span></div>
 <div class="top-actions">
 <button class="btn-promo" id="btnPromo">🎁</button>
@@ -385,7 +383,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <button class="nav-btn active" data-nav="cases"><span class="nav-icon">🎁</span>Кейси</button>
 <button class="nav-btn" data-nav="tapper"><span class="nav-icon">👆</span>Тапалка</button>
 <button class="nav-btn" data-nav="inventory"><span class="nav-icon">🎒</span>Скіни</button>
-<button class="nav-btn" data-nav="donate"><span class="nav-icon">💵</span>Донат</button>
 <button class="nav-btn" data-nav="profile"><span class="nav-icon">👤</span>Профіль</button>
 </div>
 <div class="modal" id="modal">
@@ -520,6 +517,19 @@ const STREAK_BONUS = 500;
 const SKIP_DAY_COST = 5;
 const X_BASE_COST = 0.2;
 
+// ═══════════════════════════════════════════════════════════════
+// МЕХАНІКА ОКУПНОСТІ
+// WIN_CHANCE = 0.40 → 40% шанс окупу (виграш >= ціни кейсу)
+// При окупі: множник 1.5x - 4x (в середньому ~2.4x)
+// При не окупі: множник 0.05x - 0.9x
+// Загальний EV ≈ 0.80 (тобто гравець у середньому втрачає 20%)
+// ═══════════════════════════════════════════════════════════════
+const WIN_CHANCE = 0.40;
+const WIN_MULT_MIN = 1.5;
+const WIN_MULT_MAX = 4.0;
+const LOSE_MULT_MIN = 0.05;
+const LOSE_MULT_MAX = 0.90;
+
 const TAP_STEP = 1000;
 const CASE_TYPE_BY_STEP = [
 { step: 1000, type: "basic" },
@@ -629,7 +639,6 @@ function getNextMilestone() {
 return (Math.floor(state.taps / TAP_STEP) + 1) * TAP_STEP;
 }
 
-// Таймер до опівночі
 function updateResetTimer() {
 if (!resetTimer) return;
 const now = new Date();
@@ -727,7 +736,6 @@ renderDonateXBlock();
 updateCustomBuyPreview();
 }
 
-// X-блок у донаті
 function renderDonateXBlock() {
 if (!donateXBlock) return;
 const xActive = state.globalMutation > 1;
@@ -983,9 +991,10 @@ else if (price > 100) price = Math.round(price / 10) * 10;
 s.price = price;
 });
 
+// Розкид цін кейсів значно більший (експоненційне зростання)
 const CASE_NAMES = ["Дерев'яний","Залізний","Сталевий","Бронзовий","Срібний","Золотий","Платиновий","Алмазний","Кристальний","Льодовий","Вогняний","Грозовий","Тіньовий","Смарагдовий","Рубіновий","Сапфіровий","Аметистовий","Космічний","Вулканічний","Океанський","Лісовий","Пустельний","Арктичний","Королівський","Імператорський"];
-const CASE_PRICES = [5,12,25,50,90,150,240,380,580,850,1200,1700,2400,3300,4500,6000,8000,10500,13500,17000,21000,26000,32000,40000,50000];
-const CASE_ITEM_MULT = [1,1,1,1,1,1,1,1,1,1,1,1, 2,2,2,2,2,2,2, 4,4,4,4,4,4];
+const CASE_PRICES = [5,15,40,100,250,600,1500,3500,8000,18000,40000,80000,150000,280000,500000,900000,1500000,2500000,4000000,6500000,10000000,15000000,22000000,32000000,50000000];
+const CASE_ITEM_MULT = [0.5,0.7,1,1.3,1.7,2.2,2.8,3.5,4.5,5.5,7,8.5,10,12,15,18,22,26,30,36,42,50,58,68,80];
 
 const CASE_WEIGHTS = [
 [25, 15, 40, 15, 4,  1],[25, 15, 38, 17, 4,  1],[25, 14, 36, 20, 4,  1],[24, 14, 35, 22, 4,  1],
@@ -1029,6 +1038,31 @@ skin.sellPrice = Math.round((skin.price || 0) * itemMult);
 return { skin: skin, price: skin.sellPrice };
 }
 
+// ═══════════════════════════════════════════════════════════════
+// ГОЛОВНА ФУНКЦІЯ ОКУПНОСТІ
+// Спочатку визначаємо "чи окупилось" (40%), потім множимо ціну кейсу
+// на відповідний множник, щоб отримати фінальну ціну предмета.
+// Це дає ~40% шанс що гравець отримає >= ціни кейсу.
+// ═══════════════════════════════════════════════════════════════
+function rollCaseReward(casePrice, baseSkin) {
+const isWin = Math.random() < WIN_CHANCE;
+let mult;
+if (isWin) {
+mult = WIN_MULT_MIN + Math.random() * (WIN_MULT_MAX - WIN_MULT_MIN);
+} else {
+mult = LOSE_MULT_MIN + Math.random() * (LOSE_MULT_MAX - LOSE_MULT_MIN);
+}
+let finalPrice = Math.round(casePrice * mult);
+finalPrice = Math.max(1, finalPrice);
+// Оновлюємо ціну скіна
+const skin = Object.assign({}, baseSkin);
+skin.sellPrice = finalPrice;
+skin.price = finalPrice;
+// Додаємо маркер окупу для відображення
+skin.isWin = isWin;
+return { skin: skin, price: finalPrice, isWin: isWin, mult: mult };
+}
+
 function applyGlobalMutation(winner, basePrice) {
 if (!state.globalMutation || state.globalMutation <= 1) return { skin: winner, price: basePrice };
 const x = state.globalMutation;
@@ -1055,7 +1089,6 @@ return { skin: { id: chosen.id, name: chosen.name, type: "coffin", rarity: "anci
 
 function pickRandomSkin() { return SKINS[Math.floor(Math.random() * SKINS.length)]; }
 
-// Випадковий предмет для анімації відповідно до кейсу
 function pickRandomForCase(caseId) {
 if (caseId === "coffin") {
 const c = COFFINS[Math.floor(Math.random() * COFFINS.length)];
@@ -1272,16 +1305,28 @@ saveLocal();
 render();
 await saveState({ coins: state.coins, spent: state.spent, opened: state.opened, dollars: state.dollars });
 
-let result;
-if (currentCase.id === "coffin") result = pickCoffin();
-else {
+// Вибір базового скіна за вагами
+let baseSkin;
+if (currentCase.id === "coffin") {
+baseSkin = pickCoffin().skin;
+} else {
 const caseIndex = CASES.findIndex(function(c){return c.id === currentCase.id;});
 const found = CASES[caseIndex];
-result = pickSkinFromWeights(found.weights, found.itemMult, caseIndex);
+baseSkin = pickSkinFromWeights(found.weights, found.itemMult, caseIndex).skin;
 }
-const mutated = applyGlobalMutation(result.skin, result.price);
-const winner = mutated.skin;
-const finalPrice = mutated.price;
+
+// ═══ ЗАСТОСОВУЄМО МЕХАНІКУ ОКУПНОСТІ ═══
+// Для безкоштовних кейсів (з тапалки) — базова ціна = середня ціна скіна
+// Для платних — ціна кейсу
+const rewardBasePrice = currentCase.free ? (baseSkin.price || 100) : currentCase.price;
+const reward = rollCaseReward(rewardBasePrice, baseSkin);
+let winner = reward.skin;
+let finalPrice = reward.price;
+
+// Застосовуємо X-мутацію якщо активна
+const mutated = applyGlobalMutation(winner, finalPrice);
+winner = mutated.skin;
+finalPrice = mutated.price;
 
 let html = "";
 for (let i = 0; i < 30; i++) {
@@ -1315,10 +1360,17 @@ else r = RARITY[winner.rarity];
 const emoji = winner.emoji || TYPE_EMOJI[winner.type] || "📦";
 const winIcon = imgOrEmoji(winner.img, emoji, 90);
 resultBlock.style.display = "block";
+
+// Показуємо чи окупилось
+const winBadge = reward.isWin
+? '<div style="font-size:11px;font-weight:900;color:#10b981;margin-top:6px">✅ ОКУПИЛОСЬ! x' + reward.mult.toFixed(2) + '</div>'
+: '<div style="font-size:11px;font-weight:900;color:#ef4444;margin-top:6px">❌ Не окупилось x' + reward.mult.toFixed(2) + '</div>';
+
 resultBlock.innerHTML = '<div class="win-item" style="color:'+r.color+'">'
 + '<div class="win-icon" style="color:'+r.color+'">'+winIcon+'</div>'
 + '<div class="win-name" style="color:'+r.color+'">'+winner.name+'</div>'
 + '<div class="win-rarity" style="color:'+r.color+'">'+r.name+' · '+finalPrice.toLocaleString()+'</div>'
++ winBadge
 + '</div>'
 + '<button class="btn btn-sell" id="btnSell">💰 Продати за '+finalPrice.toLocaleString()+'</button>'
 + '<button class="btn btn-add" id="btnAdd">🎒 Залишити в інвентар</button>';
@@ -1439,7 +1491,6 @@ promoInput.addEventListener("keydown", function(e) { if (e.key === "Enter") btnA
 $("btnDonateQuick").addEventListener("click", function() {
 showSection("donate");
 document.querySelectorAll(".nav-btn").forEach(function(b) { b.classList.remove("active"); });
-document.querySelector('.nav-btn[data-nav="donate"]').classList.add("active");
 });
 
 btnAdminQuick.addEventListener("click", function() {
@@ -1518,7 +1569,6 @@ if (donateBtn) {
 donateBtn.addEventListener("click", function() {
 showSection("donate");
 document.querySelectorAll(".nav-btn").forEach(function(b) { b.classList.remove("active"); });
-document.querySelector('.nav-btn[data-nav="donate"]').classList.add("active");
 });
 }
 }
@@ -1752,7 +1802,6 @@ tapsDate: state.tapsDate, tapsToday: state.tapsToday,
 lastStreakDate: state.lastStreakDate
 });
 
-// Запускаємо таймер до ресету
 if (resetTimerInterval) clearInterval(resetTimerInterval);
 resetTimerInterval = setInterval(function() {
 updateResetTimer();

@@ -307,7 +307,7 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="skip-day-block">
 <div class="skip-day-title">⏭ Пропустити день</div>
 <div class="skip-day-desc">Пропусти день і отримай новий ліміт. Доступно тільки після тапання всього ліміту.</div>
-<button class="skip-day-btn" id="btnSkipDay" disabled>⏭ Пропустити за $5.00</button>
+<button class="skip-day-btn" id="btnSkipDay" disabled>⏭ Пропустити за $0.25</button>
 <div class="skip-day-locked" id="skipDayLocked">🔒 Спочатку протапай весь ліміт</div>
 </div>
 </div>
@@ -496,18 +496,16 @@ const fullName = (userName + (userLastName ? " " + userLastName : "")).trim();
 const BASE_LIMIT = 5000;
 const MAX_LIMIT = 10000;
 const STREAK_BONUS = 500;
-const SKIP_DAY_COST = 5;
+const SKIP_DAY_COST = 0.25;   // ← ЗМІНЕНО з 5 на 0.25
 const X_BASE_COST = 0.2;
 const MAX_DROP = 100000000;
 
-// ═══ ОКУП 40% (для всіх кейсів, крім Гробовця) ═══
 const WIN_CHANCE = 0.40;
 const WIN_MULT_MIN = 1.0;
 const WIN_MULT_MAX = 1.15;
 const LOSE_MULT_MIN = 0.01;
 const LOSE_MULT_MAX = 0.05;
 
-// Прихований легкий старт
 const EARLY_COINS_THRESHOLD = 10000;
 const EARLY_WIN_CHANCE = 0.55;
 const EARLY_WIN_MULT_MIN = 1.05;
@@ -524,7 +522,6 @@ const CASE_TYPE_BY_STEP = [
 ];
 const ADMIN_CODE = "dhjdkgd";
 
-// ═══ ГРОБОВЕЦЬ: окуп ~40% за рідкістями ═══
 const COFFIN_RARITY_MULT = {
 common:    { min: 0.05, max: 0.20 },
 uncommon:  { min: 0.20, max: 0.50 },
@@ -681,10 +678,12 @@ skipDayLocked.textContent = "✅ Можна пропустити день";
 skipDayLocked.style.color = "#10b981";
 } else if (tapped && !hasMoney) {
 btnSkipDay.disabled = true;
+btnSkipDay.textContent = "⏭ Пропустити день за $" + SKIP_DAY_COST.toFixed(2);
 skipDayLocked.textContent = "❌ Недостатньо $";
 skipDayLocked.style.color = "#ef4444";
 } else {
 btnSkipDay.disabled = true;
+btnSkipDay.textContent = "⏭ Пропустити день за $" + SKIP_DAY_COST.toFixed(2);
 skipDayLocked.textContent = "🔒 Спочатку протапай весь ліміт";
 skipDayLocked.style.color = "#ef4444";
 }
@@ -1050,7 +1049,6 @@ skin.sellPrice = skin.price;
 return { skin: skin, price: skin.price };
 }
 
-// ═══ ГРОБОВЕЦЬ: ціна прив'язана до ціни кейсу, окуп ~40% ═══
 function pickCoffin(casePrice) {
 const totalWeight = Object.values(COFFIN_RARITY_WEIGHTS).reduce(function(s, w) { return s + w; }, 0);
 let r = Math.random() * totalWeight;
@@ -1060,16 +1058,13 @@ const weight = COFFIN_RARITY_WEIGHTS[rarity] || 0;
 if (r < weight) { chosenRarity = rarity; break; }
 r -= weight;
 }
-
 const pool = COFFINS.filter(function(c) { return c.rarity === chosenRarity; });
 const chosen = pool[Math.floor(Math.random() * pool.length)] || COFFINS[0];
-
 const mult = COFFIN_RARITY_MULT[chosenRarity] || { min: 0.05, max: 0.20 };
 const m = mult.min + Math.random() * (mult.max - mult.min);
 let finalPrice = Math.round(casePrice * m);
 finalPrice = Math.max(1, finalPrice);
 if (finalPrice > MAX_DROP) finalPrice = MAX_DROP;
-
 return {
 skin: {
 id: chosen.id,
@@ -1097,7 +1092,6 @@ return { skin: s, price: s.price };
 }
 }
 
-// ═══ ОКУП ~40% для звичайних кейсів ═══
 function rollCaseReward(casePrice, baseSkin) {
 const isEarlyGame = (state.coins || 0) < EARLY_COINS_THRESHOLD;
 const winChance = isEarlyGame ? EARLY_WIN_CHANCE : WIN_CHANCE;

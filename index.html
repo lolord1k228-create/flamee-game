@@ -55,17 +55,13 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .tapper-progress-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#a855f7);border-radius:9px;transition:width .3s ease;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;min-width:60px}
 .tapper-next{font-size:11px;color:#8b7ba8;margin-bottom:8px}
 .tapper-next b{color:#fbbf24;font-size:13px}
-
 .reset-timer{background:#0f0a1e;border-radius:10px;padding:8px;border:1px solid #3a2a5a;margin-bottom:10px;text-align:center}
 .reset-timer-label{font-size:9px;color:#8b7ba8;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
 .reset-timer-value{font-size:14px;font-weight:900;color:#10b981;font-variant-numeric:tabular-nums;text-shadow:0 0 10px rgba(16,185,129,.5)}
-
 .tapper-milestones{display:flex;justify-content:space-between;gap:6px;font-size:10px}
 .tapper-milestone{padding:6px 3px;border-radius:8px;background:#0f0a1e;border:1px solid #3a2a5a;flex:1;text-align:center;font-weight:700;color:#8b7ba8;transition:all .3s;font-size:9px}
 .tapper-milestone.reached{background:#7c3aed;color:#fff;border-color:#a855f7;box-shadow:0 0 10px rgba(168,85,247,.6)}
 .tapper-milestone.top{background:linear-gradient(135deg,#f59e0b,#d97706);color:#1a0f2e;border-color:#fbbf24}
-.tapper-milestone.locked{opacity:.4}
-
 .skip-day-block{margin-top:12px;padding:12px;background:linear-gradient(180deg,#1a1230,#100a22);border-radius:14px;border:2px solid #f59e0b;box-shadow:0 0 16px rgba(245,158,11,.25)}
 .skip-day-title{font-size:12px;font-weight:800;color:#fbbf24;text-align:center;margin-bottom:6px}
 .skip-day-desc{font-size:10px;color:#8b7ba8;text-align:center;margin-bottom:10px;line-height:1.4}
@@ -73,7 +69,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .skip-day-btn:active:not(:disabled){transform:scale(.97)}
 .skip-day-btn:disabled{opacity:.4;cursor:not-allowed;background:linear-gradient(135deg,#4b5563,#374151);color:#9ca3af;box-shadow:none}
 .skip-day-locked{font-size:10px;color:#ef4444;text-align:center;margin-top:6px;font-weight:700}
-
 .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .case-card{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:20px;padding:12px 8px;text-align:center;border:2px solid #3a2a5a;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.4)}
 .case-card:active{transform:scale(.97)}
@@ -103,12 +98,10 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 @keyframes badgePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
 .inventory-section{display:none}
 .inventory-section.active{display:block}
-
 .sort-row{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px;padding:8px;background:#1a1230;border-radius:12px;border:1px solid #2a1f45}
 .sort-btn{padding:8px 4px;background:#0f0a1e;border:1px solid #3a2a5a;border-radius:8px;font-size:10px;font-weight:700;color:#8b7ba8;cursor:pointer;text-align:center;font-family:inherit;transition:all .2s}
 .sort-btn.active{background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;border-color:#a855f7;box-shadow:0 0 10px rgba(168,85,247,.5)}
 .sort-btn:active{transform:scale(.95)}
-
 .inv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .inv-item{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:10px;padding:8px 4px;text-align:center;border:2px solid #2a1f45;position:relative;cursor:pointer;transition:all .2s;overflow:hidden}
 .inv-item:active{transform:scale(.96)}
@@ -144,13 +137,11 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .profile-stat-value.green{color:#10b981}
 .profile-stat-value.pink{color:#ec4899}
 .profile-stat-label{font-size:9px;color:#8b7ba8;text-transform:uppercase;letter-spacing:.8px;font-weight:700}
-
 .profile-nav-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
 .profile-nav-btn{background:linear-gradient(135deg,#7c3aed,#a855f7);border:none;border-radius:14px;padding:14px 8px;color:#fff;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;text-align:center;box-shadow:0 4px 16px rgba(168,85,247,.4);display:flex;flex-direction:column;align-items:center;gap:4px}
 .profile-nav-btn:active{transform:scale(.97)}
 .profile-nav-btn .nav-icon{font-size:22px;line-height:1}
 .profile-nav-btn.green{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 4px 16px rgba(16,185,129,.4)}
-
 .donate-balance{background:linear-gradient(135deg,#10b981,#059669);border-radius:16px;padding:16px;text-align:center;margin-bottom:12px;box-shadow:0 4px 16px rgba(16,185,129,.4)}
 .donate-balance-label{font-size:11px;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .donate-balance-value{font-size:26px;font-weight:900;color:#fff;text-shadow:0 0 12px rgba(255,255,255,.4)}
@@ -176,7 +167,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .custom-buy-quick{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
 .quick-price-btn{padding:8px 4px;background:#0f0a1e;border:1px solid #3a2a5a;border-radius:8px;color:#c4b5fd;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit}
 .quick-price-btn:active{background:#10b981;color:#fff;border-color:#10b981}
-
 .donate-x-block{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:16px;padding:14px;border:2px solid #ec4899;box-shadow:0 0 20px rgba(236,72,153,.25);margin-bottom:12px}
 .donate-x-title{font-size:14px;font-weight:800;color:#f472b6;text-align:center;margin-bottom:6px}
 .donate-x-desc{font-size:10px;color:#8b7ba8;text-align:center;margin-bottom:10px;line-height:1.4}
@@ -192,7 +182,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .donate-x-locked{background:linear-gradient(180deg,#1a1230,#100a22);border-radius:16px;padding:20px;border:2px dashed #4b5563;text-align:center;margin-bottom:12px}
 .donate-x-locked-title{font-size:14px;font-weight:800;color:#6b7280;margin-bottom:6px}
 .donate-x-locked-desc{font-size:11px;color:#8b7ba8;line-height:1.4}
-
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.9);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:1000;padding:16px}
 .modal.show{display:flex}
 .modal-content{background:linear-gradient(180deg,#1a1230,#0f0a1e);border-radius:22px;padding:16px;max-width:400px;width:100%;border:2px solid #3a2a5a;text-align:center;animation:popIn .3s ease}
@@ -266,7 +255,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .admin-quick-amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:6px}
 .admin-quick-btn{padding:6px 4px;background:#1a1230;border:1px solid #3a2a5a;border-radius:8px;font-size:10px;font-weight:700;color:#c4b5fd;cursor:pointer;font-family:inherit}
 .admin-quick-btn:active{background:#7c3aed;color:#fff}
-
 .sell-all-btn{width:100%;padding:11px;margin-bottom:10px;border:none;border-radius:12px;font-size:13px;font-weight:800;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#10b981,#059669);color:#fff;box-shadow:0 4px 16px rgba(16,185,129,.4)}
 .sell-all-btn:active:not(:disabled){transform:scale(.97)}
 .sell-all-btn:disabled{opacity:.4;cursor:not-allowed;background:linear-gradient(135deg,#4b5563,#374151);box-shadow:none}
@@ -318,7 +306,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="tapper-milestone" id="ms2">💎 Кожен 5К</div>
 <div class="tapper-milestone" id="ms3">🔥 Кожен 25К</div>
 </div>
-
 <div class="skip-day-block">
 <div class="skip-day-title">⏭ Пропустити день</div>
 <div class="skip-day-desc">Пропусти день і отримай новий ліміт. Доступно тільки після тапання всього ліміту.</div>
@@ -348,7 +335,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="donate-balance-label">Ваш баланс</div>
 <div class="donate-balance-value" id="dollarsValue">$ 0.00</div>
 </div>
-
 <div class="shop-item">
 <div class="shop-icon">👑</div>
 <div class="shop-info">
@@ -357,9 +343,7 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 </div>
 <button class="shop-buy" id="btnBuyVip">$0.50</button>
 </div>
-
 <div id="donateXBlock"></div>
-
 <div class="custom-buy-card">
 <div class="custom-buy-title">🪙 Купити монети</div>
 <div class="custom-buy-desc">Курс: 1$ = 25 000 монет</div>
@@ -376,7 +360,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <button class="quick-price-btn" data-price="50">$50</button>
 </div>
 </div>
-
 <div class="donate-hint">💵 Поповнити $ може тільки адміністратор</div>
 </div>
 <div class="inventory-section" id="profileSection">
@@ -426,7 +409,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <button class="admin-tab" data-tab="give">🎁 Іншим</button>
 <button class="admin-tab" data-tab="dollars">💵 $</button>
 </div>
-
 <div class="admin-section active" id="tab-self">
 <div class="admin-label">💰 Монети собі</div>
 <div class="admin-quick-amounts">
@@ -447,7 +429,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <input type="text" class="admin-input" id="adminSelfDollars" placeholder="Сума $" value="5">
 <button class="admin-btn dollars" id="btnAdminSelfDollars">💵 Видати собі $</button>
 </div>
-
 <div class="admin-section" id="tab-give">
 <div class="admin-label">👤 Telegram ID гравця</div>
 <input type="text" class="admin-input" id="adminTargetId" placeholder="Напр. 123456789">
@@ -461,7 +442,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <input type="text" class="admin-input" id="adminTargetAmount" placeholder="Кількість монет" value="10000">
 <button class="admin-btn" id="btnAdminGive">🎁 Видати монети</button>
 </div>
-
 <div class="admin-section" id="tab-dollars">
 <div class="admin-label">👤 Telegram ID гравця</div>
 <input type="text" class="admin-input" id="adminDollarsId" placeholder="Напр. 123456789">
@@ -476,7 +456,6 @@ body{background:#0a0a12;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <button class="admin-btn dollars" id="btnAdminDollars">💵 Видати $</button>
 <div style="font-size:10px;color:#8b7ba8;text-align:center;margin-top:6px">1$ = 25 000 монет</div>
 </div>
-
 <button class="admin-close" id="btnAdminClose">Закрити</button>
 </div>
 </div>
@@ -522,24 +501,29 @@ const STREAK_BONUS = 500;
 const SKIP_DAY_COST = 5;
 const X_BASE_COST = 0.2;
 
-// ═══════════════════════════════════════════════════════════════
-// МЕХАНІКА ОКУПНОСТІ
-// ═══════════════════════════════════════════════════════════════
-const WIN_CHANCE = 0.40;
-const WIN_MULT_MIN = 1.2;
-const WIN_MULT_MAX = 2.4;
-const LOSE_MULT_MIN = 0.05;
-const LOSE_MULT_MAX = 0.25;
+// ═══ МАКС ДРОП = 100 000 000 ═══
+const MAX_DROP = 100000000;
 
-// ═══ ПРИХОВАНІ МЕХАНІКИ ═══
-// 1) Стеля для "недонатерів": якщо гравець НІКОЛИ не мав $ — шанс
-//    на скіни дорожче 200K різко падає
-const NON_DONATER_CAP = 200000;
-// 2) Легкий старт: поки на балансі менше 10000 монет — підвищений шанс окупу
+// ═══ ОКУП 40% ═══
+// 40% окуп: множник 1.0–1.15 (avg 1.075)
+// 60% не окуп: множник 0.01–0.05 (avg 0.03)
+// EV = 0.40 × 1.075 + 0.60 × 0.03 = 0.43 + 0.018 = 0.448 ≈ 0.45
+const WIN_CHANCE = 0.40;
+const WIN_MULT_MIN = 1.0;
+const WIN_MULT_MAX = 1.15;
+const LOSE_MULT_MIN = 0.01;
+const LOSE_MULT_MAX = 0.05;
+
+// Прихований легкий старт
 const EARLY_COINS_THRESHOLD = 10000;
-const EARLY_WIN_CHANCE = 0.70;
-const EARLY_WIN_MULT_MIN = 1.4;
-const EARLY_WIN_MULT_MAX = 3.0;
+const EARLY_WIN_CHANCE = 0.55;
+const EARLY_WIN_MULT_MIN = 1.05;
+const EARLY_WIN_MULT_MAX = 1.3;
+const EARLY_LOSE_MULT_MIN = 0.02;
+const EARLY_LOSE_MULT_MAX = 0.10;
+
+// Прихована стеля для недонатерів
+const NON_DONATER_CAP = 200000;
 
 const TAP_STEP = 1000;
 const CASE_TYPE_BY_STEP = [
@@ -689,7 +673,6 @@ tapperBtn.classList.remove("locked");
 ms1.classList.toggle("reached", state.taps >= 1000);
 ms2.classList.toggle("reached", state.taps >= 5000);
 ms3.classList.toggle("top", state.taps >= 25000);
-
 updateSkipDayUI();
 updateResetTimer();
 }
@@ -705,12 +688,10 @@ skipDayLocked.textContent = "✅ Можна пропустити день";
 skipDayLocked.style.color = "#10b981";
 } else if (tapped && !hasMoney) {
 btnSkipDay.disabled = true;
-btnSkipDay.textContent = "⏭ Пропустити день за $" + SKIP_DAY_COST.toFixed(2);
-skipDayLocked.textContent = "❌ Недостатньо $ (потрібно $" + SKIP_DAY_COST.toFixed(2) + ")";
+skipDayLocked.textContent = "❌ Недостатньо $";
 skipDayLocked.style.color = "#ef4444";
 } else {
 btnSkipDay.disabled = true;
-btnSkipDay.textContent = "⏭ Пропустити день за $" + SKIP_DAY_COST.toFixed(2);
 skipDayLocked.textContent = "🔒 Спочатку протапай весь ліміт";
 skipDayLocked.style.color = "#ef4444";
 }
@@ -762,12 +743,11 @@ if (!donateXBlock) return;
 const xActive = state.globalMutation > 1;
 const xText = xActive ? 'X' + state.globalMutation : 'X-режим';
 const xBtnClass = xActive ? 'donate-x-btn active' : 'donate-x-btn';
-
 if (state.isVip) {
 const xCost = xActive ? getXCost(state.globalMutation) : 0;
 donateXBlock.innerHTML = '<div class="donate-x-block">'
 + '<div class="donate-x-title">🎰 X-режим (VIP)</div>'
-+ '<div class="donate-x-desc">Всі кейси стануть дорожчими в X разів, лут отримає мутацію.<br><b style="color:#fbbf24">Доплата: (X-1) × $0.20</b></div>'
++ '<div class="donate-x-desc">Всі кейси стануть дорожчими в X разів.<br><b style="color:#fbbf24">Доплата: (X-1) × $0.20</b></div>'
 + '<div class="donate-x-row">'
 + '<button class="donate-x-quick" data-x="2">X2<br>$0.20</button>'
 + '<button class="donate-x-quick" data-x="5">X5<br>$0.80</button>'
@@ -778,7 +758,6 @@ donateXBlock.innerHTML = '<div class="donate-x-block">'
 + '<button class="'+xBtnClass+'" id="donateXToggle">'+(xActive ? '✅ ' + xText + ' активний — вимкнути' : '🎰 Увімкнути X-режим')+'</button>'
 + '<div class="donate-x-status">'+(xActive ? '✅ X' + state.globalMutation + ' активний' : '❌ X-режим вимкнено')+'</div>'
 + '</div>';
-
 const xInput = $("donateXInput");
 document.querySelectorAll(".donate-x-quick").forEach(function(btn) {
 btn.addEventListener("click", function() {
@@ -806,10 +785,7 @@ showToast("🎰 X" + x + " активовано!");
 });
 }
 } else {
-donateXBlock.innerHTML = '<div class="donate-x-locked">'
-+ '<div class="donate-x-locked-title">🔒 X-режим</div>'
-+ '<div class="donate-x-locked-desc">Купи VIP статус за $0.50 щоб отримати доступ до X-режиму</div>'
-+ '</div>';
+donateXBlock.innerHTML = '<div class="donate-x-locked"><div class="donate-x-locked-title">🔒 X-режим</div><div class="donate-x-locked-desc">Купи VIP статус за $0.50</div></div>';
 }
 }
 
@@ -818,11 +794,7 @@ const input = $("customDollarsInput");
 const preview = $("customBuyPreview");
 if (!input || !preview) return;
 const dollars = parseFloat(input.value) || 0;
-if (dollars <= 0) {
-preview.textContent = "Введіть суму";
-preview.style.color = "#8b7ba8";
-return;
-}
+if (dollars <= 0) { preview.textContent = "Введіть суму"; preview.style.color = "#8b7ba8"; return; }
 const coins = Math.floor(dollars * 25000);
 preview.textContent = "Отримаєте: " + coins.toLocaleString() + " монет";
 preview.style.color = "#fbbf24";
@@ -831,14 +803,9 @@ if (btn) btn.disabled = (state.dollars || 0) < dollars;
 }
 
 function updateAdminUI() {
-if (state.isAdmin) {
-btnAdminQuick.classList.add("show");
-} else {
-btnAdminQuick.classList.remove("show");
-}
-if (vipBadge) {
-vipBadge.style.display = state.isVip ? "inline-block" : "none";
-}
+if (state.isAdmin) btnAdminQuick.classList.add("show");
+else btnAdminQuick.classList.remove("show");
+if (vipBadge) vipBadge.style.display = state.isVip ? "inline-block" : "none";
 }
 
 function showTapFloat(x, y) {
@@ -856,11 +823,7 @@ for (const ms of CASE_TYPE_BY_STEP) {
 const prevSteps = Math.floor(prevTaps / ms.step);
 const newSteps = Math.floor(newTaps / ms.step);
 const diff = newSteps - prevSteps;
-if (diff > 0) {
-for (let i = 0; i < diff; i++) {
-giveRandomCase(ms.type);
-}
-}
+if (diff > 0) for (let i = 0; i < diff; i++) giveRandomCase(ms.type);
 }
 }
 
@@ -874,37 +837,21 @@ updateTapperUI();
 tapperBtn.classList.add("tapped");
 setTimeout(function() { tapperBtn.classList.remove("tapped"); }, 200);
 let x, y;
-if (e && e.touches && e.touches[0]) {
-x = e.touches[0].clientX; y = e.touches[0].clientY;
-} else if (e && e.clientX) {
-x = e.clientX; y = e.clientY;
-} else {
-const rect = tapperBtn.getBoundingClientRect();
-x = rect.left + rect.width / 2; y = rect.top + rect.height / 2;
-}
+if (e && e.touches && e.touches[0]) { x = e.touches[0].clientX; y = e.touches[0].clientY; }
+else if (e && e.clientX) { x = e.clientX; y = e.clientY; }
+else { const rect = tapperBtn.getBoundingClientRect(); x = rect.left + rect.width / 2; y = rect.top + rect.height / 2; }
 showTapFloat(x, y);
 checkTapMilestones(prevTaps, state.taps);
 if (state.taps % 10 === 0) {
-saveState({
-taps: state.taps, tapsToday: state.tapsToday, limit: state.limit,
-streak: state.streak, lastStreakDate: state.lastStreakDate,
-tapsDate: state.tapsDate
-});
+saveState({ taps: state.taps, tapsToday: state.tapsToday, limit: state.limit, streak: state.streak, lastStreakDate: state.lastStreakDate, tapsDate: state.tapsDate });
 }
 }
 
 function giveRandomCase(type) {
 let caseIndex;
-if (type === "basic") {
-caseIndex = Math.floor(Math.random() * 12);
-showToast("🎁 Базовий кейс!");
-} else if (type === "pro") {
-caseIndex = 12 + Math.floor(Math.random() * 8);
-showToast("💎 PRO кейс!");
-} else {
-caseIndex = 20 + Math.floor(Math.random() * 5);
-showToast("🔥 TOP кейс!");
-}
+if (type === "basic") { caseIndex = Math.floor(Math.random() * 12); showToast("🎁 Базовий кейс!"); }
+else if (type === "pro") { caseIndex = 12 + Math.floor(Math.random() * 8); showToast("💎 PRO кейс!"); }
+else { caseIndex = 20 + Math.floor(Math.random() * 5); showToast("🔥 TOP кейс!"); }
 const c = CASES[caseIndex];
 if (!c) return;
 setTimeout(function() { openCaseModal(c.id, 0); }, 300);
@@ -968,53 +915,72 @@ const COFFINS = [
 { id: "coffin_me",      name: "🌟 Гріб для тебе і сім'ї", emoji: "🌟", color: "#fbbf24", price: 600000, weight: 3,  img: "textures/topp/coffin/coffin_me.png" }
 ];
 
+// ═══ ДІАПАЗОНИ ЦІН (МАКС 100 000 000) ═══
+const BASE_PRICE = {
+common:    { min: 1,         max: 500 },
+uncommon:  { min: 501,       max: 1000 },
+rare:      { min: 1001,      max: 20000 },
+mythical:  { min: 20001,     max: 500000 },
+legendary: { min: 500001,    max: 10000000 },
+ancient:   { min: 20000001,  max: 100000000 }
+};
+
+// Ножі/рукавички — окремі діапазони
+const MELEE_PRICE = {
+legendary: { min: 1000000,   max: 20000000 },
+ancient:   { min: 20000001,  max: 100000000 }
+};
+
+const TYPE_MULT = { gun: 1, gloves: 3, knife: 5 };
+
 const SKINS = [];
-const KNIFE_NAMES = ["Керамбіт","Бабочка","Штих","Танто","Кунай","Класік","Фліп","Хантер","Боуї","Номад","Пушдаг","Талон","Урсус","Наваха","Стілетто","Паракорд","Скелет","Сурж","Кулі","Мясник","Кобра","Скорпіон","Фантом","Тінь","Ворон","Клинок","Лезо","Різак","Кинджал","Шабля","Ятаган","Катана","Вакізаші","Танто-Про","Гарпун","Спис","Сокира","Тесак","Мачете","Кирка","Зубр","Вовк","Ведмідь","Лев","Тигр","Дракон","Фенікс","Орел","Яструб","Грифон"];
-for (let i = 1; i <= 50; i++) {
-const rar = i <= 40 ? "legendary" : "ancient";
+
+// ═══ НОЖІ — 20 ═══
+const KNIFE_NAMES = ["Керамбіт","Бабочка","Штих","Танто","Кунай","Класік","Фліп","Хантер","Боуї","Номад","Пушдаг","Талон","Урсус","Наваха","Стілетто","Паракорд","Скелет","Сурж","Кулі","Мясник"];
+for (let i = 1; i <= 20; i++) {
+const rar = i <= 15 ? "legendary" : "ancient";
 SKINS.push({ id: "knife_"+i, name: 'Ніж «'+KNIFE_NAMES[i-1]+'»', type: "knife", rarity: rar, img: "textures/skins/knife_"+String(i).padStart(2,'0')+".png" });
 }
-const GLOVE_NAMES = ["Спецназ","Кривава","Дракон","Вогняні","Кібер","Неон","Хром","Золоті","Срібні","Бронзові","Тіньові","Льодові","Отруйні","Космічні","Вулканічні","Штормові","Грозові","Кристальні","Діамантові","Рубінові","Смарагдові","Сапфірові","Аметистові","Топазові","Оніксові","Мідні","Сталеві","Титанові","Платинові","Іридиєві","Магмові","Пекельні","Демонічні","Янгольські","Божественні","Прокляті","Священні","Легендарні","Міфічні","Древні","Королівські","Імператорські","Царські","Фараонові","Богатирські","Козацькі","Січові","Характерні","Військові","Спеціальні"];
-for (let i = 1; i <= 50; i++) {
-const rar = i <= 40 ? "legendary" : "ancient";
+
+// ═══ РУКАВИЧКИ — 20 ═══
+const GLOVE_NAMES = ["Спецназ","Кривава","Дракон","Вогняні","Кібер","Неон","Хром","Золоті","Срібні","Бронзові","Тіньові","Льодові","Отруйні","Космічні","Вулканічні","Штормові","Грозові","Кристальні","Діамантові","Рубінові"];
+for (let i = 1; i <= 20; i++) {
+const rar = i <= 15 ? "legendary" : "ancient";
 SKINS.push({ id: "gloves_"+i, name: 'Рукавички «'+GLOVE_NAMES[i-1]+'»', type: "gloves", rarity: rar, img: "textures/skins/gloves_"+String(i).padStart(2,'0')+".png" });
 }
+
+// ═══ ПУШКИ — 50 ═══
 const GUN_NAMES = ["АК-47","М4А4","M4A1-S","AWP","SSG 08","SCAR-20","G3SG1","FAMAS","Galil AR","AUG","SG 553","MP9","MAC-10","MP7","MP5-SD","UMP-45","P90","PP-Bizon","Nova","XM1014","Mag-7","Sawed-Off","M249","Negev","Desert Eagle","R8 Revolver","Glock-18","USP-S","P2000","P250","Five-SeveN","Tec-9","CZ75-Auto","Dual Berettas","Ballista","AK Redline","M4 Asiimov","AWP Dragon Lore","AWP Medusa","AWP Gungnir","AK Fire Serpent","M4 Howl","AWP Wildfire","AK Vulcan","M4 Hyper Beast","AWP Neo-Noir","AK Neon Rider","M4 Neo-Noir","AWP Fever Dream","AK Bloodsport"];
 for (let i = 1; i <= 50; i++) {
 const rar = i <= 25 ? "common" : i <= 38 ? "uncommon" : i <= 45 ? "rare" : i <= 49 ? "mythical" : "legendary";
 SKINS.push({ id: "gun_"+i, name: GUN_NAMES[i-1], type: "gun", rarity: rar, img: "textures/skins/gun_"+String(i).padStart(2,'0')+".png" });
 }
 
-const BASE_PRICE = {
-common:    { min: 3,    max: 20 },
-uncommon:  { min: 15,   max: 100 },
-rare:      { min: 80,   max: 800 },
-mythical:  { min: 600,  max: 6000 },
-legendary: { min: 4000, max: 40000 },
-ancient:   { min: 20000, max: 200000 }
-};
-const TYPE_MULT = { gun: 1, gloves: 3, knife: 5 };
-
+// ═══ ГЕНЕРАЦІЯ ЦІН — фіксовані в діапазоні рідкості ═══
 SKINS.forEach(function(s) {
-const range = BASE_PRICE[s.rarity] || { min: 3, max: 20 };
-const typeMult = TYPE_MULT[s.type] || 1;
+let range;
+if (s.type === "knife" || s.type === "gloves") range = MELEE_PRICE[s.rarity] || { min: 1000000, max: 20000000 };
+else range = BASE_PRICE[s.rarity] || { min: 1, max: 500 };
 let hash = 0;
 for (let i = 0; i < s.id.length; i++) {
 hash = ((hash << 5) - hash) + s.id.charCodeAt(i);
 hash = hash & hash;
 }
 const rnd = Math.abs(hash % 1000) / 1000;
-let price = Math.round((range.min + (range.max - range.min) * rnd) * typeMult);
-price = Math.max(3, Math.min(200000, price));
-if (price > 10000) price = Math.round(price / 1000) * 1000;
-else if (price > 1000) price = Math.round(price / 100) * 100;
-else if (price > 100) price = Math.round(price / 10) * 10;
+let price = Math.round(range.min + (range.max - range.min) * rnd);
+if (price > 10000000) price = Math.ceil(price / 1000000) * 1000000;
+else if (price > 1000000) price = Math.ceil(price / 100000) * 100000;
+else if (price > 100000) price = Math.ceil(price / 10000) * 10000;
+else if (price > 10000) price = Math.ceil(price / 1000) * 1000;
+else if (price > 1000) price = Math.ceil(price / 100) * 100;
+else if (price > 100) price = Math.ceil(price / 10) * 10;
+if (price < range.min) price = range.min;
+if (price > MAX_DROP) price = MAX_DROP;
 s.price = price;
 });
 
 const CASE_NAMES = ["Дерев'яний","Залізний","Сталевий","Бронзовий","Срібний","Золотий","Платиновий","Алмазний","Кристальний","Льодовий","Вогняний","Грозовий","Тіньовий","Смарагдовий","Рубіновий","Сапфіровий","Аметистовий","Космічний","Вулканічний","Океанський","Лісовий","Пустельний","Арктичний","Королівський","Імператорський"];
 const CASE_PRICES = [5,15,40,100,250,600,1500,3500,8000,18000,40000,80000,150000,280000,500000,900000,1500000,2500000,4000000,6500000,10000000,15000000,22000000,32000000,50000000];
-const CASE_ITEM_MULT = [0.5,0.7,1,1.3,1.7,2.2,2.8,3.5,4.5,5.5,7,8.5,10,12,15,18,22,26,30,36,42,50,58,68,80];
 
 const CASE_WEIGHTS = [
 [25, 15, 40, 15, 4,  1],[25, 15, 38, 17, 4,  1],[25, 14, 36, 20, 4,  1],[24, 14, 35, 22, 4,  1],
@@ -1034,7 +1000,6 @@ CASES.push({
 id: "case_"+String(i+1).padStart(2,'0'),
 name: '«'+CASE_NAMES[i]+'»',
 price: CASE_PRICES[i],
-itemMult: CASE_ITEM_MULT[i],
 weights: CASE_WEIGHTS[i],
 img: "textures/cases/case_"+String(i+1).padStart(2,'0')+".png",
 wide: i >= 20
@@ -1046,11 +1011,25 @@ const neverHadDollars = !state.hasEverHadDollars && (state.dollars || 0) <= 0;
 if (!neverHadDollars) return 1;
 if (skinPrice <= NON_DONATER_CAP) return 1;
 const excess = skinPrice - NON_DONATER_CAP;
-const k = excess / 100000;
-return Math.max(0.0001, Math.exp(-k * 3));
+const k = excess / 1000000;
+return Math.max(0.00001, Math.exp(-k * 2));
 }
 
-function pickSkinFromWeights(weights, itemMult, caseIndex) {
+function getMinPrice(skin) {
+if (skin.type === "knife" || skin.type === "gloves") {
+const r = MELEE_PRICE[skin.rarity];
+return r ? r.min : 1000000;
+}
+const r = BASE_PRICE[skin.rarity];
+return r ? r.min : 1;
+}
+
+// ═══ ФІЛЬТР: не дропати предмети дорожчі за 2× ціни кейсу ═══
+function getMaxDropForCase(casePrice) {
+return Math.min(casePrice * 2, MAX_DROP);
+}
+
+function pickSkinFromWeights(weights, caseIndex, casePrice) {
 const total = weights.reduce(function(s, w) { return s + w; }, 0);
 let r = Math.random() * total;
 let chosen = "common";
@@ -1058,13 +1037,19 @@ for (let i = 0; i < RARITY_KEYS.length; i++) {
 if (r < weights[i]) { chosen = RARITY_KEYS[i]; break; }
 r -= weights[i];
 }
-const pool = SKINS.filter(function(s) { return s.rarity === chosen; });
-let weighted = pool.map(function(s) {
-return { skin: s, weight: getSkinWeightModifier(s.price || 0) };
-});
+const maxDrop = getMaxDropForCase(casePrice);
+// Фільтр по ціні кейсу
+let pool = SKINS.filter(function(s) { return s.rarity === chosen && s.price <= maxDrop; });
+if (pool.length === 0) {
+// Якщо нічого немає в цій рідкості — беремо будь-що дешевше maxDrop
+pool = SKINS.filter(function(s) { return s.price <= maxDrop; });
+}
+if (pool.length === 0) pool = [SKINS[0]];
+// Зважений вибір з прихованим модифікатором
+let weighted = pool.map(function(s) { return { skin: s, weight: getSkinWeightModifier(s.price || 0) }; });
 const wTotal = weighted.reduce(function(a, b) { return a + b.weight; }, 0);
 let rr = Math.random() * wTotal;
-let picked = weighted[0] ? weighted[0].skin : SKINS[0];
+let picked = weighted[0] ? weighted[0].skin : pool[0];
 for (const w of weighted) {
 if (rr < w.weight) { picked = w.skin; break; }
 rr -= w.weight;
@@ -1072,8 +1057,8 @@ rr -= w.weight;
 let skin = Object.assign({}, picked);
 if (caseIndex >= 20) skin.name = "TOP " + skin.name;
 else if (caseIndex >= 12) skin.name = "PRO " + skin.name;
-skin.sellPrice = Math.round((skin.price || 0) * itemMult);
-return { skin: skin, price: skin.sellPrice };
+skin.sellPrice = skin.price;
+return { skin: skin, price: skin.price };
 }
 
 function pickCoffin() {
@@ -1092,36 +1077,36 @@ function pickRandomSkin() { return SKINS[Math.floor(Math.random() * SKINS.length
 function pickRandomForCase(caseId) {
 if (caseId === "coffin") {
 const c = COFFINS[Math.floor(Math.random() * COFFINS.length)];
-return {
-skin: { id: c.id, name: c.name, type: "coffin", rarity: "ancient",
-img: c.img, emoji: c.emoji, color: c.color, rarityColor: c.color },
-price: c.price
-};
+return { skin: { id: c.id, name: c.name, type: "coffin", rarity: "ancient", img: c.img, emoji: c.emoji, color: c.color, rarityColor: c.color }, price: c.price };
 } else {
 const s = pickRandomSkin();
 return { skin: s, price: s.price };
 }
 }
 
-// ═══════════════════════════════════════════════════════════════
-// ГОЛОВНА ФУНКЦІЯ ОКУПНОСТІ + ПРИХОВАНИЙ ЛЕГКИЙ СТАРТ
-// Легкий старт діє поки БАЛАНС < 10000 монет (не тапи!)
-// ═══════════════════════════════════════════════════════════════
+// ═══ ОКУП ~40% ═══
 function rollCaseReward(casePrice, baseSkin) {
 const isEarlyGame = (state.coins || 0) < EARLY_COINS_THRESHOLD;
 const winChance = isEarlyGame ? EARLY_WIN_CHANCE : WIN_CHANCE;
 const winMin = isEarlyGame ? EARLY_WIN_MULT_MIN : WIN_MULT_MIN;
 const winMax = isEarlyGame ? EARLY_WIN_MULT_MAX : WIN_MULT_MAX;
+const loseMin = isEarlyGame ? EARLY_LOSE_MULT_MIN : LOSE_MULT_MIN;
+const loseMax = isEarlyGame ? EARLY_LOSE_MULT_MAX : LOSE_MULT_MAX;
 
 const isWin = Math.random() < winChance;
 let mult;
-if (isWin) {
-mult = winMin + Math.random() * (winMax - winMin);
-} else {
-mult = LOSE_MULT_MIN + Math.random() * (LOSE_MULT_MAX - LOSE_MULT_MIN);
-}
+if (isWin) mult = winMin + Math.random() * (winMax - winMin);
+else mult = loseMin + Math.random() * (loseMax - loseMin);
+
 let finalPrice = Math.round(casePrice * mult);
 finalPrice = Math.max(1, finalPrice);
+
+// Мінімум за рідкістю
+const minAllowed = getMinPrice(baseSkin);
+if (finalPrice < minAllowed) finalPrice = minAllowed;
+
+// Макс дроп
+if (finalPrice > MAX_DROP) finalPrice = MAX_DROP;
 
 const skin = Object.assign({}, baseSkin);
 skin.sellPrice = finalPrice;
@@ -1137,7 +1122,8 @@ const w = Object.assign({}, winner);
 w.name = "X" + x + " " + w.name;
 w.mutation = "X" + x;
 w.rarityColor = "#ec4899";
-const newPrice = Math.round(basePrice * x);
+let newPrice = Math.round(basePrice * x);
+if (newPrice > MAX_DROP) newPrice = MAX_DROP;
 w.sellPrice = newPrice;
 w.price = newPrice;
 return { skin: w, price: newPrice };
@@ -1210,7 +1196,6 @@ html += '<div class="case-card wide coffin' + (xMult > 1 ? ' mutation' : '') + '
 + '<div class="case-price">'+coffinPrice.toLocaleString()+'</div>'
 + '</div>';
 casesGrid.innerHTML = html;
-
 const cards = casesGrid.querySelectorAll(".case-card");
 cards.forEach(function(el) {
 el.addEventListener("click", function() {
@@ -1222,20 +1207,15 @@ openCaseModal(el.dataset.case, parseInt(el.dataset.price, 10));
 function getSortedInventory() {
 const inv = (state.inventory || []).slice();
 const sort = state.inventorySort || "new";
-if (sort === "new") {
-return inv.reverse();
-} else if (sort === "price_desc") {
-return inv.sort(function(a, b) { return (b.sellPrice || 0) - (a.sellPrice || 0); });
-} else if (sort === "price_asc") {
-return inv.sort(function(a, b) { return (a.sellPrice || 0) - (b.sellPrice || 0); });
-} else if (sort === "rarity") {
-return inv.sort(function(a, b) {
+if (sort === "new") return inv.reverse();
+else if (sort === "price_desc") return inv.sort(function(a, b) { return (b.sellPrice || 0) - (a.sellPrice || 0); });
+else if (sort === "price_asc") return inv.sort(function(a, b) { return (a.sellPrice || 0) - (b.sellPrice || 0); });
+else if (sort === "rarity") return inv.sort(function(a, b) {
 const oa = RARITY[a.rarity] ? RARITY[a.rarity].order : 0;
 const ob = RARITY[b.rarity] ? RARITY[b.rarity].order : 0;
 if (ob !== oa) return ob - oa;
 return (b.sellPrice || 0) - (a.sellPrice || 0);
 });
-}
 return inv;
 }
 
@@ -1269,12 +1249,9 @@ html += '<div class="inv-item" data-uid="'+it.uid+'" style="border-color:'+color
 + '</div>';
 }
 invGrid.innerHTML = html;
-
 const items = invGrid.querySelectorAll(".inv-item");
 items.forEach(function(el) {
-el.addEventListener("click", function() {
-openSellModal(el.dataset.uid);
-});
+el.addEventListener("click", function() { openSellModal(el.dataset.uid); });
 });
 }
 
@@ -1284,19 +1261,11 @@ const isFree = price === 0;
 if (!isFree && state.coins < price) { showToast("❌ Недостатньо монет! Потрібно " + price.toLocaleString()); return; }
 currentCase = { id: caseId, price: price, free: isFree };
 modalTitle.textContent = caseId === "coffin" ? "⚰️ Гробовець" : "🎁 Відкриття";
-
 if (state.globalMutation > 1 && state.isVip) {
 const xCost = getXCost(state.globalMutation);
 xCostBlock.style.display = "block";
-xCostBlock.innerHTML = '<div class="x-cost-info">'
-+ '<div class="x-cost-label">Доплата за X' + state.globalMutation + '</div>'
-+ '<div class="x-cost-value">$' + xCost.toFixed(2) + '</div>'
-+ '<div class="x-cost-note">Списується з балансу $ за кожну прокрутку</div>'
-+ '</div>';
-} else {
-xCostBlock.style.display = "none";
-}
-
+xCostBlock.innerHTML = '<div class="x-cost-info"><div class="x-cost-label">Доплата за X' + state.globalMutation + '</div><div class="x-cost-value">$' + xCost.toFixed(2) + '</div><div class="x-cost-note">Списується з балансу $</div></div>';
+} else xCostBlock.style.display = "none";
 let html = "";
 for (let i = 0; i < 30; i++) {
 const item = pickRandomForCase(caseId);
@@ -1304,10 +1273,7 @@ const s = item.skin;
 const emoji = s.emoji || TYPE_EMOJI[s.type] || "📦";
 const color = s.color || (RARITY[s.rarity] ? RARITY[s.rarity].color : "#e8edf5");
 const icon = imgOrEmoji(s.img, emoji, 36);
-html += '<div class="roulette-item" style="border-color:'+color+'">'
-+ '<div class="r-icon">'+icon+'</div>'
-+ '<div class="r-name" style="color:'+color+'">'+s.name+'</div>'
-+ '</div>';
+html += '<div class="roulette-item" style="border-color:'+color+'"><div class="r-icon">'+icon+'</div><div class="r-name" style="color:'+color+'">'+s.name+'</div></div>';
 }
 rouletteTrack.innerHTML = html;
 rouletteTrack.style.transition = "none";
@@ -1316,39 +1282,29 @@ resultBlock.style.display = "none";
 btnOpen.style.display = "block";
 $("rouletteWrap").style.display = "block";
 btnOpen.disabled = false;
-if (isFree) {
-btnOpen.textContent = "🔓 Відкрити БЕЗКОШТОВНО";
-} else if (state.globalMutation > 1 && state.isVip) {
+if (isFree) btnOpen.textContent = "🔓 Відкрити БЕЗКОШТОВНО";
+else if (state.globalMutation > 1 && state.isVip) {
 const xCost = getXCost(state.globalMutation);
 btnOpen.textContent = "🔓 Відкрити за " + price.toLocaleString() + " + $" + xCost.toFixed(2);
-} else {
-btnOpen.textContent = "🔓 Відкрити за " + price.toLocaleString();
-}
+} else btnOpen.textContent = "🔓 Відкрити за " + price.toLocaleString();
 modal.classList.add("show");
 }
 
 async function openCurrentCase() {
 if (isProcessing || !currentCase) return;
 if (!currentCase.free && state.coins < currentCase.price) { showToast("❌ Недостатньо монет!"); return; }
-
 let xCost = 0;
 if (!currentCase.free && state.globalMutation > 1 && state.isVip) {
 xCost = getXCost(state.globalMutation);
-if ((state.dollars || 0) < xCost) {
-showToast("❌ Недостатньо $ для X-режиму! Потрібно $" + xCost.toFixed(2));
-return;
+if ((state.dollars || 0) < xCost) { showToast("❌ Недостатньо $ для X-режиму!"); return; }
 }
-}
-
 isProcessing = true;
 btnOpen.disabled = true;
 btnOpen.textContent = "🎰 Крутиться...";
 if (!currentCase.free) {
 state.coins -= currentCase.price;
 state.spent = (state.spent || 0) + currentCase.price;
-if (xCost > 0) {
-state.dollars -= xCost;
-}
+if (xCost > 0) state.dollars -= xCost;
 }
 state.opened = (state.opened || 0) + 1;
 saveLocal();
@@ -1356,19 +1312,16 @@ render();
 await saveState({ coins: state.coins, spent: state.spent, opened: state.opened, dollars: state.dollars });
 
 let baseSkin;
-if (currentCase.id === "coffin") {
-baseSkin = pickCoffin().skin;
-} else {
+if (currentCase.id === "coffin") baseSkin = pickCoffin().skin;
+else {
 const caseIndex = CASES.findIndex(function(c){return c.id === currentCase.id;});
 const found = CASES[caseIndex];
-baseSkin = pickSkinFromWeights(found.weights, found.itemMult, caseIndex).skin;
+baseSkin = pickSkinFromWeights(found.weights, caseIndex, found.price).skin;
 }
-
 const rewardBasePrice = currentCase.free ? (baseSkin.price || 100) : currentCase.price;
 const reward = rollCaseReward(rewardBasePrice, baseSkin);
 let winner = reward.skin;
 let finalPrice = reward.price;
-
 const mutated = applyGlobalMutation(winner, finalPrice);
 winner = mutated.skin;
 finalPrice = mutated.price;
@@ -1380,10 +1333,7 @@ const s = item.skin;
 const emoji = s.emoji || TYPE_EMOJI[s.type] || "📦";
 const color = s.color || (RARITY[s.rarity] ? RARITY[s.rarity].color : "#e8edf5");
 const icon = imgOrEmoji(s.img, emoji, 36);
-html += '<div class="roulette-item" style="border-color:'+color+'">'
-+ '<div class="r-icon">'+icon+'</div>'
-+ '<div class="r-name" style="color:'+color+'">'+s.name+'</div>'
-+ '</div>';
+html += '<div class="roulette-item" style="border-color:'+color+'"><div class="r-icon">'+icon+'</div><div class="r-name" style="color:'+color+'">'+s.name+'</div></div>';
 }
 rouletteTrack.innerHTML = html;
 rouletteTrack.style.transition = "none";
@@ -1405,19 +1355,13 @@ else r = RARITY[winner.rarity];
 const emoji = winner.emoji || TYPE_EMOJI[winner.type] || "📦";
 const winIcon = imgOrEmoji(winner.img, emoji, 90);
 resultBlock.style.display = "block";
-resultBlock.innerHTML = '<div class="win-item" style="color:'+r.color+'">'
-+ '<div class="win-icon" style="color:'+r.color+'">'+winIcon+'</div>'
-+ '<div class="win-name" style="color:'+r.color+'">'+winner.name+'</div>'
-+ '<div class="win-rarity" style="color:'+r.color+'">'+r.name+' · '+finalPrice.toLocaleString()+'</div>'
-+ '</div>'
+resultBlock.innerHTML = '<div class="win-item" style="color:'+r.color+'"><div class="win-icon" style="color:'+r.color+'">'+winIcon+'</div><div class="win-name" style="color:'+r.color+'">'+winner.name+'</div><div class="win-rarity" style="color:'+r.color+'">'+r.name+' · '+finalPrice.toLocaleString()+'</div></div>'
 + '<button class="btn btn-sell" id="btnSell">💰 Продати за '+finalPrice.toLocaleString()+'</button>'
 + '<button class="btn btn-add" id="btnAdd">🎒 Залишити в інвентар</button>';
 $("rouletteWrap").style.display = "none";
 xCostBlock.style.display = "none";
 btnOpen.style.display = "none";
-
 pendingItem = { id: winner.id, name: winner.name, type: winner.type, rarity: winner.rarity, rarityName: r.name, rarityColor: r.color, sellPrice: finalPrice, img: winner.img, emoji: winner.emoji || null, mutation: winner.mutation || null, uid: Date.now() + "_" + Math.random().toString(36).slice(2,6) };
-
 document.getElementById("btnSell").addEventListener("click", async function() {
 state.coins += finalPrice;
 pendingItem = null;
@@ -1428,12 +1372,8 @@ showToast("💰 Продано за " + finalPrice.toLocaleString());
 modal.classList.remove("show");
 isProcessing = false;
 });
-
 document.getElementById("btnAdd").addEventListener("click", async function() {
-if (pendingItem) {
-state.inventory.push(pendingItem);
-pendingItem = null;
-}
+if (pendingItem) { state.inventory.push(pendingItem); pendingItem = null; }
 saveLocal();
 render();
 await saveState({ inventory: state.inventory });
@@ -1453,11 +1393,7 @@ const it = state.inventory[idx];
 const emoji = it.emoji || TYPE_EMOJI[it.type] || "📦";
 const color = it.rarityColor || (RARITY[it.rarity] ? RARITY[it.rarity].color : "#e8edf5");
 const icon = imgOrEmoji(it.img, emoji, 80);
-sellItemInfo.innerHTML = '<div class="win-item" style="color:'+color+'">'
-+ '<div class="win-icon" style="color:'+color+'">'+icon+'</div>'
-+ '<div class="win-name" style="color:'+color+'">'+it.name+'</div>'
-+ '<div class="win-rarity" style="color:'+color+'">'+(it.rarityName || it.rarity)+'</div>'
-+ '</div>';
+sellItemInfo.innerHTML = '<div class="win-item" style="color:'+color+'"><div class="win-icon" style="color:'+color+'">'+icon+'</div><div class="win-name" style="color:'+color+'">'+it.name+'</div><div class="win-rarity" style="color:'+color+'">'+(it.rarityName || it.rarity)+'</div></div>';
 sellPrice.textContent = (it.sellPrice || 0).toLocaleString();
 sellModal.classList.add("show");
 }
@@ -1509,11 +1445,7 @@ btnActivatePromo.addEventListener("click", async function() {
 const code = promoInput.value.trim().toLowerCase();
 if (!code) { showToast("❌ Введіть код!"); return; }
 if (code === ADMIN_CODE) {
-if (state.isAdmin) {
-showToast("⚠️ Ви вже адмін");
-promoModal.classList.remove("show");
-return;
-}
+if (state.isAdmin) { showToast("⚠️ Ви вже адмін"); promoModal.classList.remove("show"); return; }
 state.isAdmin = true;
 saveLocal();
 updateAdminUI();
@@ -1524,10 +1456,7 @@ promoInput.value = "";
 return;
 }
 if (!PROMOS[code]) { showToast("❌ Невірний промокод!"); return; }
-if (state.usedPromos && state.usedPromos.indexOf(code) !== -1) {
-showToast("⚠️ Ви вже використали цей код!");
-return;
-}
+if (state.usedPromos && state.usedPromos.indexOf(code) !== -1) { showToast("⚠️ Ви вже використали цей код!"); return; }
 const bonus = PROMOS[code];
 state.coins += bonus;
 if (!state.usedPromos) state.usedPromos = [];
@@ -1540,15 +1469,11 @@ promoModal.classList.remove("show");
 });
 
 promoInput.addEventListener("keydown", function(e) { if (e.key === "Enter") btnActivatePromo.click(); });
-
 $("btnDonateQuick").addEventListener("click", function() {
 showSection("donate");
 document.querySelectorAll(".nav-btn").forEach(function(b) { b.classList.remove("active"); });
 });
-
-btnAdminQuick.addEventListener("click", function() {
-adminModal.classList.add("show");
-});
+btnAdminQuick.addEventListener("click", function() { adminModal.classList.add("show"); });
 
 async function loadTop() {
 try {
@@ -1568,9 +1493,7 @@ const isMe = p.id === userId;
 const rankClass = i === 0 ? "r1" : i === 1 ? "r2" : i === 2 ? "r3" : "";
 const medal = i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : (i+1);
 const letter = (p.name || "?").charAt(0).toUpperCase();
-const avatarInner = p.photoUrl
-? '<img src="'+p.photoUrl+'" alt="" onerror="this.remove();this.parentElement.textContent=\''+letter+'\';">'
-: letter;
+const avatarInner = p.photoUrl ? '<img src="'+p.photoUrl+'" alt="" onerror="this.remove();this.parentElement.textContent=\''+letter+'\';">' : letter;
 html += '<div class="top-row'+(isMe?" me":"")+'">'
 + '<div class="top-rank '+rankClass+'">'+medal+'</div>'
 + '<div class="top-avatar">'+avatarInner+'</div>'
@@ -1587,16 +1510,10 @@ topList.innerHTML = '<div class="inv-empty">Не вдалося</div>';
 
 function loadProfile() {
 const letter = (state.name || "?").charAt(0).toUpperCase();
-const avatarInner = userPhotoUrl
-? '<img src="'+userPhotoUrl+'" alt="" onerror="this.remove();this.parentElement.textContent=\''+letter+'\';">'
-: letter;
+const avatarInner = userPhotoUrl ? '<img src="'+userPhotoUrl+'" alt="" onerror="this.remove();this.parentElement.textContent=\''+letter+'\';">' : letter;
 const invLength = (state.inventory || []).length;
 const totalValue = (state.inventory || []).reduce(function(s, it) { return s + (it.sellPrice || 0); }, 0);
-profilePage.innerHTML = '<div class="profile-card-big">'
-+ '<div class="profile-avatar-big">'+avatarInner+'</div>'
-+ '<div class="profile-name-big">'+escapeHtml(state.name || "Гравець")+(state.isVip?' <span class="vip-badge">VIP</span>':'')+'</div>'
-+ '<div class="profile-id-big">ID: '+userId+'</div>'
-+ '</div>'
+profilePage.innerHTML = '<div class="profile-card-big"><div class="profile-avatar-big">'+avatarInner+'</div><div class="profile-name-big">'+escapeHtml(state.name || "Гравець")+(state.isVip?' <span class="vip-badge">VIP</span>':'')+'</div><div class="profile-id-big">ID: '+userId+'</div></div>'
 + '<div class="profile-stats">'
 + '<div class="profile-stat"><div class="profile-stat-icon">💰</div><div class="profile-stat-value gold">'+state.coins.toLocaleString()+'</div><div class="profile-stat-label">Баланс</div></div>'
 + '<div class="profile-stat"><div class="profile-stat-icon">💵</div><div class="profile-stat-value green">$'+(state.dollars || 0).toFixed(2)+'</div><div class="profile-stat-label">Донат</div></div>'
@@ -1609,21 +1526,10 @@ profilePage.innerHTML = '<div class="profile-card-big">'
 + '<button class="profile-nav-btn" id="btnProfileTop"><span class="nav-icon">🏆</span>Топ гравців</button>'
 + '<button class="profile-nav-btn green" id="btnProfileDonate"><span class="nav-icon">💵</span>Промо та донат</button>'
 + '</div>';
-
 const topBtn = $("btnProfileTop");
-if (topBtn) {
-topBtn.addEventListener("click", function() {
-showSection("top");
-document.querySelectorAll(".nav-btn").forEach(function(b) { b.classList.remove("active"); });
-});
-}
+if (topBtn) topBtn.addEventListener("click", function() { showSection("top"); document.querySelectorAll(".nav-btn").forEach(function(b) { b.classList.remove("active"); }); });
 const donateBtn = $("btnProfileDonate");
-if (donateBtn) {
-donateBtn.addEventListener("click", function() {
-showSection("donate");
-document.querySelectorAll(".nav-btn").forEach(function(b) { b.classList.remove("active"); });
-});
-}
+if (donateBtn) donateBtn.addEventListener("click", function() { showSection("donate"); document.querySelectorAll(".nav-btn").forEach(function(b) { b.classList.remove("active"); }); });
 }
 
 function escapeHtml(str) { const d = document.createElement("div"); d.textContent = str; return d.innerHTML; }
@@ -1640,9 +1546,7 @@ renderInventory();
 
 function initSortUI() {
 const sort = state.inventorySort || "new";
-document.querySelectorAll(".sort-btn").forEach(function(b) {
-b.classList.toggle("active", b.dataset.sort === sort);
-});
+document.querySelectorAll(".sort-btn").forEach(function(b) { b.classList.toggle("active", b.dataset.sort === sort); });
 }
 
 document.querySelectorAll(".admin-tab").forEach(function(tab) {
@@ -1700,10 +1604,7 @@ if (!targetSnap.exists()) { showToast("❌ Не знайдено"); return; }
 const current = targetSnap.data().coins || 0;
 await updateDoc(targetRef, { coins: current + amount });
 showToast("🎁 Видано " + amount.toLocaleString());
-} catch (e) {
-console.warn(e);
-showToast("❌ Помилка");
-}
+} catch (e) { console.warn(e); showToast("❌ Помилка"); }
 });
 
 $("btnAdminDollars").addEventListener("click", async function() {
@@ -1718,14 +1619,10 @@ if (!targetSnap.exists()) { showToast("❌ Не знайдено"); return; }
 const current = targetSnap.data().dollars || 0;
 await updateDoc(targetRef, { dollars: current + amount, hasEverHadDollars: true });
 showToast("💵 Видано $" + amount.toFixed(2));
-} catch (e) {
-console.warn(e);
-showToast("❌ Помилка");
-}
+} catch (e) { console.warn(e); showToast("❌ Помилка"); }
 });
 
 $("btnAdminClose").addEventListener("click", function() { adminModal.classList.remove("show"); });
-
 $("btnBuyVip").addEventListener("click", buyVip);
 $("btnSkipDay").addEventListener("click", skipDay);
 
@@ -1737,10 +1634,7 @@ $("btnCustomBuyCoins").addEventListener("click", customBuyCoins);
 document.querySelectorAll(".quick-price-btn").forEach(function(btn) {
 btn.addEventListener("click", function() {
 const input = $("customDollarsInput");
-if (input) {
-input.value = btn.dataset.price;
-updateCustomBuyPreview();
-}
+if (input) { input.value = btn.dataset.price; updateCustomBuyPreview(); }
 });
 });
 
@@ -1769,15 +1663,10 @@ window.scrollTo({top:0,behavior:"smooth"});
 });
 
 tapperBtn.addEventListener("click", onTap);
-tapperBtn.addEventListener("touchstart", function(e) {
-e.preventDefault();
-onTap(e);
-}, { passive: false });
+tapperBtn.addEventListener("touchstart", function(e) { e.preventDefault(); onTap(e); }, { passive: false });
 
 btnOpen.addEventListener("click", openCurrentCase);
-btnCloseModal.addEventListener("click", function() {
-if (!isProcessing) modal.classList.remove("show");
-});
+btnCloseModal.addEventListener("click", function() { if (!isProcessing) modal.classList.remove("show"); });
 
 async function saveState(fields) {
 try { await updateDoc(doc(db, "players", userId), fields); }
@@ -1853,18 +1742,10 @@ const forceHide = setTimeout(function() { loadingScreen.classList.add("hidden");
 updateTapperStreak();
 try { await initUser(); } catch (e) { console.warn("init помилка:", e); }
 recalcLimit();
-await saveState({
-limit: state.limit, streak: state.streak,
-tapsDate: state.tapsDate, tapsToday: state.tapsToday,
-lastStreakDate: state.lastStreakDate
-});
-
+await saveState({ limit: state.limit, streak: state.streak, tapsDate: state.tapsDate, tapsToday: state.tapsToday, lastStreakDate: state.lastStreakDate });
 if (resetTimerInterval) clearInterval(resetTimerInterval);
-resetTimerInterval = setInterval(function() {
+resetTimerInterval = setInterval(function() { updateResetTimer(); }, 1000);
 updateResetTimer();
-}, 1000);
-updateResetTimer();
-
 clearTimeout(forceHide);
 loadingScreen.classList.add("hidden");
 render();
@@ -1878,4 +1759,4 @@ if (resetTimerInterval) clearInterval(resetTimerInterval);
 });
 </script>
 </body>
-  </html>
+</html>
